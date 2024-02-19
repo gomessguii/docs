@@ -1,9 +1,9 @@
 ---
-title: Set variable
+title: Definir Variavel
 icon: pen
 ---
 
-The "Set variable" block allows you to set a particular value to a variable.
+O bloco "Variável" o permite definir um dado valor a uma variável.
 
 <Frame>
   <img src="/images/blocks/logic/set-variable.png" alt="Set variable" />
@@ -11,145 +11,114 @@ The "Set variable" block allows you to set a particular value to a variable.
 
 ## Custom
 
-You can set your variable with any value with `Custom`. It can be any kind of plain text but also **Javascript code**.
+Você pode definir sua variável com qualquer valor usando `Custom`. Ele recebe qualquer tipo de texto e também **Código JavaScript".
 
-### Expressions with existing variables
+### Expressões com variáveis existentes
 
-It means you can apply operations on existing variables.
+Significa que você pode aplicar operações em variáveis existentes.
 
-Add a value to your variable:
+Adicione um valor à sua variável:
 
 ```
 {{Score}} + 5
 ```
 
-Compute a sum of variables:
+Calcule uma soma de variáveis:
 
 ```
 {{Score}} + {{Answer}}
 ```
 
-Multiply variables together:
+Multiplique variáveis juntas:
 
 ```
 {{Score}} * {{Multiplier}}
 ```
 
-Compute a percentage:
+Calcule uma porcentagem:
 
 ```
 {{Score}} * 100 / {{Max Score}}
 ```
 
-Extract the first name from a full name:
+Extraia o primeiro nome de um nome completo:
 
 ```
 {{Full name}}.split(' ')[0]
 ```
 
-Transform existing variable to upper case or lower case:
+Transforme textos de variáveis existentes em maiúsculos:
 
 ```
 {{Name}}.toUpperCase()
 ```
+ou minúsculos:
 
 ```
 {{Name}}.toLowerCase()
 ```
 
-This can also be Javascript code. It will read the returned value of the code and set it to your variable.
+Você também pode usar código JavaScript. O sistema lerá o valor retornado do código e o definirá em sua variável.
 
 ```js
 const name = 'John' + 'Smith'
 return name
 ```
 
-If you don't provide the `return` keyword then it will be automatically prepended to the beginning of your code.
+Se você não informar um `return` na sua função, ele será automaticamente inferido no começo do seu código.
 
 ```js
 'John' + 'Smith'
 ```
 
-is the same as
+é o mesmo que:
 
 ```js
 return 'John' + 'Smith'
 ```
 
 <Info>
-Variables in script are not parsed, they are evaluated. So it should be treated as if it were real Javascript variables.
+As variáveis no script não são interpretadas, mas sim executadas. Portanto, elas devem ser tratadas como se fossem variáveis JavaScript reais.
+Assim, se você escrever `"{{Minha variável}}"`, ela irá analisar o ID da variável (algo como vclfqgqkdf000008mh3r6xakty). Você precisa remover as aspas duplas para obter corretamente o valor do conteúdo da variável.
 
-So, if you write `"{{My variable}}"`, it will parse the variable ID (something like `vclfqgqkdf000008mh3r6xakty`). You need to remove the double quotes to properly get the variable content value.
+Por exemplo,
 
-For example,
+❌ `"{{URL base}}/caminho"` => `vclfqgqkdf000008mh3r6xakty/caminho`
 
-- ❌ `"{{URL base}}/path"` => `vclfqgqkdf000008mh3r6xakty/path`
-- ✅ `{{URL base}} + '/path'` => `https://domain.com/path`
-- ✅ `` `${{{URL base}}}/path` `` => `https://domain.com/path`
+✅ `{{URL base}} + '/caminho'` => `https://dominio.com/caminho`
 
+✅ `${{{URL base}}}/caminho` => `https://dominio.com/caminho`
 </Info>
 
 <Info>
-  Variables content can either be a string or a list of strings. Check out
-  [Valid value types](../../variables#valid-value-types) for more information.
+  O conteúdo de variáveis pode ser tanto uma string ou uma lista de strings. Veja
+  [Tipos de valores validos](../../variables#valid-value-types) para mais informações.
 </Info>
-
-## Result ID
-
-This will set your variable with the current result ID. The result ID is the ID that corresponds to a row of your [Results](../../../results/overview.mdx) table. It can be considered like a User ID for the currently chatting user.
 
 ## Moment of the day
 
-It will set your variable with either one of these values based on the user's time of the day: `morning`, `afternoon`, `evening`, `night`.
+Definirá sua variável com algum destes valores baseado no período do dia: `morning` (manhã), `afternoon` (tarde), `evening` (cedo da noite), `night` (tarde da noite).
 
-Then you can use this variable to conditionally display content:
+Então você poderá usar essa variável para mostrar conteúdo condicionalmente:
 
 <Frame style={{ maxWidth: '400px' }}>
   <img
     src="/images/blocks/logic/moment-condition.png"
-    alt="Moment of the day condition"
+    alt="Condição Momento do Dia"
   />
 </Frame>
 
 ## Map item with same index
 
-This is a convenient value block that allows you to easily get an item from a list that has the same index as an item from another list.
+É uma função conveniente que o permite facilmente encontrar um item de uma lista que tem o mesmo índice de um item de outra lista.
 
-When you are pulling data from another service, sometimes, you will have 2 lists: `Labels` and `Ids`. Labels are the data displayed to the user and Ids are the data used for other requests to that external service.
+Quando você está buscando data a partir de outro serviço, ocasionalmente, você terá 2 listas: `Labels` e `Ids`. Labels são os dados mostrados ao contato e Ids são os dados usados para outras requisições para aquele serviço externo.
 
-This value block allows you to find the `Id` from `Ids` with the same index as `Label` in `Labels`
+Essa opção permite que você encontre o `Id` de `Ids` com o mesmo índice de `Label` em `Labels`
 
 <Frame>
   <img
     src="/images/blocks/logic/set-variable-map-item.png"
-    alt="Set variable map item with same index"
+    alt="Definir variável map item with same index"
   />
 </Frame>
-
-## Get user's geo location
-
-For this you can provide the following custom code:
-
-```js
-function getLocation() {
-  return new Promise((resolve) => {
-    navigator.geolocation.getCurrentPosition(
-      (position) =>
-        resolve(`${position.coords.latitude}, ${position.coords.longitude}`),
-      (error) => resolve('error'),
-      { enableHighAccuracy: true, timeout: 5000 }
-    )
-  })
-}
-
-const coords = await getLocation()
-
-// Check for error
-if (coords === 'error') {
-  return 'Unable to get location'
-}
-
-return coords
-```
-
-This custom function can only work when it is executed on the client browser so you need to make sure to enable the "Execute on client" option.

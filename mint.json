@@ -81,7 +81,7 @@
               ]
             },
             {
-              "group": "Logic",
+              "group": "Lógica",
               "pages": [
                 "editor/blocks/logic/set-variable",
                 "editor/blocks/logic/condition",
@@ -94,7 +94,7 @@
               ]
             },
             {
-              "group": "Integrations",
+              "group": "Integrações",
               "pages": [
                 "editor/blocks/integrations/google-sheets",
                 "editor/blocks/integrations/google-analytics",
