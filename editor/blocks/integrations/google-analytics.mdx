@@ -2,25 +2,25 @@
 title: Google Analytics
 ---
 
-The Google Analytics integration block allows you to track a Google Analytics event at a given moment in your flow.
+O bloco de integração do Google Analytics permite rastrear um evento do Google Analytics em um momento específico do seu fluxo.
 
 <Frame>
   <img src="/images/blocks/integrations/ga.png" alt="Google Analytics block" />
 </Frame>
 
-When your flow contains a Google Analytics block, under the hood it:
+Quando o seu fluxo contém um bloco Google Analytics, nos bastidores ele:
 
-- Initialize GA and track a "Page view" event on page load.
-- Track the event if any when the block is executed.
+- Inicializa o GA e rastreia um evento "Visualização de página" no carregamento da página.
+- Rastreia o evento, se houver, quando o bloco é executado.
 
-## Track conversions with Google Ads
+## Rastreie conversões com o Google Ads
 
-To track conversions for your Google Ad, you can add a Google Analytics block whenever you'd like to trigger the conversion event with the following properties:
+Para rastrear conversões para o seu Google Ad, você pode adicionar um bloco Google Analytics sempre que quiser acionar o evento de conversão com as seguintes propriedades:
 
-- Event action: conversion
-- Send to: \<YOUR_AW_ID\>
-- Value (optional): a number to quantify the conversion
+- Ação do evento: conversão
+- Enviar para: `<SEU_ID_DO_AW>`
+- Valor (opcional): um número para quantificar a conversão
 
-## Troubleshooting
+## Solução de Problemas
 
-To help you debug how your Google Analytics behaves, I suggest you add the [Google Analytics Debugger](https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna) extension to your browser.
+Para ajudar a depurar como o seu Google Analytics se comporta, sugiro que adicione a extensão [Google Analytics Debugger](https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna) ao seu navegador.

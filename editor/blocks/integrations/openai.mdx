@@ -4,9 +4,9 @@ title: OpenAI
 
 import { LoomVideo } from '/snippets/loom-video.mdx'
 
-## Create chat completion
+## Criar chat completion
 
-With the OpenAI block, you can create a chat completion based on your user queries and display the answer back to your typebot.
+Com o bloco OpenAI, você pode criar um chat completion com base nas consultas do usuário e exibir a resposta de volta para o seu fluxo.
 
 <Frame>
   <img
@@ -15,7 +15,7 @@ With the OpenAI block, you can create a chat completion based on your user queri
   />
 </Frame>
 
-This integration comes with a convenient message type called **Dialogue**. It allows you to easily pass a sequence of saved assistant / user messages history to OpenAI:
+Esta integração vem com um tipo de mensagem conveniente chamado Diálogo. Isso permite que você passe facilmente uma sequência de histórico de mensagens salvas do assistente/usuário para a OpenAI:
 
 <Frame>
   <img
@@ -24,7 +24,7 @@ This integration comes with a convenient message type called **Dialogue**. It al
   />
 </Frame>
 
-Then you can give the OpenAI block access to this sequence of messages:
+Então você pode dar acesso ao bloco OpenAI a esta sequência de mensagens:
 
 <Frame>
   <img
@@ -33,23 +33,23 @@ Then you can give the OpenAI block access to this sequence of messages:
   />
 </Frame>
 
-### Tools
+### Ferramentas
 
-The tools section allows you to add functions that the OpenAI model can execute. Here is an example of a function named `getWeather` that returns 'Sunny and warm' if you ask about the weather of Paris and 'Rainy and cold' if you ask for any other city 😂.
+A seção de ferramentas permite adicionar funções que o modelo OpenAI pode executar. Aqui está um exemplo de uma função chamada `getWeather` que retorna 'Ensolarado e quente' se você perguntar sobre o clima de Paris e 'Chuvoso e frio' se perguntar por qualquer outra cidade 
 
-A more useful example would be, of course, to call an API to get the weather of the city the user is asking about.
+Um exemplo mais útil seria, é claro, chamar uma API para obter o clima da cidade sobre a qual o usuário está perguntando.
 
 <Frame>
   <img src="/images/blocks/integrations/openai/tools.png" alt="OpenAI tools" />
 </Frame>
 
-As you can see, the code block expects the body of the Javascript function. You should use the `return` keyword to return value to give back to OpenAI as the result of the function.
+Como você pode ver, o bloco de código espera o corpo da função JavaScript. Você deve usar a palavra-chave `return` para retornar o valor a ser devolvido para a OpenAI como resultado da função.
 
-If you'd like to set variables directly in this code block, you can use the [`setVariable` function](../logic/script#setvariable-function).
+Se desejar definir variáveis diretamente neste bloco de código, você pode usar a [função `setVariable`](../logic/script#setvariable-function).
 
-## Ask assistant
+## Perguntar ao assistente
 
-This action allows you to talk with your [OpenAI assistant](https://platform.openai.com/assistants). All you have to do is to provide its ID.
+Esta ação permite conversar com seu [assistente OpenAI](https://platform.openai.com/assistants). Tudo que você precisa fazer é fornecer seu ID.
 
 <Frame>
   <img
@@ -58,39 +58,39 @@ This action allows you to talk with your [OpenAI assistant](https://platform.ope
   />
 </Frame>
 
-### Functions
+### Funções
 
-If you defined functions in your assistant, you can define the function to execute in the `Functions` section.
+Se você definiu funções em seu assistente, pode definir a função a ser executada na seção `Funções`.
 
-## Create speech
+## Criar fala
 
-This action allows you to transform a text input into an audio URL that you can reuse in your bot.
+Esta ação permite transformar uma entrada de texto em uma URL de áudio que você pode reutilizar em seu bot.
 
 :::note
-The generated audio URLs are temporary and expire after 7 days. If you need to store them, make sure to download them before they expire.
+As URLs de áudio geradas são temporárias e expiram após 7 dias. Se precisar armazená-las, certifique-se de baixá-las antes que expirem.
 :::
 
 <LoomVideo id="ccca6cbf16ed4d01b513836775db06a3" />
 
-## Using Multiple Open AI Blocks: Tips and Tricks
+## Usando Múltiplos Blocos Open AI: Dicas e Truques
 
-In this video, I discuss some important things to keep in mind when using multiple Open AI blocks consecutively. I provide an example where we ask the user for a topic, generate a summary, and display a list of authors.
+Neste vídeo, discuto algumas coisas importantes a ter em mente ao usar múltiplos blocos Open AI consecutivamente. Forneço um exemplo onde pedimos ao usuário um tópico, geramos um resumo e exibimos uma lista de autores.
 
-I explain that streaming messages is not possible when they are prefixed or suffixed by text, and that all blocks need to compute before displaying anything.
+Explico que transmitir mensagens não é possível quando elas são prefixadas ou sufixadas por texto, e que todos os blocos precisam ser computados antes de exibir qualquer coisa.
 
-I also demonstrate how formatting can be affected by the presence of text before a message. Watch this video to learn how to optimize your use of multiple Open AI blocks.
+Também demonstro como a formatação pode ser afetada pela presença de texto antes de uma mensagem. Assista a este vídeo para aprender como otimizar o uso de múltiplos blocos Open AI.
 
 <LoomVideo id="35dc8af6b9244762acc4a5acf275fb43" />
 
-## Troobleshooting
+## Solução de Problemas
 
-### Error message: "OpenAI block returned error"
+### Mensagem de erro: "Bloco OpenAI retornou um erro"
 
-It means your OpenAI block is not configured properly. Please check the following:
+Isso significa que seu bloco OpenAI não está configurado corretamente. Por favor, verifique o seguinte:
 
-- You have selected an OpenAI account
-- You have at least 1 **user** message or a **Dialogue** message set up.
+- Você selecionou uma conta OpenAI
+- Você tem pelo menos 1 mensagem de usuário ou uma mensagem de Diálogo configurada.
 
-### It returns an empty message
+### Retorna uma mensagem vazia
 
-It most likely mean that you exceeded your OpenAI free quota. Add a payment method to your OpenAI account to continue using it.
+Isso provavelmente significa que você excedeu sua cota gratuita da OpenAI. Adicione um método de pagamento à sua conta OpenAI para continuar usando-a.

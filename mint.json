@@ -102,17 +102,11 @@
               "group": "Integrações",
               "pages": [
                 "editor/blocks/integrations/google-sheets",
+                "editor/blocks/integrations/openai",
                 "editor/blocks/integrations/google-analytics",
                 "editor/blocks/integrations/webhook",
                 "editor/blocks/integrations/send-email",
-                "editor/blocks/integrations/zapier",
-                "editor/blocks/integrations/make-com",
-                "editor/blocks/integrations/pabbly-connect",
-                "editor/blocks/integrations/chatwoot",
                 "editor/blocks/integrations/meta-pixel",
-                "editor/blocks/integrations/openai",
-                "editor/blocks/integrations/zemantic-ai",
-                "editor/blocks/integrations/mistral",
                 "editor/blocks/integrations/elevenlabs"
               ]
             }

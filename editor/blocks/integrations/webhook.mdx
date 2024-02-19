@@ -1,20 +1,20 @@
 ---
-title: HTTP Request
+title: Requisição HTTP
 ---
 
 import { LoomVideo } from '/snippets/loom-video.mdx'
 
-The HTTP Request block allows you to send an HTTP request to a 3rd party service. This is useful to send information from the bot to another service or to fetch information from another service and use it in the bot.
+O bloco de Requisição HTTP permite enviar uma requisição HTTP para um serviço de terceiros. Isso é útil para enviar informações do bot para outro serviço ou para buscar informações de outro serviço e usá-las no bot.
 
-## Make an API request and fetch data
+## Fazer uma requisição à API e obter dados
 
-This gets more technical as you'll need to know more about HTTP request parameters.
+Isso se torna mais técnico, pois você precisará saber mais sobre os parâmetros da requisição HTTP.
 
-Lots of services offer an API. They also, most likely have an API documentation. Depending on the parameters you are giving the HTTP request block, it should return different info from the 3rd party service.
+Muitos serviços oferecem uma API. Eles também provavelmente têm uma documentação da API. Dependendo dos parâmetros que você fornecer ao bloco de requisição HTTP, ele deve retornar informações diferentes do serviço de terceiros.
 
-## Custom body
+## Body personalizado
 
-You can set a custom body with your collected variables. Here is a working example:
+Você pode definir um body personalizado com suas variáveis coletadas. Aqui está um exemplo funcional:
 
 ```json
 {
@@ -23,30 +23,30 @@ You can set a custom body with your collected variables. Here is a working examp
 }
 ```
 
-### Example with a dummy API: CREATE and GET
+### Exemplo com uma API fictícia: CRIAR e OBTÉM
 
-This video provides a step-by-step guide to successfully configure HTTP request blocks in Typebot.
+Este vídeo fornece um guia passo a passo para configurar com sucesso blocos de requisição HTTP no Typebot.
 
-I demonstrate how to configure the HTTP request block, including the URL, method, and custom body. I also show you how to test the request and save the newly created employee ID. Finally, I explain how to implement the find employee by ID endpoint and map the employee name to a variable.
+Demonstro como configurar o bloco de requisição HTTP, incluindo o URL, método e corpo personalizado. Também mostro como testar a requisição e salvar o ID do novo funcionário criado. Finalmente, explico como implementar o ponto de extremidade para encontrar o funcionário por ID e mapear o nome do funcionário para uma variável.
 
 <LoomVideo id="d9aef6a37e0c43759b31be7d69c4dd6d" />
 
-### Example: fetch movie information
+### Exemplo: obter informações de filme
 
-Let's create a bot that ask for a movie and retrieve its informations (By sending an HTTP request to the [OMDB API](http://www.omdbapi.com/)).
+Vamos criar um bot que pede por um filme e recupera suas informações (enviando uma requisição HTTP para a [API OMDB](http://www.omdbapi.com/)).
 
-From the documentation, I know that by calling this specific URL: http://www.omdbapi.com/?t=Star%20Wars&apikey=1eb4670b, it will search for "Star Wars" movie information and return JSON data.
+A partir da documentação, sei que ao chamar este URL específico: http://www.omdbapi.com/?t=Star%20Wars&apikey=1eb4670b, ele buscará as informações do filme "Star Wars" e retornará dados JSON.
 
-What I need in my case is instead of inserting "Star Wars", I'd like to insert a Typebot variable:
+O que preciso no meu caso é, em vez de inserir "Star Wars", gostaria de inserir uma variável do fluxo:
 
 <Frame>
   <img
     src="/images/blocks/integrations/webhook/variable-url.png"
-    alt="Variable in URL"
+    alt="Variavel em URL"
   />
 </Frame>
 
-Then, we can set a test value for our variable (it will replace the variable with this value only for the "Test the request" button):
+Então, podemos definir um valor de teste para nossa variável (ele substituirá a variável por este valor apenas para o botão "Testar a requisição"):
 
 <Frame style={{ maxWidth: '300px' }}>
   <img
@@ -55,7 +55,7 @@ Then, we can set a test value for our variable (it will replace the variable wit
   />
 </Frame>
 
-Hit the "Test the request" button and then we can save the result in multiple variables:
+Clique no botão "Testar a requisição" e então podemos salvar o resultado em várias variáveis:
 
 <Frame style={{ maxWidth: '400px' }}>
   <img
@@ -64,21 +64,19 @@ Hit the "Test the request" button and then we can save the result in multiple va
   />
 </Frame>
 
-Then we can use these variables to display dynamic content in the next bubbles:
+Então podemos usar essas variáveis para exibir conteúdo dinâmico nos próximos envios:
 
 <Frame>
   <img src="/images/blocks/integrations/webhook/preview.png" alt="Preview" />
 </Frame>
 
-Possibilities are endless when it comes to API calls, you can litteraly call any API and fetch any data you want.
+As possibilidades são infinitas quando se trata de chamadas de API, você pode literalmente chamar qualquer API e buscar qualquer dado que desejar.
 
-Feel free to ask the [community](https://typebot.io/discord) for help if you struggle setting up a Webhook block.
+## Chamar um URL de Webhook
 
-## Call a Webhook URL
+Seu serviço de terceiros (Make.com, Zapier, etc) está fornecendo a você um URL de Webhook.
 
-Your 3rd party service (Make.com, Zapier, etc) is giving you a Webhook URL.
-
-You only have to paste this URL in the Webhook block and click on "Test the request". By default the 3rd party service will receive a snapshot of what the bot could send.
+Você só precisa colar este URL no bloco de Webhook e clicar em "Testar a requisição". Por padrão, o serviço de terceiros receberá uma captura do que o bot poderia enviar.
 
 <Frame>
   <img
@@ -87,18 +85,18 @@ You only have to paste this URL in the Webhook block and click on "Test the requ
   />
 </Frame>
 
-You can also decide to customize the request sent to the 3rd party service.
+Você também pode decidir personalizar a requisição enviada ao serviço de terceiros.
 
 ## Timeout
 
-By default, the Webhook block will wait 10 seconds for the 3rd party service to respond. If it doesn't respond in time, the block will fail. You can customize this timeout value in the "Advanced params" section of your Webhook block settings.
+Por padrão, o bloco de Webhook aguardará 10 segundos para que o serviço de terceiros responda. Se não responder a tempo, o bloco falhará. Você pode personalizar esse valor de tempo limite na seção "Parâmetros avançados" das configurações do bloco de Webhook.
 
-## Troubleshooting
+## Solução de Problemas
 
-The Webhook block request fail or didn't seem to trigger? Make sure to check the [logs](/results/overview#logs). If you still can't figure out what went wrong, shoot me a message using the chat button directly in the tool 👍
+A requisição do bloco de Webhook falhou ou não pareceu ser acionada? Certifique-se de verificar os [logs](/results/overview#logs). Se ainda não conseguir descobrir o que deu errado, me envie uma mensagem usando o botão de chat diretamente na ferramenta 👍
 
-### Webhook is not executed in the right order?
+### O Webhook não é executado na ordem correta?
 
-That is expected, Typebot actually computes all the blocks between each input blocks from a server before displaying anything.
+Isso é esperado, o Typebot na verdade calcula todos os blocos entre cada bloco de entrada de um servidor antes de exibir qualquer coisa.
 
 <LoomVideo id="9cc00a9a8c8245709d6322f197c9fb45" />

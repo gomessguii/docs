@@ -1,29 +1,20 @@
 ---
-title: Send email
+title: Email
 ---
 
-If you want to receive an email notification each time a user completes the bot or if you want to send a recap to the user, the Email block is made for you:
+Se você deseja receber uma notificação por e-mail cada vez que um usuário completa o bot ou se deseja enviar um resumo para o usuário, o bloco de E-mail é feito para você:
 
 <Frame style={{ maxWidth: '400px' }}>
   <img src="/images/blocks/integrations/email.png" alt="Email block example" />
 </Frame>
 
-By default, the email will be sent from `notifications@get-typebot.com` with default content based on what your new lead has replied to. It will look like this:
+Você precisa conectar seu e-mail (SMTP), usando o botão Conectar.
+Você também pode personalizar o conteúdo do e-mail com seu texto/HTML.
 
-<Frame>
-  <img
-    src="/images/blocks/integrations/default-email.png"
-    alt="Email block example"
-  />
-</Frame>
+## Anexos
 
-You can choose to use your email (SMTP) account, using the "From:" dropdown and filling in your credentials.
-You can also customize the email content with your text/HTML.
+Você pode anexar arquivos ao seu e-mail com a opção Anexos. Certifique-se de que aponte para uma variável que esteja vinculada a um bloco de entrada de envio de arquivo.
 
-## Attachments
+## Solução de Problemas
 
-You can attach files to your email with the Attachments option. Make sure that it points to a variable that is linked to a File upload input block.
-
-## Troubleshooting
-
-You are supposed to receive an email but it doesn't get to your inbox? Make sure to check the [logs](/results/overview#logs). If you still can't figure out what went wrong, shoot me a message using the chat button directly in the tool 👍
+Você deveria receber um e-mail, mas ele não chega à sua caixa de entrada? Certifique-se de verificar os [logs](/results/overview#logs). Se ainda não conseguir descobrir o que deu errado, me envie uma mensagem usando o botão de chat diretamente na ferramenta 👍
