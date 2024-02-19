@@ -1,53 +1,33 @@
 ---
-title: Script block
+title: Script
 icon: code
 ---
 
-The "Script" block allows you to execute Javascript code.
+O bloco "Script" o permite executar código Javascript.
 
-<Info>This block doesn't allow you to create a custom visual block</Info>
+<Info>Esse bloco não o permite criar um bloco visual personalizado</Info>
 
 <Frame>
-  <img src="/images/blocks/logic/code.png" width="600" alt="Code block" />
+  <img src="/images/blocks/logic/code.png" width="600" alt="Bloco de código" />
 </Frame>
 
 <Info>
-Variables in script are not parsed, they are evaluated. So it should be treated as if it were real javascript variables.
+As variáveis no script não são interpretadas, mas sim executadas. Portanto, elas devem ser tratadas como se fossem variáveis JavaScript reais.
 
-You need to write `console.log({{My variable}})` instead of `console.log("{{My variable}}")`
+Você precisa escrever `console.log({{Minha variavel}})` em vez de  `console.log("{{Minha variavel}}")`
 
 </Info>
 
-## `setVariable` function
+## Função `setVariable`
 
-If you want to set a variable value with Javascript, the [Set variable block](./set-variable) is more appropriate for most cases.
+Se você quer definir um valor a uma variável com JavaScript, o [Bloco definir variável](./set-variable) é mais apropriado na maioria dos casos.
 
-However, if you'd like to set variables with the script blocks, you can use the `setVariable` function in your script:
+Porém, se você deseja definir variáveis dentro do seu bloco de script, você pode usar a função `setVariable` no seu script:
 
 ```js
-if({{My variable}} === 'foo') {
-  setVariable('My variable', 'bar')
+if({{Minha variavel}} === 'valor1') {
+  setVariable('Minha variavel', 'valor2')
 } else {
-  setVariable('My variable', 'other')
+  setVariable('Minha variavel', 'outro')
 }
 ```
-
-The `setVariable` function is only available in script executed on the server, so it won't work if the `Execute on client?` is checked.
-
-## Examples
-
-### Reload page
-
-```js
-window.location.reload()
-```
-
-### Redirect if a variable has a specific value
-
-```js
-if({{Category}} === 'qualified') {
-  window.location.href = 'https://my-site.com'
-}
-```
-
-Do you need to do something but you're not sure how to? [Join the Discord server](https://typebot.io/discord) and get instant help!
