@@ -68,10 +68,10 @@
             {
               "group": "Enviar",
               "pages": [
-                "editor/blocks/bubbles/text",
-                "editor/blocks/bubbles/image",
-                "editor/blocks/bubbles/video",
-                "editor/blocks/bubbles/audio"
+                "editor/blocks/outputs/text",
+                "editor/blocks/outputs/image",
+                "editor/blocks/outputs/video",
+                "editor/blocks/outputs/audio"
               ]
             },
             {
