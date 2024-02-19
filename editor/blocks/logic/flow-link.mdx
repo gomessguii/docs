@@ -1,0 +1,16 @@
+---
+title: Fluxo
+icon: box
+---
+
+O bloco de lógica Fluxo o permite entrar em outro fluxo. Isso o ajuda a manter seus fluxos limpos e torna possível a reutilização de um fluxo em diversos lugares.
+
+<Frame>
+  <img src="/images/blocks/logic/link.png" alt="Bloco de lógica Fluxo" />
+</Frame>
+
+## Compartilha variáveis
+
+Os valores de variáveis existentes são automaticamente compartilhados para o fluxo vinculado. Isso quer dizer que se o fluxo vinculado contém variáveis com nomes parecidos, elas serão automaticamente preenchidas com os valores do fluxo anterior.
+
+Exemplo: Meu primeiro fluxo pede o nome do contato e o guarda em uma variávei "Nome". Então, eu o vinculo a outro fluxo que envia a variável "Nome" em um bloco de envio de texto. Ele enviará o nome coletado no primeiro fluxo.
