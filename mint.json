@@ -71,7 +71,11 @@
                 "editor/blocks/outputs/text",
                 "editor/blocks/outputs/image",
                 "editor/blocks/outputs/video",
-                "editor/blocks/outputs/audio"
+                "editor/blocks/outputs/audio",
+                "editor/blocks/outputs/file",
+                "editor/blocks/outputs/contact",
+                "editor/blocks/outputs/trigger",
+                "editor/blocks/outputs/menu"
               ]
             },
             {
