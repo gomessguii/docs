@@ -117,8 +117,6 @@
           ]
         },
         "editor/variables",
-        "editor/publish",
-        "editor/share",
         "editor/context-menu",
         "editor/export-import"
       ]
