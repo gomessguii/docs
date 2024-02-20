@@ -59,7 +59,6 @@
     {
       "group": "Automações",
       "pages": [
-        "editor/graph",
         {
           "group": "Blocos",
           "icon": "block",
