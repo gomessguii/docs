@@ -4,6 +4,7 @@ icon: music
 ---
 
 O bloco de envio de Áudio permite enviar um áudio ao contato. Você pode fazer upload do áudio ou colar uma URL diretamente.
+
 É possível eviá-lo como áudio gravado ou como arquivo.
 
 <Tabs>
@@ -17,6 +18,14 @@ O bloco de envio de Áudio permite enviar um áudio ao contato. Você pode fazer
     </Frame>
   </Tab>
   <Tab title="Conversa">
+    <h4>Áudio gravado:</h4>
+    <video
+      controls
+      autoPlay
+      className="rounded-lg"
+      src="/images/blocks/outputs/audio/bot.mp4"
+    ></video>
+    <h4>Arquivo:</h4>
     <video
       controls
       autoPlay
@@ -25,3 +34,7 @@ O bloco de envio de Áudio permite enviar um áudio ao contato. Você pode fazer
     ></video>
   </Tab>
 </Tabs>
+
+<Note>
+  Atente-se ao tamanho do arquivo que não deve ser maior que 10 MB.
+</Note>
