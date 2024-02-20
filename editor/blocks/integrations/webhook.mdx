@@ -2,8 +2,6 @@
 title: Requisição HTTP
 ---
 
-import { LoomVideo } from '/snippets/loom-video.mdx'
-
 O bloco de Requisição HTTP permite enviar uma requisição HTTP para um serviço de terceiros. Isso é útil para enviar informações do bot para outro serviço ou para buscar informações de outro serviço e usá-las no bot.
 
 ## Fazer uma requisição à API e obter dados
@@ -11,6 +9,16 @@ O bloco de Requisição HTTP permite enviar uma requisição HTTP para um servi�
 Isso se torna mais técnico, pois você precisará saber mais sobre os parâmetros da requisição HTTP.
 
 Muitos serviços oferecem uma API. Eles também provavelmente têm uma documentação da API. Dependendo dos parâmetros que você fornecer ao bloco de requisição HTTP, ele deve retornar informações diferentes do serviço de terceiros.
+
+<div className="relative" style={{ paddingBottom: '10%' }}>
+  <iframe
+    src="https://player.vimeo.com/video/914885971?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+    width="720"
+    height="405"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture" title="02.09 - Como usar condicionais e montar nosso gatilho"
+  />
+</div>
 
 ## Body personalizado
 
@@ -98,5 +106,3 @@ A requisição do bloco de Webhook falhou ou não pareceu ser acionada? Certifiq
 ### O Webhook não é executado na ordem correta?
 
 Isso é esperado, o Typebot na verdade calcula todos os blocos entre cada bloco de entrada de um servidor antes de exibir qualquer coisa.
-
-<LoomVideo id="9cc00a9a8c8245709d6322f197c9fb45" />
