@@ -9,14 +9,14 @@
     "suggestEdit": true
   },
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "https://atendai-files.s3.amazonaws.com/atendai/logo_white-logo_white.png",
+    "light": "https://atendai-files.s3.amazonaws.com/atendai/logo-logo.png"
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#0042DA",
-    "light": "#5885FE",
-    "dark": "#0042DA",
+    "primary": "#00B887",
+    "light": "#00C792",
+    "dark": "#87f2c4",
     "background": {
       "dark": "#18181B"
     },
@@ -32,8 +32,8 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://app.typebot.io"
+    "name": "Login",
+    "url": "https://app.atendai.com"
   },
   "primaryTab": {
     "name": "Conhecimento"
