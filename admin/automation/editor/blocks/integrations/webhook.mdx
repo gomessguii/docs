@@ -1,0 +1,108 @@
+---
+title: Requisição HTTP
+---
+
+O bloco de Requisição HTTP permite enviar uma requisição HTTP para um serviço de terceiros. Isso é útil para enviar informações do bot para outro serviço ou para buscar informações de outro serviço e usá-las no bot.
+
+## Fazer uma requisição à API e obter dados
+
+Isso se torna mais técnico, pois você precisará saber mais sobre os parâmetros da requisição HTTP.
+
+Muitos serviços oferecem uma API. Eles também provavelmente têm uma documentação da API. Dependendo dos parâmetros que você fornecer ao bloco de requisição HTTP, ele deve retornar informações diferentes do serviço de terceiros.
+
+<div className="relative" style={{ paddingBottom: '10%' }}>
+  <iframe
+    src="https://player.vimeo.com/video/914885971?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+    width="720"
+    height="405"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture" title="02.09 - Como usar condicionais e montar nosso gatilho"
+  />
+</div>
+
+## Body personalizado
+
+Você pode definir um body personalizado com suas variáveis coletadas. Aqui está um exemplo funcional:
+
+```json
+{
+  "name": "{{Name}}",
+  "email": "{{Email}}"
+}
+```
+
+### Exemplo com uma API fictícia: CRIAR e OBTÉM
+
+Este vídeo fornece um guia passo a passo para configurar com sucesso blocos de requisição HTTP no Typebot.
+
+Demonstro como configurar o bloco de requisição HTTP, incluindo o URL, método e corpo personalizado. Também mostro como testar a requisição e salvar o ID do novo funcionário criado. Finalmente, explico como implementar o ponto de extremidade para encontrar o funcionário por ID e mapear o nome do funcionário para uma variável.
+
+<LoomVideo id="d9aef6a37e0c43759b31be7d69c4dd6d" />
+
+### Exemplo: obter informações de filme
+
+Vamos criar um bot que pede por um filme e recupera suas informações (enviando uma requisição HTTP para a [API OMDB](http://www.omdbapi.com/)).
+
+A partir da documentação, sei que ao chamar este URL específico: http://www.omdbapi.com/?t=Star%20Wars&apikey=1eb4670b, ele buscará as informações do filme "Star Wars" e retornará dados JSON.
+
+O que preciso no meu caso é, em vez de inserir "Star Wars", gostaria de inserir uma variável do fluxo:
+
+<Frame>
+  <img
+    src="/images/admin/automation/blocks/integrations/webhook/variable-url.png"
+    alt="Variavel em URL"
+  />
+</Frame>
+
+Então, podemos definir um valor de teste para nossa variável (ele substituirá a variável por este valor apenas para o botão "Testar a requisição"):
+
+<Frame style={{ maxWidth: '300px' }}>
+  <img
+    src="/images/admin/automation/blocks/integrations/webhook/variable-test-value.png"
+    alt="Variable test values"
+  />
+</Frame>
+
+Clique no botão "Testar a requisição" e então podemos salvar o resultado em várias variáveis:
+
+<Frame style={{ maxWidth: '400px' }}>
+  <img
+    src="/images/admin/automation/blocks/integrations/webhook/save-in-variable.png"
+    alt="Test request"
+  />
+</Frame>
+
+Então podemos usar essas variáveis para exibir conteúdo dinâmico nos próximos envios:
+
+<Frame>
+  <img src="/images/admin/automation/blocks/integrations/webhook/preview.png" alt="Preview" />
+</Frame>
+
+As possibilidades são infinitas quando se trata de chamadas de API, você pode literalmente chamar qualquer API e buscar qualquer dado que desejar.
+
+## Chamar um URL de Webhook
+
+Seu serviço de terceiros (Make.com, Zapier, etc) está fornecendo a você um URL de Webhook.
+
+Você só precisa colar este URL no bloco de Webhook e clicar em "Testar a requisição". Por padrão, o serviço de terceiros receberá uma captura do que o bot poderia enviar.
+
+<Frame>
+  <img
+    src="/images/admin/automation/blocks/integrations/webhook/simple-post.png"
+    alt="Simple Webhook POST"
+  />
+</Frame>
+
+Você também pode decidir personalizar a requisição enviada ao serviço de terceiros.
+
+## Timeout
+
+Por padrão, o bloco de Webhook aguardará 10 segundos para que o serviço de terceiros responda. Se não responder a tempo, o bloco falhará. Você pode personalizar esse valor de tempo limite na seção "Parâmetros avançados" das configurações do bloco de Webhook.
+
+## Solução de Problemas
+
+A requisição do bloco de Webhook falhou ou não pareceu ser acionada? Certifique-se de verificar os [logs](/admin/automation/results/overview#logs). Se ainda não conseguir descobrir o que deu errado, me envie uma mensagem usando o botão de chat diretamente na ferramenta 👍
+
+### O Webhook não é executado na ordem correta?
+
+Isso é esperado, o Typebot na verdade calcula todos os blocos entre cada bloco de entrada de um servidor antes de exibir qualquer coisa.

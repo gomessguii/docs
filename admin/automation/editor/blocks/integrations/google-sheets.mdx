@@ -1,0 +1,42 @@
+---
+title: Planilhas
+---
+
+Com o bloco de integração do Planilhas Google, você pode injetar, atualizar ou obter dados do Planilhas Google. Para uma visão geral de como funciona, confira este vídeo:
+
+<div className="relative" style={{ paddingBottom: '64.5933014354067%' }}>
+  <iframe
+    src="https://www.youtube.com/embed/UjlZvlqg6mA"
+    allowFullScreen
+    className="absolute top-0 left-0 w-full h-full"
+  />
+</div>
+
+Para funcionar corretamente, sua planilha deve ter a primeira linha como linha de cabeçalho. E todos os nomes de cabeçalho devem ser exclusivos. É assim que o bloco sabe qual coluna atualizar:
+
+<Frame>
+  <img
+    src="/images/admin/automation/blocks/integrations/spreadsheet-format.png"
+    alt="Google Analytics block"
+  />
+</Frame>
+
+## Como adicionar a data de envio à minha linha?
+
+Para isso, você precisará definir uma nova variável com o valor “Agora” antes do bloco do Planilhas Google. Então você pode simplesmente usar esta variável no bloco do Planilhas Google.
+
+## Avançado
+
+<div className="relative" style={{ paddingBottom: '10%' }}>
+  <iframe
+    src="https://player.vimeo.com/video/914885835?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+    width="720"
+    height="405"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture" title="02.09 - Como usar condicionais e montar nosso gatilho"
+  />
+</div>
+
+## Solução de problemas
+
+O bloco de planilhas do Google não inseriu ou atualizou uma linha, mas deveria? Certifique-se de verificar os [logs](admin/automation/results/overview#logs). Se você ainda não consegue descobrir o que deu errado, entre em contato com o suporte.

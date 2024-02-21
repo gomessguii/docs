@@ -1,0 +1,44 @@
+---
+title: Email
+---
+
+Se você deseja receber uma notificação por e-mail cada vez que um usuário completa o bot ou se deseja enviar um resumo para o usuário, o bloco de E-mail é feito para você:
+
+<Frame style={{ maxWidth: '400px' }}>
+  <img src="/images/admin/automation/blocks/integrations/email.png" alt="Email block example" />
+</Frame>
+
+Você precisa conectar seu e-mail (SMTP), usando o botão Conectar.
+Você também pode personalizar o conteúdo do e-mail com seu texto/HTML.
+
+<div className="relative" style={{ paddingTop: '5%', paddingBottom: '5%' }}>
+  <iframe
+    src="https://player.vimeo.com/video/914888360?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+    width="720"
+    height="405"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture" title="02.09 - Como usar condicionais e montar nosso gatilho"
+  />
+</div>
+
+## Conectar
+
+Para fazer um envio, primeiramente é preciso configurar uma conta de email usando SMTP. Para isso selecione Conectar novo e preencha os dados de acesso.
+
+<Frame style={{ maxWidth: '400px' }}>
+  <img src="/images/admin/automation/blocks/integrations/connect-email.png" alt="Email block example" />
+</Frame>
+
+<Note>Verifique no seu provedor de Email como habilitar o acesso SMTP.</Note>
+
+## Anexos
+
+Você pode anexar arquivos ao seu e-mail com a opção Anexos. Certifique-se de que aponte para uma variável que esteja vinculada a um bloco de entrada de envio de arquivo.
+
+## Solução de Problemas
+
+Você deveria receber um e-mail, mas ele não chega à sua caixa de entrada? 
+- Lembre-se de verificar se o SMTP está ativado para seu endereço de Email.
+-Certifique-se de verificar os [logs](/admin/automation/results/overview#logs).
+
+Se ainda não conseguir descobrir o que deu errado, sinta-se livre para entrar em contato com o suporte usando o botão **?** na parte superior direita da página.

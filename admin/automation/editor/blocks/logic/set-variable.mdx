@@ -1,0 +1,111 @@
+---
+title: Definir Variavel
+icon: pen
+---
+
+O bloco lógico Variável permite definir um dado valor a uma variável.
+
+<Frame>
+  <img src="/images/admin/automation/blocks/logic/set-variable.png" alt="Set variable" />
+</Frame>
+
+## Custom
+
+Você pode definir sua variável com qualquer valor usando `Custom`. Ele recebe qualquer tipo de texto e também **Código JavaScript**.
+
+### Expressões com variáveis existentes
+
+Você pode aplicar operações em variáveis existentes. Veja:
+
+Adicione um valor à sua variável:
+
+```
+{{Score}} + 5
+```
+
+Calcule uma soma de variáveis:
+
+```
+{{Score}} + {{Answer}}
+```
+
+Multiplique variáveis juntas:
+
+```
+{{Score}} * {{Multiplier}}
+```
+
+Calcule uma porcentagem:
+
+```
+{{Score}} * 100 / {{Max Score}}
+```
+
+Extraia o primeiro nome de um nome completo:
+
+```
+{{Full name}}.split(' ')[0]
+```
+
+Transforme textos de variáveis existentes em maiúsculos:
+
+```
+{{Name}}.toUpperCase()
+```
+ou minúsculos:
+
+```
+{{Name}}.toLowerCase()
+```
+
+Você também pode usar código JavaScript. O sistema lerá o valor retornado do código e o definirá em sua variável.
+
+```js
+const name = 'John' + 'Smith'
+return name
+```
+
+Se você não informar um `return` na sua função, ele será automaticamente inferido no começo do seu código.
+
+```js
+'John' + 'Smith'
+```
+
+é o mesmo que:
+
+```js
+return 'John' + 'Smith'
+```
+
+<Info>
+As variáveis no script não são interpretadas, mas sim executadas. Portanto, elas devem ser tratadas como se fossem variáveis JavaScript reais.
+Assim, se você escrever `"{{Minha variável}}"`, ela irá analisar o ID da variável (algo como vclfqgqkdf000008mh3r6xakty). Você precisa remover as aspas duplas para obter corretamente o valor do conteúdo da variável.
+
+Por exemplo,
+
+❌ `"{{URL base}}/caminho"` => `vclfqgqkdf000008mh3r6xakty/caminho`
+
+✅ `{{URL base}} + '/caminho'` => `https://dominio.com/caminho`
+
+✅ `${{{URL base}}}/caminho` => `https://dominio.com/caminho`
+</Info>
+
+<Info>
+  O conteúdo de variáveis pode ser tanto uma string ou uma lista de strings. Veja
+  [Tipos de valores validos](../../variables#valid-value-types) para mais informações.
+</Info>
+
+## Map item with same index
+
+É uma função conveniente que o permite facilmente encontrar um item de uma lista que tem o mesmo índice de um item de outra lista.
+
+Quando você está buscando data a partir de outro serviço, ocasionalmente, você terá 2 listas: `Labels` e `Ids`. Labels são os dados mostrados ao contato e Ids são os dados usados para outras requisições para aquele serviço externo.
+
+Essa opção permite que você encontre o `Id` de `Ids` com o mesmo índice de `Label` em `Labels`
+
+<Frame>
+  <img
+    src="/images/admin/automation/blocks/logic/set-variable-map-item.png"
+    alt="Definir variável map item with same index"
+  />
+</Frame>
