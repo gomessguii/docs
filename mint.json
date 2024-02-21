@@ -9,8 +9,8 @@
     "suggestEdit": true
   },
   "logo": {
-    "dark": "https://atendai-files.s3.amazonaws.com/atendai/logo_white-logo_white.png",
-    "light": "https://atendai-files.s3.amazonaws.com/atendai/logo-logo.png"
+    "dark": "logo/dark.png",
+    "light": "logo/light.png"
   },
   "favicon": "/favicon.png",
   "colors": {
@@ -44,14 +44,35 @@
       "url": "admin"
     },
     {
-      "name": "API Reference",
+      "name": "API",
       "url": "api-reference"
     }
   ],
   "navigation": [
     {
       "group": "Iniciar",
-      "pages": ["get-started/introduction"]
+      "pages": [
+        "get-started/introduction",
+        "dashboard",
+        {
+          "group": "Atendimentos",
+          "pages": ["customer-service/service"]
+        },
+        "contacts",
+        "quick-answers",
+        "scheduled-actions",
+        "tags"
+      ]
+    },
+    {
+      "group": "Geral",
+      "pages": [
+        "admin/connections",
+        "admin/users",
+        "admin/departments",
+        "admin/integrations",
+        "admin/settings"
+      ]
     },
     {
       "group": "Automações",
@@ -114,20 +135,14 @@
         },
         "admin/bot/editor/variables",
         "admin/bot/editor/context-menu",
-        "admin/bot/editor/export-import"
+        "admin/bot/editor/export-import",
+        "admin/bot/settings",
+        {
+          "group": "Resultados",
+          "pages": ["admin/bot/results/overview", "admin/bot/results/analytics"]
+        },
+        "admin/bot/faq"
       ]
-    },
-    {
-      "group": "Configurações",
-      "pages": ["admin/bot/settings/overview"]
-    },
-    {
-      "group": "Resultados",
-      "pages": ["admin/bot/results/overview", "admin/bot/results/analytics"]
-    },
-    {
-      "group": "Diversos",
-      "pages": ["admin/bot/faq"]
     },
     {
       "group": "Get started",
