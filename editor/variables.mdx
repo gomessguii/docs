@@ -35,18 +35,6 @@ Da mesma forma para o último item:
 
 `{{={{Minha variável}}.at(-1)=}}`
 
-## Conceitos avançados
-
-Aqui está um vídeo rápido que mostra conceitos avançados sobre variáveis:
-
-<div className="relative" style={{ paddingBottom: '64.5933014354067%' }}>
-  <iframe
-    src="https://www.youtube.com/embed/o715Tjv1ijI"
-    allowFullScreen
-    className="absolute top-0 left-0 w-full h-full"
-  />TODO: mudar vídeo
-</div>
-
 ### Variáveis ocultas
 
 As variáveis do seu fluxo não precisam ser exibidas para o contato. Você poderia criar variáveis que são usadas apenas internamente pela automação e exibidas nos seus resultados. Isso permite adicionar algum contexto a uma sessão, por exemplo, um ID de usuário, um parâmetro utm_source (no caso de uma campanha de marketing) ou qualquer outra coisa.
@@ -94,3 +82,19 @@ Se você realmente precisar salvar um conteúdo complexo em uma variável, por e
 ```ts
 {{=JSON.parse({{My object variable}})=}}
 ```
+
+## Variáveis padrão
+
+Por padrão, um fluxo já vem com algumas variáveis preenchidas para facilitar algumas funções. São elas:
+
+| Variável | Valor |
+| --- | --- |
+| greeting | Bom dia/tarde/noite dependendo do momento do dia |
+| date | Data atual |
+| hour | Hora atual |
+| ticketId | Id do Ticket do atendimento |
+| protocol | Protocolo do atendimento |
+| contactName | Nome do contato alvo da automação |
+| contactNumber | Número do contato alvo da automação |
+| tagId | Id da Tag do contato alvo da automação (caso exista) |
+| tagName | Nome Tag do contato alvo da automação (caso exista) |
