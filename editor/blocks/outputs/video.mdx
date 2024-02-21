@@ -3,7 +3,7 @@ title: Video
 icon: film
 ---
 
-O bloco de envio de Vídeo permite enviar um vídeo para o contato. Você pode colar o URL de um vídeo de várias fontes, incluindo YouTube e Vimeo ou fazer upload de um arquivo.
+O bloco de envio de Vídeo permite enviar um vídeo para o contato. Você pode colar o URL de um arquivo **mp4** ou fazer upload do arquivo diretamente.
 Também é possível adicionar uma legenda ao vídeo.
 
 <Tabs>
@@ -21,11 +21,17 @@ Também é possível adicionar uma legenda ao vídeo.
       controls
       autoPlay
       className="rounded-lg"
-      src="/images/blocks/outputs/video-chat.mp4"
+      src="/images/blocks/outputs/video-chat.webm"
     ></video>
   </Tab>
 </Tabs>
 
 <Note>
-  Atente-se ao tamanho do arquivo que não deve ser maior que 10 MB.
+  O tamanho do arquivo é delimitado pelo do WhatsApp.
 </Note>
+
+## Solução de Problemas
+
+A mensagem não foi enviada ou não é possível reproduzir o vídeo?
+- Verifique a URL do vídeo, ela deve ser o caminho do arquivo, por exemplo: `meusite.com/meuvideo.mp4`
+- Verifique o formato do arquivo que deve ser **mp4**
