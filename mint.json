@@ -9,8 +9,8 @@
     "suggestEdit": true
   },
   "logo": {
-    "dark": "logo/dark.png",
-    "light": "logo/light.png"
+    "dark": "/logo/dark.png",
+    "light": "/logo/light.png"
   },
   "favicon": "/favicon.png",
   "colors": {
@@ -71,7 +71,8 @@
         "admin/users",
         "admin/departments",
         "admin/integrations",
-        "admin/settings"
+        "admin/settings",
+        "admin/sequences"
       ]
     },
     {
