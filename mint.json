@@ -78,6 +78,7 @@
     {
       "group": "Automações",
       "pages": [
+        "admin/automation/introduction",
         {
           "group": "Blocos",
           "icon": "block",
