@@ -3,6 +3,8 @@ title: Chat ao Vivo
 icon: comment-dots
 ---
 
+## Listagem de Tickets
+
 Na tela de Chat ao Vivo, você encontrará os tickets em atendimento e os que estão aguardando.
 
 Mensagens recém chegadas aparecerão na aba **Aguardando** e passarão para **Atendendo** caso forem aceitas, e para **Resolvidos** após o fechamento do Ticket.
@@ -51,16 +53,9 @@ Ao Aceitar o ticket, será enviada a mensagem de aceitação (se configurada em 
 
 <Note>Na tela de chat, após aceitar um atendimento, é sempre possível voltá-lo para a aba **Aguardando** pelo botão `Retornar`</Note>
 
-## Atendimento
+## Chat
 
-Nessa tela que a mágica acontece, por ela é possível:
-- Ler, reproduzir e baixar as mensagens de texto e mídia enviadas pelo contato
-- Enviar mensagens de texto e emojis
-- Gravar áudios
-- Enviar mídia
-- Enviar arquivos diversos
-- Enviar mensagens prontas usando um atalho (veja [Respostas Rápidas](/definitions/quick-answers))
-- E mais
+Nessa tela que a mágica acontece, por ela é possível fazer o mesmo que no WhatsApp: ler, reproduzir e baixar as mensagens recebidas do contato, encaminhar mensagens de texto com emojis, áudios, mídias e arquivos diversos, responder mensagens e muito mais.
 
 Na barra superior do chat ao vivo, há informações sobre o Ticket como nome do contato, número do ticket e nome do usuário responsável pelo atendimento.
 <Frame>
@@ -71,8 +66,8 @@ Na barra superior do chat ao vivo, há informações sobre o Ticket como nome do
     />
 </Frame>
 
-Também há ações importantes que podem ser executadas aqui.
-- Clicar no nome ou foto de perfil do contato, exibirá os dados detalhados dele a opção de acionar um fluxo de automação (veja [Fluxos](/automation/introduction)).
+Há algumas ações que podem ser executadas por aqui, são elas:
+- Clicar no nome ou foto de perfil do contato, exibirá os dados detalhados dele, e a opção de acionar um fluxo de automação (veja [Fluxos](/automation/introduction)).
 - Botão `Retornar` volta o ticket para o status **Aguardando**
 - Botão `Fechar` envia a mensagem de despedida e dá o ticket como concluído
 - Botão `Mais Opções`
@@ -87,7 +82,77 @@ Também há ações importantes que podem ser executadas aqui.
 </Frame>
 Em mais opções encontram-se atalhos para outras funcionalidades do sistema e funções menos utilizadas, são elas:
 - **Fechar sem despedida** - dá o ticket como concluído, mas não envia mensagem de despedida
-- **Transferir** - abre um menu de opções de transferência
+- **Transferir** - abre um menu de opções de transferência (mais detalhes abaixo)
 - **Criar Agendamento** - envia uma mensagem ou aciona um fluxo num horário determinado (veja [Agendamentos](/scheduled-actions))
 - **Adicionar à uma Sequência** - adiciona o contato a uma sequência de envio (veja [Sequências](/automation/sequences))
 - **Deletar** - deleta o ticket
+
+## Transferir um atendimento
+
+Você pode transferir um atendimento para outro usuário diretamente, para outro departamento e até para outra conexão.
+Para transferir um atendimento para outro usuário ou para um departamento:
+
+1. Na tela de chat, clique no menu Mais Opções no canto superior direito da tela e depois em Transferir.
+
+<Frame>
+    <img
+        src="/images/customer-service/transfer-chat.png"
+        alt="Transferir chat"
+        className="rounded-lg"
+    />
+</Frame>
+
+2. Preencha uma das opções de transferência e clique em transferir.
+
+Caso esteja configurada, será enviada uma mensagem de transferência (você encontrará mais informações [aqui](/definitions/connections#configuracoes-opcionais)).
+
+## Criar um novo Ticket
+
+Para criar um novo Ticket, clique no botão de WhatsApp no canto inferior esquerdo da tela de Chat ao Vivo.
+
+<Frame>
+    <img
+        src="/images/customer-service/new-ticket.png"
+        alt="Novo ticket"
+        className="rounded-lg"
+    />
+</Frame>
+
+Preencha o contato e, opcionalmente, a fila e a conexão (a conexão padrão é definida automaticamente se nenhuma for informada).
+
+## Enviar um Fluxo de automação
+
+É possível enviar um fluxo de automação diretamente no chat. Para isso é preciso ter um fluxo criado, ativo e com a opção Chat marcada (veja [Fluxos](/automation/introduction)).
+
+Para enviar um fluxo:
+
+1. Na tela de chat, clique na foto de perfil ou no nome do contato. Será exibido um menu lateral com os dados dele e com o menu de envio de fluxos.
+1. No menu de envio de fluxo, selecione o fluxo desejado e clique em Enviar
+
+<Frame>
+    <img
+        src="/images/customer-service/chat-flow.png"
+        alt="Enviar fluxo"
+        className="rounded-lg"
+    />
+</Frame>
+
+É possível interromper a execução de um fluxo com mais de um bloco a depender do tempo que ele leva para ser concluído. Para isso, clique no botão `Parar Fluxo`.
+
+## Adicionar à uma Sequência
+
+É possível adicionar um contato a sua sequência, desde que haja alguma criada (veja [Sequências](/automation/sequences)). Útil para adicionar contatos à sequências de remarketing em atendimentos manuais ou semi-automáticos, por exemplo.
+
+Para isso:
+
+1. Na tela de chat, clique no menu Mais Opções no canto superior direito.
+1. Clique em `Adicionar à uma Sequência`
+1. Selecione uma Sequência e clique em `Adicionar`.
+
+<Frame>
+    <img
+        src="/images/customer-service/add-to-sequence.png"
+        alt="Adicionar à sequência"
+        className="rounded-lg"
+    />
+</Frame>
