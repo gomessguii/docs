@@ -52,17 +52,18 @@
         "dashboard",
         {
           "group": "Atendimentos",
-          "pages": ["customer-service/service", "customer-service/tags", "customer-service/board"]
+          "icon": "comment-dots",
+          "pages": ["customer-service/chat", "customer-service/tags", "customer-service/board"]
         },
         "contacts",
         "scheduled-actions",
         {
           "group": "Automações",
-          
+          "icon": "timeline",
           "pages": [
-            "automation/sequences",
             {
               "group": "Fluxos",
+              "icon": "timeline",
               "pages": [
                 "automation/introduction",
                 {
@@ -131,18 +132,21 @@
                 },
                 "automation/faq"
               ]
-            }
+            },
+            "automation/sequences"
           ]
         },
         {
           "group": "Definições",
+          "icon": "gear",
           "pages": [
-            "quick-answers",
-            "admin/connections",
-            "admin/users",
-            "admin/departments",
-            "admin/integrations",
-            "admin/settings"
+            "definitions/connections",
+            "definitions/users",
+            "definitions/departments",
+            "definitions/quick-answers",
+            "definitions/integrations",
+            "definitions/settings",
+            "definitions/token"
           ]
         }
       ]
@@ -218,9 +222,8 @@
     }
   ],
   "footerSocials": {
-    "website": "https://typebot.io",
-    "discord": "https://typebot.io/discord",
-    "twitter": "https://twitter.com/Typebot_io",
+    "website": "https://atendai.com",
+    "instagram": "https://instagram.com/atend.ai",
     "github": "https://github.com/baptisteArno/typebot.io"
   }
 }

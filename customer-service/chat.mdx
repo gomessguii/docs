@@ -1,0 +1,93 @@
+---
+title: Chat ao Vivo
+icon: comment-dots
+---
+
+Na tela de Chat ao Vivo, você encontrará os tickets em atendimento e os que estão aguardando.
+
+Mensagens recém chegadas aparecerão na aba **Aguardando** e passarão para **Atendendo** caso forem aceitas, e para **Resolvidos** após o fechamento do Ticket.
+
+<Frame>
+    <img
+        src="/images/customer-service/open-ticket.png"
+        alt="Listagem de tickets abertos"
+        className="rounded-lg"
+    />
+</Frame>
+
+Nessa listagem também é possível filtrar por departamentos, caso haja algum cadastrado, ou fazer uma filtragem mais completa pela aba **Busca**.
+
+<Frame>
+    <img
+        src="/images/customer-service/chat-filter.png"
+        alt="Filtragem de tickets"
+        className="rounded-lg"
+    />
+</Frame>
+
+## Aceitar um ticket
+
+Antes de aceitar um ticket você sempre pode ver o conteúdo das mensages ao clicar em **Espiar Conversa** (olhinho ao lado do nome do contato)
+
+<Frame>
+    <img
+        src="/images/customer-service/spy-chat.png"
+        alt="Espiando chat"
+        className="rounded-lg"
+    />
+</Frame>
+
+É possível aceitar o atendimento tanto pela opção espiar quanto pela listagem do ticket em si, ambos pelo botão **Aceitar**.
+
+Ao Aceitar o ticket, será enviada a mensagem de aceitação (se configurada em [configurações da conexão](/definitions/connections#configuracoes-opcionais)) e o ticket passará para a aba **Atendendo**, e será aberta a tela do chat com aquele contato.
+
+<Frame>
+    <img
+        src="/images/customer-service/live-chat.png"
+        alt="Chat ao vivo"
+        className="rounded-lg"
+    />
+</Frame>
+
+<Note>Na tela de chat, após aceitar um atendimento, é sempre possível voltá-lo para a aba **Aguardando** pelo botão `Retornar`</Note>
+
+## Atendimento
+
+Nessa tela que a mágica acontece, por ela é possível:
+- Ler, reproduzir e baixar as mensagens de texto e mídia enviadas pelo contato
+- Enviar mensagens de texto e emojis
+- Gravar áudios
+- Enviar mídia
+- Enviar arquivos diversos
+- Enviar mensagens prontas usando um atalho (veja [Respostas Rápidas](/definitions/quick-answers))
+- E mais
+
+Na barra superior do chat ao vivo, há informações sobre o Ticket como nome do contato, número do ticket e nome do usuário responsável pelo atendimento.
+<Frame>
+    <img
+        src="/images/customer-service/chat-topbar.png"
+        alt="Barra superior do chat"
+        className="rounded-lg"
+    />
+</Frame>
+
+Também há ações importantes que podem ser executadas aqui.
+- Clicar no nome ou foto de perfil do contato, exibirá os dados detalhados dele a opção de acionar um fluxo de automação (veja [Fluxos](/automation/introduction)).
+- Botão `Retornar` volta o ticket para o status **Aguardando**
+- Botão `Fechar` envia a mensagem de despedida e dá o ticket como concluído
+- Botão `Mais Opções`
+
+<Frame>
+    <img
+        src="/images/customer-service/chat-context-menu.png"
+        alt="Mais opções do chat"
+        className="rounded-lg"
+    />
+
+</Frame>
+Em mais opções encontram-se atalhos para outras funcionalidades do sistema e funções menos utilizadas, são elas:
+- **Fechar sem despedida** - dá o ticket como concluído, mas não envia mensagem de despedida
+- **Transferir** - abre um menu de opções de transferência
+- **Criar Agendamento** - envia uma mensagem ou aciona um fluxo num horário determinado (veja [Agendamentos](/scheduled-actions))
+- **Adicionar à uma Sequência** - adiciona o contato a uma sequência de envio (veja [Sequências](/automation/sequences))
+- **Deletar** - deleta o ticket
