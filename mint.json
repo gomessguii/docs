@@ -40,10 +40,6 @@
   },
   "tabs": [
     {
-      "name": "Administração",
-      "url": "admin"
-    },
-    {
       "name": "API",
       "url": "api-reference"
     }
@@ -56,94 +52,99 @@
         "dashboard",
         {
           "group": "Atendimentos",
-          "pages": ["customer-service/service"]
+          "pages": ["customer-service/service", "customer-service/tags", "customer-service/board"]
         },
         "contacts",
-        "quick-answers",
         "scheduled-actions",
-        "tags"
-      ]
-    },
-    {
-      "group": "Geral",
-      "pages": [
-        "admin/connections",
-        "admin/users",
-        "admin/departments",
-        "admin/integrations",
-        "admin/settings",
-        "admin/sequences"
-      ]
-    },
-    {
-      "group": "Automações",
-      "pages": [
-        "admin/automation/introduction",
         {
-          "group": "Blocos",
-          "icon": "block",
+          "group": "Automações",
+          
           "pages": [
-            "admin/automation/editor/blocks/overview",
+            "automation/sequences",
             {
-              "group": "Enviar",
+              "group": "Fluxos",
               "pages": [
-                "admin/automation/editor/blocks/outputs/text",
-                "admin/automation/editor/blocks/outputs/image",
-                "admin/automation/editor/blocks/outputs/video",
-                "admin/automation/editor/blocks/outputs/audio",
-                "admin/automation/editor/blocks/outputs/file",
-                "admin/automation/editor/blocks/outputs/contact",
-                "admin/automation/editor/blocks/outputs/trigger",
-                "admin/automation/editor/blocks/outputs/menu"
-              ]
-            },
-            {
-              "group": "Receber",
-              "pages": [
-                "admin/automation/editor/blocks/inputs/text"
-              ]
-            },
-            {
-              "group": "Lógica",
-              "pages": [
-                "admin/automation/editor/blocks/logic/set-variable",
-                "admin/automation/editor/blocks/logic/condition",
-                "admin/automation/editor/blocks/logic/script",
-                "admin/automation/editor/blocks/logic/flow-link",
-                "admin/automation/editor/blocks/logic/add-tag",
-                "admin/automation/editor/blocks/logic/remove-tag",
-                "admin/automation/editor/blocks/logic/schedule",
-                "admin/automation/editor/blocks/logic/update-contact",
-                "admin/automation/editor/blocks/logic/wait",
-                "admin/automation/editor/blocks/logic/transfer",
-                "admin/automation/editor/blocks/logic/jump",
-                "admin/automation/editor/blocks/logic/ab-test",
-                "admin/automation/editor/blocks/logic/finish"
-              ]
-            },
-            {
-              "group": "Integrações",
-              "pages": [
-                "admin/automation/editor/blocks/integrations/google-sheets",
-                "admin/automation/editor/blocks/integrations/openai",
-                "admin/automation/editor/blocks/integrations/google-analytics",
-                "admin/automation/editor/blocks/integrations/webhook",
-                "admin/automation/editor/blocks/integrations/send-email",
-                "admin/automation/editor/blocks/integrations/meta-pixel",
-                "admin/automation/editor/blocks/integrations/elevenlabs"
+                "automation/introduction",
+                {
+                  "group": "Blocos",
+                  "icon": "block",
+                  "pages": [
+                    "automation/editor/blocks/overview",
+                    {
+                      "group": "Enviar",
+                      "pages": [
+                        "automation/editor/blocks/outputs/text",
+                        "automation/editor/blocks/outputs/image",
+                        "automation/editor/blocks/outputs/video",
+                        "automation/editor/blocks/outputs/audio",
+                        "automation/editor/blocks/outputs/file",
+                        "automation/editor/blocks/outputs/contact",
+                        "automation/editor/blocks/outputs/trigger",
+                        "automation/editor/blocks/outputs/menu"
+                      ]
+                    },
+                    {
+                      "group": "Receber",
+                      "pages": [
+                        "automation/editor/blocks/inputs/text"
+                      ]
+                    },
+                    {
+                      "group": "Lógica",
+                      "pages": [
+                        "automation/editor/blocks/logic/set-variable",
+                        "automation/editor/blocks/logic/condition",
+                        "automation/editor/blocks/logic/script",
+                        "automation/editor/blocks/logic/flow-link",
+                        "automation/editor/blocks/logic/add-tag",
+                        "automation/editor/blocks/logic/remove-tag",
+                        "automation/editor/blocks/logic/schedule",
+                        "automation/editor/blocks/logic/update-contact",
+                        "automation/editor/blocks/logic/wait",
+                        "automation/editor/blocks/logic/transfer",
+                        "automation/editor/blocks/logic/jump",
+                        "automation/editor/blocks/logic/ab-test",
+                        "automation/editor/blocks/logic/finish"
+                      ]
+                    },
+                    {
+                      "group": "Integrações",
+                      "pages": [
+                        "automation/editor/blocks/integrations/google-sheets",
+                        "automation/editor/blocks/integrations/openai",
+                        "automation/editor/blocks/integrations/google-analytics",
+                        "automation/editor/blocks/integrations/webhook",
+                        "automation/editor/blocks/integrations/send-email",
+                        "automation/editor/blocks/integrations/meta-pixel",
+                        "automation/editor/blocks/integrations/elevenlabs"
+                      ]
+                    }
+                  ]
+                },
+                "automation/editor/variables",
+                "automation/editor/context-menu",
+                "automation/editor/export-import",
+                "automation/settings",
+                {
+                  "group": "Resultados",
+                  "pages": ["automation/results/overview", "automation/results/analytics"]
+                },
+                "automation/faq"
               ]
             }
           ]
         },
-        "admin/automation/editor/variables",
-        "admin/automation/editor/context-menu",
-        "admin/automation/editor/export-import",
-        "admin/automation/settings",
         {
-          "group": "Resultados",
-          "pages": ["admin/automation/results/overview", "admin/automation/results/analytics"]
-        },
-        "admin/automation/faq"
+          "group": "Definições",
+          "pages": [
+            "quick-answers",
+            "admin/connections",
+            "admin/users",
+            "admin/departments",
+            "admin/integrations",
+            "admin/settings"
+          ]
+        }
       ]
     },
     {
