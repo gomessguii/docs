@@ -2,3 +2,49 @@
 title: Sequências
 icon: paper-plane
 ---
+
+Uma sequência é uma coleção de agendamentos sequenciais multi-etapa. Uma Sequência tem uma ou várias etapas que executarão um fluxo de automação em um período específico a partir do agendamento.
+
+**Exemplo:** uma sequência de remarketing poderia ter etapas para 2 dias, 5 dias e 10 dias, onde em cada uma seria acionado um fluxo com um novo depoimento sobre o produto ou divulgando uma promoção.
+Assim, se adicionarmos um contato na sequência hoje, ele receberá um contato automático em 2 dias, depois 5 dias após o primeiro contato e depois 10 dias após o segundo.
+
+<Note>Isso é apenas um exemplo de uso de Sequência e não um exemplo de como fazer uma campanha de remarketing. </Note>
+
+## Criar uma Sequência
+
+Para criar uma nova sequência:
+
+1. Na tela de Sequências, clique em `Adicionar Sequência`
+1. Defina o nome da sequência e clique em `Adicionar`
+1. Clique no ícone de Etapas para abrir a listagem de etapas
+1. Clique em `Adicionar Etapa`
+1. Selecione a automação que será acionada nesta etapa
+1. Selecione o tempo de atraso para o acionamento da etapa (em quanto tempo ela será executada a partir da etapa anterior ou da data de agendamento para a primeira etapa)
+1. Defina o período de início do fluxo. É importante configurar um intervalo de tempo grande para evitar o envio de muitas mensagens no mesmo horário, o que pode causar um banimento da conta do WhatsApp. 
+<Note>Recomendamos que quanto mais contatos você tenha nessa sequência, maior seja o intervalo de envio.</Note>
+1. Selecione em quais dias da semana executar essa etapa. Caso uma etapa seja agendada para um dia da semana que não esteja disponível, ele será reagendado para o próximo dia disponível.
+1. Clique em Adicionar
+
+<Frame>
+    <img
+        src="/images/automation/sequences/sequence-add-stage.png"
+        alt="Chat ao vivo"
+        className="rounded-lg"
+    />
+</Frame>
+
+O sistema divide todos os envios agendados entre o intervalo configurado. Portanto, um intervalo de 4 horas como no exemplo, suporta uma grande quantidade de contatos sem qualquer risco de banimento por spam.
+
+Esteja ciente que um intervalo muito pequeno com uma quantidade muito grande de contatos pode resultar no banimento da conta do WhatsApp e a AtendAI não se responsabiliza por isso. Siga por sua conta e risco.
+
+## Visualização de Etapas
+
+Ao clicar no ícone de quadros, você terá uma representação visual das etapas e de quantos e quais contatos já passaram por elas.
+
+<Frame>
+    <img
+        src="/images/automation/sequences/sequence-boards.png"
+        alt="Chat ao vivo"
+        className="rounded-lg"
+    />
+</Frame>
