@@ -25,12 +25,7 @@
       "to": "#9563FF"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Github",
-      "url": "https://github.com/baptisteArno/typebot.io"
-    }
-  ],
+  "topbarLinks": [],
   "topbarCtaButton": {
     "name": "Login",
     "url": "https://app.atendai.com"
@@ -153,77 +148,11 @@
     },
     {
       "group": "Get started",
-      "pages": ["api-reference/authentication", "api-reference/how-to"]
-    },
-    {
-      "group": "Chat",
-      "pages": [
-        "api-reference/chat/start-chat",
-        "api-reference/chat/start-preview-chat",
-        "api-reference/chat/continue-chat",
-        "api-reference/chat/save-logs",
-        "api-reference/chat/update-typebot-in-session"
-      ]
-    },
-    {
-      "group": "AtendAI",
-      "pages": [
-        "api-reference/typebot/list",
-        "api-reference/typebot/get",
-        "api-reference/typebot/create",
-        "api-reference/typebot/import",
-        "api-reference/typebot/update",
-        "api-reference/typebot/delete",
-        "api-reference/typebot/get-published-bot",
-        "api-reference/typebot/publish",
-        "api-reference/typebot/unpublish"
-      ]
-    },
-    {
-      "group": "Results",
-      "pages": [
-        "api-reference/results/list",
-        "api-reference/results/get",
-        "api-reference/results/delete",
-        "api-reference/results/list-logs"
-      ]
-    },
-    {
-      "group": "Analytics",
-      "pages": ["api-reference/analytics/get-stats"]
-    },
-    {
-      "group": "Folder",
-      "pages": [
-        "api-reference/folder/list",
-        "api-reference/folder/get",
-        "api-reference/folder/create",
-        "api-reference/folder/update",
-        "api-reference/folder/delete"
-      ]
-    },
-    {
-      "group": "Workspace",
-      "pages": [
-        "api-reference/workspace/list",
-        "api-reference/workspace/get",
-        "api-reference/workspace/create",
-        "api-reference/workspace/update",
-        "api-reference/workspace/delete",
-        "api-reference/workspace/list-members"
-      ]
-    },
-    {
-      "group": "Billing",
-      "pages": [
-        "api-reference/billing/get-usage",
-        "api-reference/billing/list-invoices"
-      ]
+      "pages": ["api-reference/authentication"]
     }
   ],
   "footerSocials": {
     "website": "https://atendai.com",
-    "instagram": "https://instagram.com/atend.ai",
-    "github": "https://github.com/baptisteArno/typebot.io"
+    "instagram": "https://instagram.com/atend.ai"
   }
 }
