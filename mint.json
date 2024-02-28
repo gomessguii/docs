@@ -33,12 +33,6 @@
   "primaryTab": {
     "name": "Geral"
   },
-  "tabs": [
-    {
-      "name": "API",
-      "url": "api-reference"
-    }
-  ],
   "navigation": [
     {
       "group": "Iniciar",
@@ -145,25 +139,6 @@
           ]
         }
       ]
-    },
-    {
-      "group": "Mensagens",
-      "pages": [
-        "api-reference/messages/send-text",
-        "api-reference/messages/send-media",
-        "api-reference/messages/send-media-url",
-        "api-reference/messages/send-location"
-      ]
-    },
-    {
-      "group": "Tickets",
-      "pages": [
-        "api-reference/tickets/update-ticket"
-      ]
-    },
-    {
-      "group": "Get started",
-      "pages": ["api-reference/authentication"]
     }
   ],
   "footerSocials": {

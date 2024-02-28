@@ -393,10 +393,22 @@
         }
       }
     },
-    "/api/tickets/{{ticket_id}}": {
-      "post": {
-        "operationId": "sendTextMessage",
+    "/api/tickets/{ticketId}": {
+      "put": {
+        "operationId": "updateTicket",
         "summary": "Send a text message",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ticketId",
+            "description": "O ID do ticket a ser atualizado.",
+            "schema": {
+              "type": "string",
+              "description": "O ID do ticket a ser atualizado."
+            },
+            "required": true
+          }
+        ],
         "tags": [
           "Send Mensages"
         ],
@@ -408,17 +420,21 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "number": {
+                  "status": {
                     "type": "string",
-                    "description": "O número que receberá a mensagem."
+                    "description": "Status do Ticket entre `open`, `pending` ou ``closed`."
                   },
-                  "message": {
+                  "userId": {
+                    "type": "string",
+                    "description": "Id do usuário responsável pelo Ticket."
+                  },
+                  "whatsappId": {
+                    "type": "string",
+                    "description": "Id da conexão do WhatsApp."
+                  },
+                  "queueId": {
                       "type": "string",
-                      "description": "O conteúdo da mensagem que será enviada. É possível utilizar estilização de texto no padrão do WhatsApp."
-                  },
-                  "autoClose": {
-                      "type": "boolean",
-                      "description": "Indica se o ticket deve ser fechado automaticamente ou não após essa mensagem."
+                      "description": "Id do departamento."
                   }
                 }
               }
@@ -474,1564 +490,19 @@
             }
           }
         }
-      }
-    },
-    "/v1/sessions/{sessionId}/continueChat": {
-      "post": {
-        "operationId": "continueChat",
-        "summary": "Continue chat",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "sessionId",
-            "description": "The session ID you got from the [startChat](./start-chat) response.",
-            "schema": {
-              "type": "string",
-              "description": "The session ID you got from the [startChat](./start-chat) response."
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "message": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "lastMessageNewFormat": {
-                      "type": "string",
-                      "description": "The sent message is validated and formatted on the backend. For example, if for a date input you replied something like `tomorrow`, the backend will convert it to a date string. This field returns the formatted message."
-                    },
-                    "messages": {
-                      "type": "array",
-                      "items": {
-                        "allOf": [
-                          {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "id"
-                            ]
-                          },
-                          {
-                            "oneOf": [
-                              {
-                                "$ref": "#/components/schemas/textMessage"
-                              },
-                              {
-                                "$ref": "#/components/schemas/imageMessage"
-                              },
-                              {
-                                "$ref": "#/components/schemas/videoMessage"
-                              },
-                              {
-                                "$ref": "#/components/schemas/audioMessage"
-                              },
-                              {
-                                "$ref": "#/components/schemas/embedMessage"
-                              },
-                              {
-                                "$ref": "#/components/schemas/customEmbedMessage"
-                              }
-                            ],
-                            "discriminator": {
-                              "propertyName": "type",
-                              "mapping": {
-                                "text": "#/components/schemas/textMessage",
-                                "image": "#/components/schemas/imageMessage",
-                                "video": "#/components/schemas/videoMessage",
-                                "audio": "#/components/schemas/audioMessage",
-                                "embed": "#/components/schemas/embedMessage",
-                                "custom-embed": "#/components/schemas/customEmbedMessage"
-                              }
-                            }
-                          }
-                        ]
-                      }
-                    },
-                    "input": {
-                      "allOf": [
-                        {
-                          "anyOf": [
-                            {
-                              "oneOf": [
-                                {
-                                  "$ref": "#/components/schemas/textInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/buttonsInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/email"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/numberInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/url"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/phoneNumberInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/dateInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/paymentInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/rating"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/fileInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/pictureChoice"
-                                }
-                              ],
-                              "discriminator": {
-                                "propertyName": "type",
-                                "mapping": {
-                                  "text input": "#/components/schemas/textInput",
-                                  "choice input": "#/components/schemas/buttonsInput",
-                                  "email input": "#/components/schemas/email",
-                                  "number input": "#/components/schemas/numberInput",
-                                  "url input": "#/components/schemas/url",
-                                  "phone number input": "#/components/schemas/phoneNumberInput",
-                                  "date input": "#/components/schemas/dateInput",
-                                  "payment input": "#/components/schemas/paymentInput",
-                                  "rating input": "#/components/schemas/rating",
-                                  "file input": "#/components/schemas/fileInput",
-                                  "picture choice input": "#/components/schemas/pictureChoice"
-                                }
-                              }
-                            },
-                            {
-                              "oneOf": [
-                                {
-                                  "$ref": "#/components/schemas/buttonsInputV5"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/fileInputV5"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/pictureChoiceV5"
-                                }
-                              ],
-                              "discriminator": {
-                                "propertyName": "type",
-                                "mapping": {
-                                  "choice input": "#/components/schemas/buttonsInputV5",
-                                  "file input": "#/components/schemas/fileInputV5",
-                                  "picture choice input": "#/components/schemas/pictureChoiceV5"
-                                }
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "prefilledValue": {
-                              "type": "string"
-                            },
-                            "runtimeOptions": {
-                              "type": "object",
-                              "properties": {
-                                "paymentIntentSecret": {
-                                  "type": "string"
-                                },
-                                "amountLabel": {
-                                  "type": "string"
-                                },
-                                "publicKey": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "paymentIntentSecret",
-                                "amountLabel",
-                                "publicKey"
-                              ]
-                            }
-                          }
-                        }
-                      ]
-                    },
-                    "clientSideActions": {
-                      "type": "array",
-                      "items": {
-                        "oneOf": [
-                          {
-                            "$ref": "#/components/schemas/csaScriptToExecute"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaRedirect"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaChatwoot"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaGa"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaWait"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaSetVariable"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaStreamOpenAiChatCompletion"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaExecWebhook"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaInjectStartProps"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaPixel"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaStream"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaCodeToExecute"
-                          }
-                        ],
-                        "discriminator": {
-                          "propertyName": "type",
-                          "mapping": {
-                            "scriptToExecute": "#/components/schemas/csaScriptToExecute",
-                            "redirect": "#/components/schemas/csaRedirect",
-                            "chatwoot": "#/components/schemas/csaChatwoot",
-                            "googleAnalytics": "#/components/schemas/csaGa",
-                            "wait": "#/components/schemas/csaWait",
-                            "setVariable": "#/components/schemas/csaSetVariable",
-                            "streamOpenAiChatCompletion": "#/components/schemas/csaStreamOpenAiChatCompletion",
-                            "webhookToExecute": "#/components/schemas/csaExecWebhook",
-                            "startPropsToInject": "#/components/schemas/csaInjectStartProps",
-                            "pixel": "#/components/schemas/csaPixel",
-                            "stream": "#/components/schemas/csaStream",
-                            "codeToExecute": "#/components/schemas/csaCodeToExecute"
-                          }
-                        }
-                      },
-                      "description": "Actions to execute on the client side"
-                    },
-                    "logs": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "status": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
-                          },
-                          "details": {}
-                        },
-                        "required": [
-                          "status",
-                          "description"
-                        ]
-                      },
-                      "description": "Logs that were saved during the last execution"
-                    },
-                    "dynamicTheme": {
-                      "type": "object",
-                      "properties": {
-                        "hostAvatarUrl": {
-                          "type": "string"
-                        },
-                        "guestAvatarUrl": {
-                          "type": "string"
-                        }
-                      },
-                      "description": "If the typebot contains dynamic avatars, dynamicTheme returns the new avatar URLs whenever their variables are updated."
-                    }
-                  },
-                  "required": [
-                    "messages"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/typebots/{typebotId}/preview/startChat": {
-      "post": {
-        "operationId": "startChatPreview",
-        "summary": "Start preview chat",
-        "description": "Use this endpoint to test your bot. The answers will not be saved. And some blocks like \"Send email\" will be skipped.",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "typebotId",
-            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
-            "schema": {
-              "type": "string",
-              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "isStreamEnabled": {
-                    "type": "boolean"
-                  },
-                  "message": {
-                    "type": "string"
-                  },
-                  "isOnlyRegistering": {
-                    "type": "boolean",
-                    "description": "If set to `true`, it will only register the session and not start the bot. This is used for 3rd party chat platforms as it can require a session to be registered before sending the first message."
-                  },
-                  "typebot": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/typebotV5"
-                      },
-                      {
-                        "$ref": "#/components/schemas/typebotV6"
-                      }
-                    ],
-                    "discriminator": {
-                      "propertyName": "version",
-                      "mapping": {
-                        "3": "#/components/schemas/typebotV5",
-                        "4": "#/components/schemas/typebotV5",
-                        "5": "#/components/schemas/typebotV5",
-                        "6": "#/components/schemas/typebotV6"
-                      }
-                    },
-                    "description": "If set, it will override the typebot that is used to start the chat."
-                  },
-                  "startFrom": {
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "properties": {
-                          "type": {
-                            "type": "string",
-                            "enum": [
-                              "group"
-                            ]
-                          },
-                          "groupId": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "type",
-                          "groupId"
-                        ]
-                      },
-                      {
-                        "type": "object",
-                        "properties": {
-                          "type": {
-                            "type": "string",
-                            "enum": [
-                              "event"
-                            ]
-                          },
-                          "eventId": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "type",
-                          "eventId"
-                        ]
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "sessionId": {
-                      "type": "string",
-                      "description": "To save and use for /continueChat requests."
-                    },
-                    "typebot": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "theme": {
-                          "$ref": "#/components/schemas/theme"
-                        },
-                        "settings": {
-                          "$ref": "#/components/schemas/settings"
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "theme",
-                        "settings"
-                      ]
-                    },
-                    "lastMessageNewFormat": {
-                      "type": "string",
-                      "description": "The sent message is validated and formatted on the backend. For example, if for a date input you replied something like `tomorrow`, the backend will convert it to a date string. This field returns the formatted message."
-                    },
-                    "messages": {
-                      "type": "array",
-                      "items": {
-                        "allOf": [
-                          {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "id"
-                            ]
-                          },
-                          {
-                            "oneOf": [
-                              {
-                                "$ref": "#/components/schemas/textMessage"
-                              },
-                              {
-                                "$ref": "#/components/schemas/imageMessage"
-                              },
-                              {
-                                "$ref": "#/components/schemas/videoMessage"
-                              },
-                              {
-                                "$ref": "#/components/schemas/audioMessage"
-                              },
-                              {
-                                "$ref": "#/components/schemas/embedMessage"
-                              },
-                              {
-                                "$ref": "#/components/schemas/customEmbedMessage"
-                              }
-                            ],
-                            "discriminator": {
-                              "propertyName": "type",
-                              "mapping": {
-                                "text": "#/components/schemas/textMessage",
-                                "image": "#/components/schemas/imageMessage",
-                                "video": "#/components/schemas/videoMessage",
-                                "audio": "#/components/schemas/audioMessage",
-                                "embed": "#/components/schemas/embedMessage",
-                                "custom-embed": "#/components/schemas/customEmbedMessage"
-                              }
-                            }
-                          }
-                        ]
-                      }
-                    },
-                    "input": {
-                      "allOf": [
-                        {
-                          "anyOf": [
-                            {
-                              "oneOf": [
-                                {
-                                  "$ref": "#/components/schemas/textInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/buttonsInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/email"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/numberInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/url"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/phoneNumberInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/dateInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/paymentInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/rating"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/fileInput"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/pictureChoice"
-                                }
-                              ],
-                              "discriminator": {
-                                "propertyName": "type",
-                                "mapping": {
-                                  "text input": "#/components/schemas/textInput",
-                                  "choice input": "#/components/schemas/buttonsInput",
-                                  "email input": "#/components/schemas/email",
-                                  "number input": "#/components/schemas/numberInput",
-                                  "url input": "#/components/schemas/url",
-                                  "phone number input": "#/components/schemas/phoneNumberInput",
-                                  "date input": "#/components/schemas/dateInput",
-                                  "payment input": "#/components/schemas/paymentInput",
-                                  "rating input": "#/components/schemas/rating",
-                                  "file input": "#/components/schemas/fileInput",
-                                  "picture choice input": "#/components/schemas/pictureChoice"
-                                }
-                              }
-                            },
-                            {
-                              "oneOf": [
-                                {
-                                  "$ref": "#/components/schemas/buttonsInputV5"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/fileInputV5"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/pictureChoiceV5"
-                                }
-                              ],
-                              "discriminator": {
-                                "propertyName": "type",
-                                "mapping": {
-                                  "choice input": "#/components/schemas/buttonsInputV5",
-                                  "file input": "#/components/schemas/fileInputV5",
-                                  "picture choice input": "#/components/schemas/pictureChoiceV5"
-                                }
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "prefilledValue": {
-                              "type": "string"
-                            },
-                            "runtimeOptions": {
-                              "type": "object",
-                              "properties": {
-                                "paymentIntentSecret": {
-                                  "type": "string"
-                                },
-                                "amountLabel": {
-                                  "type": "string"
-                                },
-                                "publicKey": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "paymentIntentSecret",
-                                "amountLabel",
-                                "publicKey"
-                              ]
-                            }
-                          }
-                        }
-                      ]
-                    },
-                    "clientSideActions": {
-                      "type": "array",
-                      "items": {
-                        "oneOf": [
-                          {
-                            "$ref": "#/components/schemas/csaScriptToExecute"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaRedirect"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaChatwoot"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaGa"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaWait"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaSetVariable"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaStreamOpenAiChatCompletion"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaExecWebhook"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaInjectStartProps"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaPixel"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaStream"
-                          },
-                          {
-                            "$ref": "#/components/schemas/csaCodeToExecute"
-                          }
-                        ],
-                        "discriminator": {
-                          "propertyName": "type",
-                          "mapping": {
-                            "scriptToExecute": "#/components/schemas/csaScriptToExecute",
-                            "redirect": "#/components/schemas/csaRedirect",
-                            "chatwoot": "#/components/schemas/csaChatwoot",
-                            "googleAnalytics": "#/components/schemas/csaGa",
-                            "wait": "#/components/schemas/csaWait",
-                            "setVariable": "#/components/schemas/csaSetVariable",
-                            "streamOpenAiChatCompletion": "#/components/schemas/csaStreamOpenAiChatCompletion",
-                            "webhookToExecute": "#/components/schemas/csaExecWebhook",
-                            "startPropsToInject": "#/components/schemas/csaInjectStartProps",
-                            "pixel": "#/components/schemas/csaPixel",
-                            "stream": "#/components/schemas/csaStream",
-                            "codeToExecute": "#/components/schemas/csaCodeToExecute"
-                          }
-                        }
-                      },
-                      "description": "Actions to execute on the client side"
-                    },
-                    "logs": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "status": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
-                          },
-                          "details": {}
-                        },
-                        "required": [
-                          "status",
-                          "description"
-                        ]
-                      },
-                      "description": "Logs that were saved during the last execution"
-                    },
-                    "dynamicTheme": {
-                      "type": "object",
-                      "properties": {
-                        "hostAvatarUrl": {
-                          "type": "string"
-                        },
-                        "guestAvatarUrl": {
-                          "type": "string"
-                        }
-                      },
-                      "description": "If the typebot contains dynamic avatars, dynamicTheme returns the new avatar URLs whenever their variables are updated."
-                    }
-                  },
-                  "required": [
-                    "sessionId",
-                    "typebot",
-                    "messages"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/typebots/{typebotId}/blocks/{blockId}/storage/upload-url": {
-      "get": {
-        "operationId": "getUploadUrl",
-        "summary": "Get upload URL for a file",
-        "description": "Used for the web client to get the bucket upload file.",
-        "tags": [
-          "Deprecated"
-        ],
-        "deprecated": true,
-        "parameters": [
-          {
-            "in": "path",
-            "name": "typebotId",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          },
-          {
-            "in": "path",
-            "name": "blockId",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          },
-          {
-            "in": "query",
-            "name": "filePath",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          },
-          {
-            "in": "query",
-            "name": "fileType",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "presignedUrl": {
-                      "type": "string"
-                    },
-                    "hasReachedStorageLimit": {
-                      "type": "boolean"
-                    }
-                  },
-                  "required": [
-                    "presignedUrl",
-                    "hasReachedStorageLimit"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.NOT_FOUND"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/generate-upload-url": {
-      "post": {
-        "operationId": "generateUploadUrl",
-        "summary": "Generate upload URL",
-        "description": "Used to upload anything from the client to S3 bucket",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "filePathProps": {
-                    "anyOf": [
-                      {
-                        "type": "object",
-                        "properties": {
-                          "typebotId": {
-                            "type": "string"
-                          },
-                          "blockId": {
-                            "type": "string"
-                          },
-                          "resultId": {
-                            "type": "string"
-                          },
-                          "fileName": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "typebotId",
-                          "blockId",
-                          "resultId",
-                          "fileName"
-                        ]
-                      },
-                      {
-                        "type": "object",
-                        "properties": {
-                          "sessionId": {
-                            "type": "string"
-                          },
-                          "fileName": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "sessionId",
-                          "fileName"
-                        ]
-                      }
-                    ]
-                  },
-                  "fileType": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "filePathProps"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "presignedUrl": {
-                      "type": "string"
-                    },
-                    "formData": {
-                      "type": "object",
-                      "additionalProperties": {}
-                    },
-                    "fileUrl": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "presignedUrl",
-                    "formData",
-                    "fileUrl"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/sessions/{sessionId}/updateTypebot": {
-      "post": {
-        "operationId": "updateTypebotInSession",
-        "summary": "Update typebot in session",
-        "description": "Update chat session with latest typebot modifications. This is useful when you want to update the typebot in an ongoing session after making changes to it.",
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "sessionId",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "enum": [
-                        "success"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "message"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Authorization not provided",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Insufficient access",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.FORBIDDEN"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/workspaces/{workspaceId}/whatsapp/{credentialsId}/webhook": {
-      "get": {
-        "operationId": "whatsAppRouter-subscribeWebhook",
-        "summary": "Subscribe webhook",
-        "tags": [
-          "WhatsApp"
-        ],
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "workspaceId",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          },
-          {
-            "in": "path",
-            "name": "credentialsId",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          },
-          {
-            "in": "query",
-            "name": "hub.challenge",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          },
-          {
-            "in": "query",
-            "name": "hub.verify_token",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "number"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Authorization not provided",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Insufficient access",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.FORBIDDEN"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.NOT_FOUND"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
-                }
-              }
-            }
-          }
-        }
       },
-      "post": {
-        "operationId": "whatsAppRouter-receiveMessage",
-        "summary": "Message webhook",
+      "get": {
+        "operationId": "getTicket",
+        "summary": "Get ticket",
         "tags": [
-          "WhatsApp"
+          "Get Ticket"
         ],
-        "parameters": [
+        "deprecated": false,
+        "security": [
           {
-            "in": "path",
-            "name": "workspaceId",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          },
-          {
-            "in": "path",
-            "name": "credentialsId",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
+             "Authorization": []
           }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "entry": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "changes": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "value": {
-                                "type": "object",
-                                "properties": {
-                                  "metadata": {
-                                    "type": "object",
-                                    "properties": {
-                                      "phone_number_id": {
-                                        "type": "string"
-                                      }
-                                    },
-                                    "required": [
-                                      "phone_number_id"
-                                    ]
-                                  },
-                                  "contacts": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "profile": {
-                                          "type": "object",
-                                          "properties": {
-                                            "name": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "name"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "profile"
-                                      ]
-                                    }
-                                  },
-                                  "messages": {
-                                    "type": "array",
-                                    "items": {
-                                      "oneOf": [
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "from": {
-                                              "type": "string"
-                                            },
-                                            "type": {
-                                              "type": "string",
-                                              "enum": [
-                                                "text"
-                                              ]
-                                            },
-                                            "text": {
-                                              "type": "object",
-                                              "properties": {
-                                                "body": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "body"
-                                              ]
-                                            },
-                                            "timestamp": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "from",
-                                            "type",
-                                            "text",
-                                            "timestamp"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "from": {
-                                              "type": "string"
-                                            },
-                                            "type": {
-                                              "type": "string",
-                                              "enum": [
-                                                "button"
-                                              ]
-                                            },
-                                            "button": {
-                                              "type": "object",
-                                              "properties": {
-                                                "text": {
-                                                  "type": "string"
-                                                },
-                                                "payload": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "text",
-                                                "payload"
-                                              ]
-                                            },
-                                            "timestamp": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "from",
-                                            "type",
-                                            "button",
-                                            "timestamp"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "from": {
-                                              "type": "string"
-                                            },
-                                            "type": {
-                                              "type": "string",
-                                              "enum": [
-                                                "interactive"
-                                              ]
-                                            },
-                                            "interactive": {
-                                              "type": "object",
-                                              "properties": {
-                                                "button_reply": {
-                                                  "type": "object",
-                                                  "properties": {
-                                                    "id": {
-                                                      "type": "string"
-                                                    },
-                                                    "title": {
-                                                      "type": "string"
-                                                    }
-                                                  },
-                                                  "required": [
-                                                    "id",
-                                                    "title"
-                                                  ]
-                                                }
-                                              },
-                                              "required": [
-                                                "button_reply"
-                                              ]
-                                            },
-                                            "timestamp": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "from",
-                                            "type",
-                                            "interactive",
-                                            "timestamp"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "from": {
-                                              "type": "string"
-                                            },
-                                            "type": {
-                                              "type": "string",
-                                              "enum": [
-                                                "image"
-                                              ]
-                                            },
-                                            "image": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "id"
-                                              ]
-                                            },
-                                            "timestamp": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "from",
-                                            "type",
-                                            "image",
-                                            "timestamp"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "from": {
-                                              "type": "string"
-                                            },
-                                            "type": {
-                                              "type": "string",
-                                              "enum": [
-                                                "video"
-                                              ]
-                                            },
-                                            "video": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "id"
-                                              ]
-                                            },
-                                            "timestamp": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "from",
-                                            "type",
-                                            "video",
-                                            "timestamp"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "from": {
-                                              "type": "string"
-                                            },
-                                            "type": {
-                                              "type": "string",
-                                              "enum": [
-                                                "audio"
-                                              ]
-                                            },
-                                            "audio": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "id"
-                                              ]
-                                            },
-                                            "timestamp": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "from",
-                                            "type",
-                                            "audio",
-                                            "timestamp"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "from": {
-                                              "type": "string"
-                                            },
-                                            "type": {
-                                              "type": "string",
-                                              "enum": [
-                                                "document"
-                                              ]
-                                            },
-                                            "document": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "id"
-                                              ]
-                                            },
-                                            "timestamp": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "from",
-                                            "type",
-                                            "document",
-                                            "timestamp"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "from": {
-                                              "type": "string"
-                                            },
-                                            "type": {
-                                              "type": "string",
-                                              "enum": [
-                                                "location"
-                                              ]
-                                            },
-                                            "location": {
-                                              "type": "object",
-                                              "properties": {
-                                                "latitude": {
-                                                  "type": "number"
-                                                },
-                                                "longitude": {
-                                                  "type": "number"
-                                                }
-                                              },
-                                              "required": [
-                                                "latitude",
-                                                "longitude"
-                                              ]
-                                            },
-                                            "timestamp": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "from",
-                                            "type",
-                                            "location",
-                                            "timestamp"
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  }
-                                },
-                                "required": [
-                                  "metadata"
-                                ]
-                              }
-                            },
-                            "required": [
-                              "value"
-                            ]
-                          }
-                        }
-                      },
-                      "required": [
-                        "changes"
-                      ]
-                    }
-                  }
-                },
-                "required": [
-                  "entry"
-                ]
-              }
-            }
-          }
-        },
+        ],  
         "responses": {
           "200": {
             "description": "Successful response",
@@ -2040,13 +511,100 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID do ticket"
+                    },
+                    "order": {
+                      "type": "number",
+                      "description": "Ordem em que ele aparecerá na fila"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Estado entre `open`, `pending` e `closed`"
+                    },
+                    "unreadMessages": {
+                      "type": "number",
+                      "description": "Número de mensagens não lidas"
+                    },
+                    "lastMessage": {
+                      "type": "string",
+                      "description": "Última mensagem enviada"
+                    },
+                    "isGroup": {
+                      "type": "boolean",
+                      "description": "Se é um grupo"
+                    },
+                    "isBot": {
+                      "type": "boolean",
+                      "description": "Se o bot está ativado"
+                    },
+                    "channel": {
+                      "type": "string",
+                      "description": "Nome da instancia"
+                    },
+                    "userId": {
+                      "type": "string",
+                      "description": "ID do usuario"
+                    },
+                    "contactId": {
+                      "type": "string",
+                      "description": "ID do contato"
+                    },
+                    "whatsappId": {
+                      "type": "string",
+                      "description": "Id da conexão do WhatsApp."
+                    },
+                    "queueId": {
+                      "type": "string",
+                      "description": "ID do departamento"
+                    },
+                    "companyId": {
+                      "type": "string",
+                      "description": "ID da empresa"
+                    },
+                    "chatConversationId": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
                       "type": "string"
                     }
+                  
+                  },
+                  "example": {
+                    "id": "id-do-ticket",
+                    "order": 1,
+                    "status": "open",
+                    "unreadMessages": 0,
+                    "lastMessage": "Última mensagem enviada",
+                    "isGroup": false,
+                    "isBot": false,
+                    "channel": "evolution",
+                    "userId": "id-do-usuario",
+                    "contactId": "id-do-contato",
+                    "whatsappId": "id-da-conexao",
+                    "queueId": null,
+                    "companyId": "id-da-empresa",
+                    "chatConversationId": null,
+                    "createdAt": "data-de-criacao",
+                    "updatedAt": "data-da-ultima-atualizacao"
                   },
                   "required": [
-                    "message"
+                    "messages"
                   ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
                 }
               }
             }
@@ -2057,16 +615,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/error.BAD_REQUEST"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
@@ -2074,54 +622,81 @@
         }
       }
     },
-    "/v1/sessions/{sessionId}/clientLogs": {
-      "post": {
-        "operationId": "saveClientLogs",
-        "summary": "Save logs",
+    "/api/tickets": {
+      "get": {
+        "operationId": "listTickets",
+        "summary": "List the tickets",
         "parameters": [
           {
-            "in": "path",
-            "name": "sessionId",
+            "in": "query",
+            "name": "status",
+            "description": "Status dos tickets entre `open`, `pending` e `closed`",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Status dos tickets entre `open`, `pending` e `closed`"
             },
-            "required": true
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "userId",
+            "description": "Id do usuário responsável pelo Ticket.",
+            "schema": {
+              "type": "string",
+              "description": "Id do usuário responsável pelo Ticket."
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "queueId",
+            "description": "Id do departamento.",
+            "schema": {
+              "type": "string",
+              "description": "Id do departamento."
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "contactId",
+            "description": "Id do contato.",
+            "schema": {
+              "type": "string",
+              "description": "Id do contato."
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "whatsappId",
+            "description": "Id da conexão do WhatsApp.",
+            "schema": {
+              "type": "string",
+              "description": "Id da conexão do WhatsApp."
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "searchParam",
+            "description": "Parâmetro de busca.",
+            "schema": {
+              "type": "string",
+              "description": "Parâmetro de busca."
+            },
+            "required": false
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "clientLogs": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "status": {
-                          "type": "string"
-                        },
-                        "description": {
-                          "type": "string"
-                        },
-                        "details": {}
-                      },
-                      "required": [
-                        "status",
-                        "description"
-                      ]
-                    }
-                  }
-                },
-                "required": [
-                  "clientLogs"
-                ]
-              }
-            }
+        "tags": [
+          "List Tickets"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+             "Authorization": []
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -2130,13 +705,98 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string"
+                    "tickets": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "order": {
+                            "type": "number"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "unreadMessages": {
+                            "type": "number"
+                          },
+                          "lastMessage": {
+                            "type": "string"
+                          },
+                          "isGroup": {
+                            "type": "boolean"
+                          },
+                          "isBot": {
+                            "type": "boolean"
+                          },
+                          "channel": {
+                            "type": "string"
+                          },
+                          "userId": {
+                            "type": "string"
+                          },
+                          "contactId": {
+                            "type": "string"
+                          },
+                          "whatsappId": {
+                            "type": "string"
+                          },
+                          "queueId": {
+                            "type": "string"
+                          },
+                          "companyId": {
+                            "type": "string"
+                          },
+                          "chatConversationId": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          }
+                        }
+                      }
                     }
                   },
+                  "example": {
+                    "tickets": [
+                        {
+                            "id": "id-do-ticket",
+                            "order": 1,
+                            "status": "open",
+                            "unreadMessages": 0,
+                            "lastMessage": "Última mensagem enviada",
+                            "isGroup": false,
+                            "isBot": false,
+                            "channel": "evolution",
+                            "userId": "id-do-usuario",
+                            "contactId": "id-do-contato",
+                            "whatsappId": "id-da-conexao",
+                            "queueId": null,
+                            "companyId": "id-da-empresa",
+                            "chatConversationId": null,
+                            "createdAt": "data-de-criacao",
+                            "updatedAt": "data-da-ultima-atualizacao"
+                        }
+                      ]
+                  },
                   "required": [
-                    "message"
+                    "messages"
                   ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
                 }
               }
             }
@@ -2147,16 +807,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/error.BAD_REQUEST"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
