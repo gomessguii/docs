@@ -6,7 +6,7 @@
     "/openapi/viewer.json"
   ],
   "feedback": {
-    "suggestEdit": true
+    "suggestEdit": false
   },
   "logo": {
     "dark": "/logo/dark.png",
