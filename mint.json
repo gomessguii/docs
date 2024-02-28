@@ -134,8 +134,7 @@
             "definitions/departments",
             "definitions/quick-answers",
             "definitions/integrations",
-            "definitions/settings",
-            "definitions/token"
+            "definitions/settings"
           ]
         }
       ]
