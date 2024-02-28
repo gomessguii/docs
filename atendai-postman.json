@@ -1,0 +1,2005 @@
+{
+	"info": {
+		"_postman_id": "6fdb458e-8df1-48b0-b89a-2b9de749e9f4",
+		"name": "AtendAI API",
+		"description": "# Instructions\n\n- To get the API token, go to TOKENS and your token will be there, without it it will not be possible to use the API.\n- The sending number must not have a mask or special characters and must consist of:\n    - Country code - Ex: 55 (Brazil)\n    - Area Code\n    - Number",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14169180"
+	},
+	"item": [
+		{
+			"name": "Send Mensages",
+			"item": [
+				{
+					"name": "Send Text",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"number\": \"{{number_test}}\",\n    \"message\": \"Mensagem de teste\",\n    \"autoClose\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/messages/text",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"messages",
+								"text"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "number",
+									"value": "{{number_test}}",
+									"type": "default"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "message",
+									"value": "Mensagem de teste",
+									"type": "default"
+								},
+								{
+									"key": "whatsappId",
+									"value": "f45f31be-384d-48c5-b5f1-b950a0572e7a",
+									"type": "default"
+								},
+								{
+									"key": "autoClose",
+									"value": "false",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/api/messages/image",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"messages",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Video",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "number",
+									"value": "{{number_test}}",
+									"type": "default"
+								},
+								{
+									"key": "audios",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "message",
+									"value": "Mensagem de teste",
+									"type": "default"
+								},
+								{
+									"key": "whatsappId",
+									"value": "f45f31be-384d-48c5-b5f1-b950a0572e7a",
+									"type": "default"
+								},
+								{
+									"key": "autoClose",
+									"value": "false",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/api/messages/audio",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"messages",
+								"audio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Audio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "number",
+									"value": "{{number_test}}",
+									"type": "default"
+								},
+								{
+									"key": "videos",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "message",
+									"value": "Mensagem de teste",
+									"type": "default"
+								},
+								{
+									"key": "whatsappId",
+									"value": "f45f31be-384d-48c5-b5f1-b950a0572e7a",
+									"type": "default"
+								},
+								{
+									"key": "autoClose",
+									"value": "false",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/api/messages/video",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"messages",
+								"video"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Doc",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "number",
+									"value": "{{number_test}}",
+									"type": "default"
+								},
+								{
+									"key": "docs",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "message",
+									"value": "Mensagem de teste",
+									"type": "default"
+								},
+								{
+									"key": "whatsappId",
+									"value": "f45f31be-384d-48c5-b5f1-b950a0572e7a",
+									"type": "default"
+								},
+								{
+									"key": "autoClose",
+									"value": "false",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/api/messages/doc",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"messages",
+								"doc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Media URL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"number\": \"{{number_test}}\",\n    \"url\": \"https://evolution-api.com/files/evolution-api.png\",\n    \"type\": \"image\",\n    \"mimeType\": \"image/png\",\n    \"filename\": \"image.png\",\n    \"message\": \"Mensagem de Teste\",\n    \"whatsappId\": \"1f27907d-f47a-4ce3-b758-9e48514468a3\",\n    \"autoClose\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/messages/mediaUrl",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"messages",
+								"mediaUrl"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Simple Button",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"number\": \"{{number_test}}\",\n    \"btndata\": {\n        \"title\": \"Title for Simple Buttons\",\n        \"text\": \"Free text for Simple Buttons\",\n        \"buttons\": [\n            {\n                \"buttonId\": \"id1\",\n                \"buttonText\": {\n                    \"displayText\": \"Simple Button 1️⃣\"\n                }\n            },\n            {\n                \"buttonId\": \"id2\",\n                \"buttonText\": {\n                    \"displayText\": \"Simple Button 2️⃣\"\n                }\n            },\n            {\n                \"buttonId\": \"id3\",\n                \"buttonText\": {\n                    \"displayText\": \"Simple Button 3️⃣\"\n                }\n            }\n        ],\n        \"footerText\": \"Footer text\"\n    },\n    \"whatsappId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\",\n    \"autoClose\": false\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/messages/simpleButton",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"messages",
+								"simpleButton"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Template Button",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"number\": \"{{number_test}}\",\n    \"btndata\": {\n        \"title\": \"Title for Template Buttons\",\n        \"text\": \"Free text for Template Buttons\",\n        \"buttons\": [\n            {\n                \"index\": \"0\",\n                \"type\": \"replyButton\",\n                \"title\": \"↩️ Reply Button\",\n                \"id\": \"id1\"\n            },\n            {\n                \"index\": \"1\",\n                \"type\": \"urlButton\",\n                \"title\": \"Url Button\",\n                \"payload\": \"https://agenciadgcode.com\"\n            },\n            {\n                \"index\": \"2\",\n                \"type\": \"callButton\",\n                \"title\": \"Call Button\",\n                \"payload\": \"5511999999999\"\n            }\n        ],\n        \"footerText\": \"Footer Text\"\n    },\n    \"whatsappId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\",\n    \"autoClose\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/messages/templateButton",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"messages",
+								"templateButton"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"number\": \"{{number_test}}\",\n    \"msgdata\": {\n        \"buttonText\": \"Button Text\",\n        \"text\": \"Middle Text\",\n        \"title\": \"Head Title\",\n        \"description\": \"Footer Description\",\n        \"sections\": [\n            {\n                \"title\": \"Title Section 1\",\n                \"rows\": [\n                    {\n                        \"title\": \"Title Option 1\",\n                        \"description\": \"Option Description 1\",\n                        \"rowId\": \"string11\"\n                    },\n                    {\n                        \"title\": \"Title Option 2\",\n                        \"description\": \"Option Description 2\",\n                        \"rowId\": \"string12\"\n                    }\n                ]\n            },\n            {\n                \"title\": \"Title Section 2\",\n                \"rows\": [\n                    {\n                        \"title\": \"Title Option 1\",\n                        \"description\": \"Option Description\",\n                        \"rowId\": \"string21\"\n                    }\n                ]\n            }\n        ],\n        \"listType\": 0\n    },\n    \"whatsappId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\",\n    \"autoClose\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/messages/list",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"messages",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"number\": \"{{number_test}}\",\n    \"locdata\": {\n        \"latitude\": 25.65239387554923,\n        \"longitude\": 51.487879683998834,\n        \"name\": \"Al Bayt Stadium\",\n        \"address\": \"2022 World Cup Opening Venue in Qatar\",\n        \"footerText\": \"Footer Text\"\n    },\n    \"whatsappId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\",\n    \"autoClose\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/messages/location",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"messages",
+								"location"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tickets",
+			"item": [
+				{
+					"name": "List Tickets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/tickets",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"tickets"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "open",
+									"description": "open, pending, closed",
+									"disabled": true
+								},
+								{
+									"key": "userId",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "queueId",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "contactId",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "whatsappId",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "searchParam",
+									"value": null,
+									"description": "Pesquisa pela ultima mensagem salva",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ticket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/tickets/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"tickets",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Ticket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"open\",\n    \"userId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\",\n    \"whatsappId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\",\n    \"queueId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/tickets/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"tickets",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Ticket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/tickets/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"tickets",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contacts",
+			"item": [
+				{
+					"name": "List Contacts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/contacts",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/contacts/462f126c-43c2-4b65-8383-4fbe216d801f",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"contacts",
+								"462f126c-43c2-4b65-8383-4fbe216d801f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/contacts/validate?number={{number_test}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"contacts",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "number",
+									"value": "{{number_test}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Nome Teste\",\n    \"number\": \"{{number_test}}\",\n    \"email\": \"email@email.com\",\n    \"extraInfo\": [\n        {\n            \"name\": \"variable\",\n            \"value\": \"value\"\n        }\n    ],\n    \"tags\": [\n        \"eabac5d5-ee08-4217-b6bc-00e47b155fa6\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/contacts",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Nome Teste\",\n    \"number\": \"{{number_test}}\",\n    \"email\": \"email@email.com\",\n    \"extraInfo\": [\n        {\n            \"name\": \"variable\",\n            \"value\": \"value\"\n        }\n    ],\n    \"tags\": [\n        \"eabac5d5-ee08-4217-b6bc-00e47b155fa6\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/contacts/3f142731-efde-4cbe-82a9-ba2c7196f647",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"contacts",
+								"3f142731-efde-4cbe-82a9-ba2c7196f647"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/contacts/462f126c-43c2-4b65-8383-4fbe216d801f",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"contacts",
+								"462f126c-43c2-4b65-8383-4fbe216d801f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Schedules",
+			"item": [
+				{
+					"name": "List Schedules",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/schedules",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"schedules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Schedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/schedules/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"schedules",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Schedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"body\": \"Teste de agendamento\",\n    \"sendAt\": \"2023-06-06 06:00\",\n    \"contactId\": \"462f126c-43c2-4b65-8383-4fbe216d801f\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/schedules",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"schedules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Schedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"body\": \"Teste de agendamento 2\",\n    \"sendAt\": \"2023-06-06 06:00\",\n    \"contactId\": \"462f126c-43c2-4b65-8383-4fbe216d801f\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/schedules/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"schedules",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Schedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/contacts/17",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"contacts",
+								"17"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Campaigns",
+			"item": [
+				{
+					"name": "Contact Lists",
+					"item": [
+						{
+							"name": "List Contact Lists",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/api/contact-lists",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"contact-lists"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Contact List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/api/contact-lists/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"contact-lists",
+										"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Contact List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Teste\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/api/contact-lists",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"contact-lists"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Contact List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Teste\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/api/contact-lists/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"contact-lists",
+										"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Contact List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/api/contact-lists/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"contact-lists",
+										"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Contact List Items",
+					"item": [
+						{
+							"name": "List Contact List Items",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/api/contact-list-items?contactListId=f45f31be-384d-48c5-b5f1-b950a0572e7a",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"contact-list-items"
+									],
+									"query": [
+										{
+											"key": "contactListId",
+											"value": "f45f31be-384d-48c5-b5f1-b950a0572e7a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Contact List Items",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/api/contact-list-items/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"contact-list-items",
+										"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Contact List Item",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Davidson\",\n    \"number\": \"557499879409\",\n    \"email\": \"contato@agenciadgcode.com\",\n    \"contactListId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/api/contact-list-items",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"contact-list-items"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Contact List Item",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Davidson\",\n    \"number\": \"557499879409\",\n    \"email\": \"contato@agenciadgcode.com\",\n    \"contactListId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/api/contact-list-items/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"contact-list-items",
+										"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Contact List Item",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/api/contact-list-items/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"contact-list-items",
+										"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "List Campaigns",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/campaigns",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Campaign",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/campaigns/43",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"campaigns",
+								"43"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Campaign",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Nome da Campanha\",\n    \"message1\": \"Texto\",\n    \"message2\": null,\n    \"message3\": null,\n    \"message4\": null,\n    \"message5\": null,\n    \"emailSubject1\": \"Assunto\",\n    \"emailSubject2\": null,\n    \"emailSubject3\": null,\n    \"emailSubject4\": null,\n    \"emailSubject5\": null,\n    \"emailMessage1\": \"<p>Texto</p>\",\n    \"emailMessage2\": null,\n    \"emailMessage3\": null,\n    \"emailMessage4\": null,\n    \"emailMessage5\": null,\n    \"status\": \"AGENDADA\",\n    \"sendEmail\": true,\n    \"scheduledAt\": \"2023-01-23 12:00\",\n    \"contactListId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\",\n    \"whatsappId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/campaigns",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Campaign",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Nome da Campanha\",\n    \"message1\": \"Texto\",\n    \"message2\": null,\n    \"message3\": null,\n    \"message4\": null,\n    \"message5\": null,\n    \"emailSubject1\": \"Assunto\",\n    \"emailSubject2\": null,\n    \"emailSubject3\": null,\n    \"emailSubject4\": null,\n    \"emailSubject5\": null,\n    \"emailMessage1\": \"<p>Texto</p>\",\n    \"emailMessage2\": null,\n    \"emailMessage3\": null,\n    \"emailMessage4\": null,\n    \"emailMessage5\": null,\n    \"status\": \"AGENDADA\",\n    \"sendEmail\": true,\n    \"scheduledAt\": \"2023-01-23 13:00\",\n    \"contactListId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\",\n    \"whatsappId\": \"f45f31be-384d-48c5-b5f1-b950a0572e7a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/campaigns/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"campaigns",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Campaign",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/campaigns/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"campaigns",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Campaign",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/campaigns/f45f31be-384d-48c5-b5f1-b950a0572e7a/cancel",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"campaigns",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restart Campaign",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/campaigns/f45f31be-384d-48c5-b5f1-b950a0572e7a/restart",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"campaigns",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a",
+								"restart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "List Tags",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/tags",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tag",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/tags/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"tags",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Tag",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"TESTE\",\n    \"color\": \"#0f286c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/tags",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Tag",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"TESTE\",\n    \"color\": \"#0f286c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/tags/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"tags",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Tag",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/tags/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"tags",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Connections",
+			"item": [
+				{
+					"name": "List Connections",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/connections",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"connections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Connection",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/connections/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"connections",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Queues",
+			"item": [
+				{
+					"name": "List Queues",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/queues",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"queues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Queue",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/queues/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"queues",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Queue",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Teste2\",\n    \"color\": \"#eeeeee\",\n    \"greetingMessage\": \"Teste\",\n    \"chatbots\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/queues",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"queues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Queue",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Teste2\",\n    \"color\": \"#eeeeee\",\n    \"greetingMessage\": \"Teste\",\n    \"chatbots\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/queues/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"queues",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Queue",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/queues/f45f31be-384d-48c5-b5f1-b950a0572e7a",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"queues",
+								"f45f31be-384d-48c5-b5f1-b950a0572e7a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_url",
+			"value": "https://rest.atendai.com",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "<token>",
+			"type": "string"
+		},
+		{
+			"key": "number_test",
+			"value": "5511999999999",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,1413 @@
+{
+   "openapi": "3.0.0",
+   "info": {
+      "title": "AtendAI API",
+      "description": "# Instructions\n\n- To get the API token, go to TOKENS and your token will be there, without it it will not be possible to use the API.\n- The sending number must not have a mask or special characters and must consist of:\n    - Country code - Ex: 55 (Brazil)\n    - Area Code\n    - Number",
+      "version": "1.0.0"
+   },
+   "servers": [
+      {
+         "url": "http://api.atendai.com"
+      }
+   ],
+   "components": {
+      "securitySchemes": {
+         "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer"
+         }
+      }
+   },
+   "tags": [
+      {
+         "name": "Send Mensages"
+      },
+      {
+         "name": "Tickets"
+      },
+      {
+         "name": "Contacts"
+      },
+      {
+         "name": "Schedules"
+      },
+      {
+         "name": "Campaigns"
+      },
+      {
+         "name": "Campaigns > Contact Lists"
+      },
+      {
+         "name": "Campaigns > Contact List Items"
+      },
+      {
+         "name": "Tags"
+      },
+      {
+         "name": "Connections"
+      },
+      {
+         "name": "Queues"
+      }
+   ],
+   "paths": {
+      "/api/messages/text": {
+         "post": {
+            "tags": [
+               "Send Mensages"
+            ],
+            "summary": "Send Text",
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "number": {
+                              "type": "string",
+                              "description": "O número que receberá a mensagem."
+                           },
+                           "message": {
+                              "type": "string",
+                              "description": "O conteúdo da mensagem que será enviada. É possível utilizar estilização de texto no padrão do WhatsApp."
+                           },
+                           "autoClose": {
+                              "type": "boolean",
+                              "description": "Indica se o ticket deve ser fechado automaticamente ou não após essa mensagem."
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "message": {
+                                 "type": "string"
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/api/messages/media": {
+         "post": {
+            "tags": [
+               "Send Mensages"
+            ],
+            "summary": "Send Media",
+            "requestBody": {
+               "content": {
+                  "multipart/form-data": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "number": {
+                              "type": "string",
+                              "example": "{{number_test}}"
+                           },
+                           "files": {
+                              "type": "string",
+                              "format": "binary"
+                           },
+                           "message": {
+                              "type": "string",
+                              "example": "Mensagem de teste"
+                           },
+                           "autoClose": {
+                              "type": "boolean",
+                              "example": "false"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/messages/mediaUrl": {
+         "post": {
+            "tags": [
+               "Send Mensages"
+            ],
+            "summary": "Send Media URL",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "number": "{{number_test}}",
+                           "url": "https://evolution-api.com/files/evolution-api.png",
+                           "type": "image",
+                           "mimeType": "image/png",
+                           "filename": "image.png",
+                           "message": "Mensagem de Teste",
+                           "autoClose": false
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/messages/location": {
+         "post": {
+            "tags": [
+               "Send Mensages"
+            ],
+            "summary": "Send Location",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "number": "{{number_test}}",
+                           "locdata": {
+                              "latitude": 25.65239387554923,
+                              "longitude": 51.487879683998834,
+                              "name": "Al Bayt Stadium",
+                              "address": "2022 World Cup Opening Venue in Qatar",
+                              "footerText": "Footer Text"
+                           },
+                           "autoClose": false
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "text/plain": "message: SUCCESS"
+                  }
+               }
+            }
+         }
+      },
+      "/api/tickets": {
+         "get": {
+            "tags": [
+               "Tickets"
+            ],
+            "summary": "List Tickets",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/tickets/f45f31be-384d-48c5-b5f1-b950a0572e7a": {
+         "get": {
+            "tags": [
+               "Tickets"
+            ],
+            "summary": "Get Ticket",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "put": {
+            "tags": [
+               "Tickets"
+            ],
+            "summary": "Update Ticket",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "status": "open",
+                           "userId": "f45f31be-384d-48c5-b5f1-b950a0572e7a",
+                           "whatsappId": "f45f31be-384d-48c5-b5f1-b950a0572e7a",
+                           "queueId": "f45f31be-384d-48c5-b5f1-b950a0572e7a"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "delete": {
+            "tags": [
+               "Tickets"
+            ],
+            "summary": "Delete Ticket",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/contacts": {
+         "get": {
+            "tags": [
+               "Contacts"
+            ],
+            "summary": "List Contacts",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "post": {
+            "tags": [
+               "Contacts"
+            ],
+            "summary": "Create Contact",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "name": "Nome Teste",
+                           "number": "{{number_test}}",
+                           "email": "email@email.com",
+                           "extraInfo": [
+                              {
+                                 "name": "variable",
+                                 "value": "value"
+                              }
+                           ],
+                           "tags": [
+                              "eabac5d5-ee08-4217-b6bc-00e47b155fa6"
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/contacts/462f126c-43c2-4b65-8383-4fbe216d801f": {
+         "get": {
+            "tags": [
+               "Contacts"
+            ],
+            "summary": "Get Contact",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "delete": {
+            "tags": [
+               "Contacts"
+            ],
+            "summary": "Remove Contact",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/contacts/validate": {
+         "post": {
+            "tags": [
+               "Contacts"
+            ],
+            "summary": "Validate Contact",
+            "requestBody": {
+               "content": {}
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "parameters": [
+               {
+                  "name": "number",
+                  "in": "query",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "{{number_test}}"
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/contacts/3f142731-efde-4cbe-82a9-ba2c7196f647": {
+         "put": {
+            "tags": [
+               "Contacts"
+            ],
+            "summary": "Edit Contact",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "name": "Nome Teste",
+                           "number": "{{number_test}}",
+                           "email": "email@email.com",
+                           "extraInfo": [
+                              {
+                                 "name": "variable",
+                                 "value": "value"
+                              }
+                           ],
+                           "tags": [
+                              "eabac5d5-ee08-4217-b6bc-00e47b155fa6"
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/schedules": {
+         "get": {
+            "tags": [
+               "Schedules"
+            ],
+            "summary": "List Schedules",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "post": {
+            "tags": [
+               "Schedules"
+            ],
+            "summary": "Create Schedule",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "body": "Teste de agendamento",
+                           "sendAt": "2023-06-06 06:00",
+                           "contactId": "462f126c-43c2-4b65-8383-4fbe216d801f"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/schedules/f45f31be-384d-48c5-b5f1-b950a0572e7a": {
+         "get": {
+            "tags": [
+               "Schedules"
+            ],
+            "summary": "Get Schedule",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "put": {
+            "tags": [
+               "Schedules"
+            ],
+            "summary": "Edit Schedule",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "body": "Teste de agendamento 2",
+                           "sendAt": "2023-06-06 06:00",
+                           "contactId": "462f126c-43c2-4b65-8383-4fbe216d801f"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/contacts/17": {
+         "delete": {
+            "tags": [
+               "Schedules"
+            ],
+            "summary": "Remove Schedule",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/contact-lists": {
+         "get": {
+            "tags": [
+               "Campaigns > Contact Lists"
+            ],
+            "summary": "List Contact Lists",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "post": {
+            "tags": [
+               "Campaigns > Contact Lists"
+            ],
+            "summary": "Create Contact List",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "name": "Teste"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/contact-lists/f45f31be-384d-48c5-b5f1-b950a0572e7a": {
+         "get": {
+            "tags": [
+               "Campaigns > Contact Lists"
+            ],
+            "summary": "Get Contact List",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "put": {
+            "tags": [
+               "Campaigns > Contact Lists"
+            ],
+            "summary": "Edit Contact List",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "name": "Teste"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "delete": {
+            "tags": [
+               "Campaigns > Contact Lists"
+            ],
+            "summary": "Delete Contact List",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/contact-list-items": {
+         "get": {
+            "tags": [
+               "Campaigns > Contact List Items"
+            ],
+            "summary": "List Contact List Items",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "parameters": [
+               {
+                  "name": "contactListId",
+                  "in": "query",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "f45f31be-384d-48c5-b5f1-b950a0572e7a"
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "post": {
+            "tags": [
+               "Campaigns > Contact List Items"
+            ],
+            "summary": "Create Contact List Item",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "name": "Davidson",
+                           "number": "557499879409",
+                           "email": "contato@agenciadgcode.com",
+                           "contactListId": "f45f31be-384d-48c5-b5f1-b950a0572e7a"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/contact-list-items/f45f31be-384d-48c5-b5f1-b950a0572e7a": {
+         "get": {
+            "tags": [
+               "Campaigns > Contact List Items"
+            ],
+            "summary": "Get Contact List Items",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "put": {
+            "tags": [
+               "Campaigns > Contact List Items"
+            ],
+            "summary": "Edit Contact List Item",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "name": "Davidson",
+                           "number": "557499879409",
+                           "email": "contato@agenciadgcode.com",
+                           "contactListId": "f45f31be-384d-48c5-b5f1-b950a0572e7a"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "delete": {
+            "tags": [
+               "Campaigns > Contact List Items"
+            ],
+            "summary": "Delete Contact List Item",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/campaigns": {
+         "get": {
+            "tags": [
+               "Campaigns"
+            ],
+            "summary": "List Campaigns",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "post": {
+            "tags": [
+               "Campaigns"
+            ],
+            "summary": "Create Campaign",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "name": "Nome da Campanha",
+                           "message1": "Texto",
+                           "message2": null,
+                           "message3": null,
+                           "message4": null,
+                           "message5": null,
+                           "emailSubject1": "Assunto",
+                           "emailSubject2": null,
+                           "emailSubject3": null,
+                           "emailSubject4": null,
+                           "emailSubject5": null,
+                           "emailMessage1": "<p>Texto</p>",
+                           "emailMessage2": null,
+                           "emailMessage3": null,
+                           "emailMessage4": null,
+                           "emailMessage5": null,
+                           "status": "AGENDADA",
+                           "sendEmail": true,
+                           "scheduledAt": "2023-01-23 12:00",
+                           "contactListId": "f45f31be-384d-48c5-b5f1-b950a0572e7a",
+                           "whatsappId": "f45f31be-384d-48c5-b5f1-b950a0572e7a"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/campaigns/43": {
+         "get": {
+            "tags": [
+               "Campaigns"
+            ],
+            "summary": "Get Campaign",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/campaigns/f45f31be-384d-48c5-b5f1-b950a0572e7a": {
+         "put": {
+            "tags": [
+               "Campaigns"
+            ],
+            "summary": "Edit Campaign",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "name": "Nome da Campanha",
+                           "message1": "Texto",
+                           "message2": null,
+                           "message3": null,
+                           "message4": null,
+                           "message5": null,
+                           "emailSubject1": "Assunto",
+                           "emailSubject2": null,
+                           "emailSubject3": null,
+                           "emailSubject4": null,
+                           "emailSubject5": null,
+                           "emailMessage1": "<p>Texto</p>",
+                           "emailMessage2": null,
+                           "emailMessage3": null,
+                           "emailMessage4": null,
+                           "emailMessage5": null,
+                           "status": "AGENDADA",
+                           "sendEmail": true,
+                           "scheduledAt": "2023-01-23 13:00",
+                           "contactListId": "f45f31be-384d-48c5-b5f1-b950a0572e7a",
+                           "whatsappId": "f45f31be-384d-48c5-b5f1-b950a0572e7a"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "delete": {
+            "tags": [
+               "Campaigns"
+            ],
+            "summary": "Delete Campaign",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/campaigns/f45f31be-384d-48c5-b5f1-b950a0572e7a/cancel": {
+         "post": {
+            "tags": [
+               "Campaigns"
+            ],
+            "summary": "Cancel Campaign",
+            "requestBody": {
+               "content": {}
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/campaigns/f45f31be-384d-48c5-b5f1-b950a0572e7a/restart": {
+         "post": {
+            "tags": [
+               "Campaigns"
+            ],
+            "summary": "Restart Campaign",
+            "requestBody": {
+               "content": {}
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/tags": {
+         "get": {
+            "tags": [
+               "Tags"
+            ],
+            "summary": "List Tags",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "post": {
+            "tags": [
+               "Tags"
+            ],
+            "summary": "Create Tag",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "name": "TESTE",
+                           "color": "#0f286c"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/tags/f45f31be-384d-48c5-b5f1-b950a0572e7a": {
+         "get": {
+            "tags": [
+               "Tags"
+            ],
+            "summary": "Get Tag",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "put": {
+            "tags": [
+               "Tags"
+            ],
+            "summary": "Edit Tag",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "name": "TESTE",
+                           "color": "#0f286c"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "delete": {
+            "tags": [
+               "Tags"
+            ],
+            "summary": "Delete Tag",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/connections": {
+         "get": {
+            "tags": [
+               "Connections"
+            ],
+            "summary": "List Connections",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/connections/f45f31be-384d-48c5-b5f1-b950a0572e7a": {
+         "get": {
+            "tags": [
+               "Connections"
+            ],
+            "summary": "Get Connection",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/queues": {
+         "get": {
+            "tags": [
+               "Queues"
+            ],
+            "summary": "List Queues",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "post": {
+            "tags": [
+               "Queues"
+            ],
+            "summary": "Create Queue",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "name": "Teste2",
+                           "color": "#eeeeee",
+                           "greetingMessage": "Teste",
+                           "chatbots": []
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      },
+      "/api/queues/f45f31be-384d-48c5-b5f1-b950a0572e7a": {
+         "get": {
+            "tags": [
+               "Queues"
+            ],
+            "summary": "Get Queue",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "put": {
+            "tags": [
+               "Queues"
+            ],
+            "summary": "Edit Queue",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "example": {
+                           "name": "Teste2",
+                           "color": "#eeeeee",
+                           "greetingMessage": "Teste",
+                           "chatbots": []
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         },
+         "delete": {
+            "tags": [
+               "Queues"
+            ],
+            "summary": "Delete Queue",
+            "security": [
+               {
+                  "bearerAuth": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful response",
+                  "content": {
+                     "application/json": {}
+                  }
+               }
+            }
+         }
+      }
+   }
+}
