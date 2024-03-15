@@ -3389,7 +3389,251 @@
           }
         }
       }
-    }
+    },
+    "/api/campaigns": {
+      "get": {
+        "operationId": "getCampaigns",
+        "summary": "Get all campaigns",
+        "tags": ["Campaigns"],
+        "deprecated": false,
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "campaigns": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Campaign"
+                      }
+                    }
+                  },
+                  "required": ["campaigns"]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createCampaign",
+        "summary": "Create a new campaign",
+        "tags": [
+          "Campaigns"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CampaignCreation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Campaign created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Campaign"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          }
+        }
+      }   
+    },
+    "/api/campaigns/{campaignId}": {
+      "get": {
+        "operationId": "getCampaignById",
+        "summary": "Get campaign by ID",
+        "tags": [
+          "Campaigns"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaignId",
+            "required": true,
+            "description": "The ID of the campaign to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Campaign"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Campaign not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_CAMPAIGNS_FOUND"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateCampaign",
+        "summary": "Update an existing campaign",
+        "tags": [
+          "Campaigns"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaignId",
+            "required": true,
+            "description": "The ID of the campaign to update",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CampaignCreation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Campaign updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Campaign"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Campaign not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_CAMPAIGNS_FOUND"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteCampaign",
+        "summary": "Delete a campaign",
+        "tags": [
+          "Campaigns"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaignId",
+            "required": true,
+            "description": "The ID of the campaign to delete",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Campaign deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response.SUCCESS"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Campaign not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_CAMPAIGNS_FOUND"
+                }
+              }
+            }
+          }
+        }
+      }
+    }    
   },
   "components": {
     "securitySchemes": {
@@ -3412,6 +3656,183 @@
         },
         "required": [
           "message"
+        ]
+      },
+      "CampaignCreation": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the campaign"
+          },
+          "groupMembersLimit": {
+            "type": "number",
+            "description": "The maximum number of members allowed in a group"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time when the campaign will be released"
+          },
+          "acceptEntriesUntil": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time until which entries will be accepted for the campaign"
+          },
+          "whatsappId": {
+            "type": "string",
+            "nullable": true,
+            "description": "The ID of the WhatsApp connection associated with the campaign"
+          }
+        },
+        "required": ["name", "groupMembersLimit", "releaseDate", "acceptEntriesUntil"]
+      },      
+      "Campaign": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the campaign"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the campaign"
+          },
+          "groupMembersLimit": {
+            "type": "integer",
+            "description": "The limit of members for each group in the campaign"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The release date of the campaign"
+          },
+          "acceptEntriesUntil": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The deadline for accepting entries for the campaign"
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Indicates if the campaign is active"
+          },
+          "companyId": {
+            "type": "string",
+            "description": "The ID of the company associated with the campaign"
+          },
+          "whatsappId": {
+            "type": "string",
+            "description": "The WhatsApp ID associated with the campaign"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "The date and time when the campaign was created"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "The date and time when the campaign was last updated"
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CampaignGroup"
+            },
+            "description": "The groups associated with the campaign"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "groupMembersLimit",
+          "releaseDate",
+          "acceptEntriesUntil",
+          "isActive",
+          "companyId",
+          "whatsappId",
+          "createdAt",
+          "updatedAt",
+          "groups"
+        ]
+      },
+      "CampaignGroup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the campaign group"
+          },
+          "jid": {
+            "type": "string",
+            "description": "The JID of the campaign group"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the campaign group"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the campaign group"
+          },
+          "picture": {
+            "type": "string",
+            "description": "The URL of the picture of the campaign group"
+          },
+          "inviteLink": {
+            "type": "string",
+            "description": "The invite link of the campaign group"
+          },
+          "membersCount": {
+            "type": "integer",
+            "description": "The number of members in the campaign group"
+          },
+          "initialMembers": {
+            "type": "object",
+            "description": "Initial members of the campaign group"
+          },
+          "settings": {
+            "type": "object",
+            "description": "Settings of the campaign group"
+          },
+          "logs": {
+            "type": "object",
+            "description": "Logs of the campaign group"
+          },
+          "order": {
+            "type": "integer",
+            "description": "The order of the campaign group"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the associated campaign"
+          },
+          "companyId": {
+            "type": "string",
+            "description": "The ID of the company associated with the campaign group"
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the campaign group"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "The date and time when the campaign group was created"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "The date and time when the campaign group was last updated"
+          }
+        },
+        "required": [
+          "id",
+          "jid",
+          "name",
+          "membersCount",
+          "order",
+          "campaignId",
+          "companyId",
+          "status",
+          "createdAt",
+          "updatedAt"
         ]
       },
       "DepartmentCreation": {
@@ -3442,10 +3863,6 @@
           "color": {
             "type": "string",
             "description": "The color associated with the department"
-          },
-          "greetingMessage": {
-            "type": "string",
-            "description": "The greeting message for the department"
           },
           "companyId": {
             "type": "string",
@@ -4243,6 +4660,24 @@
         "description": "The error information",
         "example": {
           "error": "ERR_NO_DEPARTMENTS_FOUND"
+        }
+      },
+      "error.ERR_NO_CAMPAIGNS_FOUND": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "The error message",
+            "example": "ERR_NO_CAMPAIGNS_FOUND"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "Error",
+        "description": "The error information",
+        "example": {
+          "error": "ERR_NO_CAMPAIGNS_FOUND"
         }
       },
       "error.UNAUTHORIZED": {

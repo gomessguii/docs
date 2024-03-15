@@ -47,7 +47,11 @@
         {
           "group": "Atendimentos",
           "icon": "comment-dots",
-          "pages": ["customer-service/chat", "customer-service/tags", "customer-service/board"]
+          "pages": [
+            "customer-service/chat",
+            "customer-service/tags",
+            "customer-service/board"
+          ]
         },
         "contacts",
         "scheduled-actions",
@@ -122,7 +126,10 @@
                 "automation/settings",
                 {
                   "group": "Resultados",
-                  "pages": ["automation/results/overview", "automation/results/analytics"]
+                  "pages": [
+                    "automation/results/overview",
+                    "automation/results/analytics"
+                  ]
                 },
                 "automation/faq"
               ]
@@ -146,7 +153,9 @@
     },
     {
       "group": "Início",
-      "pages": ["api-reference/authentication"]
+      "pages": [
+        "api-reference/authentication"
+      ]
     },
     {
       "group": "Chat",
@@ -170,6 +179,21 @@
           ]
         },
         {
+          "group": "Tags",
+          "pages": [
+            "api-reference/tags/post-tag",
+            "api-reference/tags/get-tag",
+            "api-reference/tags/list-tags",
+            "api-reference/tags/update-tag",
+            "api-reference/tags/delete-tag"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Definitions",
+      "pages": [
+        {
           "group": "Contacts",
           "pages": [
             "api-reference/contacts/post-contact",
@@ -190,23 +214,28 @@
           ]
         },
         {
-          "group": "Tags",
-          "pages": [
-            "api-reference/tags/post-tag",
-            "api-reference/tags/get-tag",
-            "api-reference/tags/list-tags",
-            "api-reference/tags/update-tag",
-            "api-reference/tags/delete-tag"
-          ]
-        },
-        {
-          "group": "Deparments",
+          "group": "Departments",
           "pages": [
             "api-reference/departments/post-department",
             "api-reference/departments/get-department",
             "api-reference/departments/list-departments",
             "api-reference/departments/update-department",
             "api-reference/departments/delete-department"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Campaigns",
+      "pages": [
+        {
+          "group": "Campaigns",
+          "pages": [
+            "api-reference/campaigns/post-campaign",
+            "api-reference/campaigns/get-campaign",
+            "api-reference/campaigns/list-campaigns",
+            "api-reference/campaigns/update-campaign",
+            "api-reference/campaigns/delete-campaign"
           ]
         }
       ]
