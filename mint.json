@@ -237,7 +237,9 @@
             "api-reference/campaigns/update-campaign",
             "api-reference/campaigns/delete-campaign"
           ]
-        }
+        },
+        "api-reference/campaigns/get-group-actions",
+        "api-reference/campaigns/deactivate"
       ]
     }
   ],

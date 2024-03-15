@@ -3633,7 +3633,95 @@
           }
         }
       }
-    }    
+    },
+    "/api/campaigns/get-group-actions": {
+      "get": {
+        "operationId": "getGroupActions",
+        "summary": "Get group actions",
+        "tags": [
+          "Campaigns"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GroupAction"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/campaigns/{campaignId}/deactivate": {
+      "put": {
+        "operationId": "makeCampaignInactive",
+        "summary": "Make a campaign inactive",
+        "tags": [
+          "Campaigns"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaignId",
+            "required": true,
+            "description": "The ID of the campaign to make inactive",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response.SUCCESS"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   "components": {
     "securitySchemes": {
@@ -3834,6 +3922,25 @@
           "createdAt",
           "updatedAt"
         ]
+      },
+      "GroupAction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       },
       "DepartmentCreation": {
         "type": "object",
