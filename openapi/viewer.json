@@ -112,8 +112,7 @@
                     }
                   },
                   "required": [
-                    "message",
-                    "code"
+                    "error"
                   ],
                   "title": "Error",
                   "description": "The error information",
@@ -253,8 +252,7 @@
                     }
                   },
                   "required": [
-                    "message",
-                    "code"
+                    "error"
                   ],
                   "title": "Error",
                   "description": "The error information",
@@ -372,8 +370,7 @@
                     }
                   },
                   "required": [
-                    "message",
-                    "code"
+                    "error"
                   ],
                   "title": "Error",
                   "description": "The error information",
@@ -502,513 +499,12 @@
                     }
                   },
                   "required": [
-                    "message",
-                    "code"
+                    "error"
                   ],
                   "title": "Error",
                   "description": "The error information",
                   "example": {
                     "error": "ERR_SESSION_EXPIRED"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/tickets/{ticketId}": {
-      "put": {
-        "operationId": "updateTicket",
-        "summary": "Send a text message",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "ticketId",
-            "description": "O ID do ticket a ser atualizado.",
-            "schema": {
-              "type": "string",
-              "description": "O ID do ticket a ser atualizado."
-            },
-            "required": true
-          }
-        ],
-        "tags": [
-          "Send Mensages"
-        ],
-        "deprecated": false,
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "number": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string"
-                  },
-                  "profilePicUrl": {
-                    "type": "string"
-                  },
-                  "isGroup": {
-                    "type": "boolean"
-                  },
-                  "isAdmin": {
-                    "type": "boolean"
-                  },
-                  "isOpen": {
-                    "type": "boolean"
-                  },
-                  "isBotEnabled": {
-                    "type": "boolean"
-                  },
-                  "utmCampaign": {
-                    "type": "string"
-                  },
-                  "utmContent": {
-                    "type": "string"
-                  },
-                  "utmMedium": {
-                    "type": "string"
-                  },
-                  "utmSource": {
-                    "type": "string"
-                  },
-                  "utmTerms": {
-                    "type": "string"
-                  },
-                  "active": {
-                    "type": "boolean"
-                  },
-                  "channel": {
-                    "type": "string"
-                  },
-                  "whatsappId": {
-                    "type": "string"
-                  },
-                  "companyId": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "<success message>"
-                    }
-                  },
-                  "example": {
-                    "message": "<success message>"
-                  },
-                  "required": [
-                    "message"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "ERR_SENDING_WAPP_MSG"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "error": "<validation error message>"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "description": "Mensagem de erro",
-                      "example": "ERR_SESSION_EXPIRED"
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "error": "ERR_SESSION_EXPIRED"
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Ticket not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "ERR_NO_TICKETS_FOUND"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "error": "ERR_NO_TICKETS_FOUND"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "get": {
-        "operationId": "getTicket",
-        "summary": "Get ticket",
-        "tags": [
-          "Get Ticket"
-        ],
-        "deprecated": false,
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "description": "ID do ticket"
-                    },
-                    "order": {
-                      "type": "number",
-                      "description": "Ordem em que ele aparecerá na fila"
-                    },
-                    "status": {
-                      "type": "string",
-                      "description": "Estado entre `open`, `pending` e `closed`"
-                    },
-                    "unreadMessages": {
-                      "type": "number",
-                      "description": "Número de mensagens não lidas"
-                    },
-                    "lastMessage": {
-                      "type": "string",
-                      "description": "Última mensagem enviada"
-                    },
-                    "isGroup": {
-                      "type": "boolean",
-                      "description": "Se é um grupo"
-                    },
-                    "isBot": {
-                      "type": "boolean",
-                      "description": "Se o bot está ativado"
-                    },
-                    "channel": {
-                      "type": "string",
-                      "description": "Nome da instancia"
-                    },
-                    "userId": {
-                      "type": "string",
-                      "description": "ID do usuário"
-                    },
-                    "contactId": {
-                      "type": "string",
-                      "description": "ID do contato"
-                    },
-                    "whatsappId": {
-                      "type": "string",
-                      "description": "Id da conexão do WhatsApp."
-                    },
-                    "queueId": {
-                      "type": "string",
-                      "description": "ID do departamento"
-                    },
-                    "companyId": {
-                      "type": "string",
-                      "description": "ID da empresa"
-                    },
-                    "chatConversationId": {
-                      "type": "string"
-                    },
-                    "createdAt": {
-                      "type": "string"
-                    },
-                    "updatedAt": {
-                      "type": "string"
-                    }
-                  },
-                  "example": {
-                    "id": "id-do-ticket",
-                    "order": 1,
-                    "status": "open",
-                    "unreadMessages": 0,
-                    "lastMessage": "Última mensagem enviada",
-                    "isGroup": false,
-                    "isBot": false,
-                    "channel": "evolution",
-                    "userId": "id-do-usuario",
-                    "contactId": "id-do-contato",
-                    "whatsappId": "id-da-conexao",
-                    "queueId": null,
-                    "companyId": "id-da-empresa",
-                    "chatConversationId": null,
-                    "createdAt": "data-de-criacao",
-                    "updatedAt": "data-da-ultima-atualizacao"
-                  },
-                  "required": [
-                    "messages"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "ERR_SENDING_WAPP_MSG"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "error": "<validation error message>"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "description": "Mensagem de erro",
-                      "example": "ERR_SESSION_EXPIRED"
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "error": "ERR_SESSION_EXPIRED"
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Ticket not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "ERR_NO_TICKETS_FOUND"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "error": "ERR_NO_TICKETS_FOUND"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "operationId": "deleteTicket",
-        "summary": "Delete ticket",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "ticketId",
-            "description": "ID do ticket a ser excluído.",
-            "schema": {
-              "type": "string",
-              "description": "ID do ticket a ser excluído."
-            },
-            "required": true
-          }
-        ],
-        "tags": [
-          "Delete Ticket"
-        ],
-        "deprecated": false,
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "<success message>"
-                    }
-                  },
-                  "example": {
-                    "message": "<success message>"
-                  },
-                  "required": [
-                    "message"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "ERR_SENDING_WAPP_MSG"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "error": "<validation error message>"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "description": "Mensagem de erro",
-                      "example": "ERR_SESSION_EXPIRED"
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "error": "ERR_SESSION_EXPIRED"
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Ticket not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "ERR_NO_TICKETS_FOUND"
-                    }
-                  },
-                  "required": [
-                    "error"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "error": "ERR_NO_TICKETS_FOUND"
                   }
                 }
               }
@@ -1225,13 +721,554 @@
                     }
                   },
                   "required": [
-                    "message",
-                    "code"
+                    "error"
                   ],
                   "title": "Error",
                   "description": "The error information",
                   "example": {
                     "error": "ERR_SESSION_EXPIRED"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTag",
+        "summary": "Create a new tag",
+        "tags": [
+          "Tags"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TagCreation"
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Tag created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tickets/{ticketId}": {
+      "put": {
+        "operationId": "updateTicket",
+        "summary": "Send a text message",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ticketId",
+            "description": "O ID do ticket a ser atualizado.",
+            "schema": {
+              "type": "string",
+              "description": "O ID do ticket a ser atualizado."
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "Send Mensages"
+        ],
+        "deprecated": false,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "number": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "profilePicUrl": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "isAdmin": {
+                    "type": "boolean"
+                  },
+                  "isOpen": {
+                    "type": "boolean"
+                  },
+                  "isBotEnabled": {
+                    "type": "boolean"
+                  },
+                  "utmCampaign": {
+                    "type": "string"
+                  },
+                  "utmContent": {
+                    "type": "string"
+                  },
+                  "utmMedium": {
+                    "type": "string"
+                  },
+                  "utmSource": {
+                    "type": "string"
+                  },
+                  "utmTerms": {
+                    "type": "string"
+                  },
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "channel": {
+                    "type": "string"
+                  },
+                  "whatsappId": {
+                    "type": "string"
+                  },
+                  "companyId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "<success message>"
+                    }
+                  },
+                  "example": {
+                    "message": "<success message>"
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ticket not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_NO_TICKETS_FOUND"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_NO_TICKETS_FOUND"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getTicket",
+        "summary": "Get ticket",
+        "tags": [
+          "Get Ticket"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID do ticket"
+                    },
+                    "order": {
+                      "type": "number",
+                      "description": "Ordem em que ele aparecerá na fila"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Estado entre `open`, `pending` e `closed`"
+                    },
+                    "unreadMessages": {
+                      "type": "number",
+                      "description": "Número de mensagens não lidas"
+                    },
+                    "lastMessage": {
+                      "type": "string",
+                      "description": "Última mensagem enviada"
+                    },
+                    "isGroup": {
+                      "type": "boolean",
+                      "description": "Se é um grupo"
+                    },
+                    "isBot": {
+                      "type": "boolean",
+                      "description": "Se o bot está ativado"
+                    },
+                    "channel": {
+                      "type": "string",
+                      "description": "Nome da instancia"
+                    },
+                    "userId": {
+                      "type": "string",
+                      "description": "ID do usuário"
+                    },
+                    "contactId": {
+                      "type": "string",
+                      "description": "ID do contato"
+                    },
+                    "whatsappId": {
+                      "type": "string",
+                      "description": "Id da conexão do WhatsApp."
+                    },
+                    "queueId": {
+                      "type": "string",
+                      "description": "ID do departamento"
+                    },
+                    "companyId": {
+                      "type": "string",
+                      "description": "ID da empresa"
+                    },
+                    "chatConversationId": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "id": "id-do-ticket",
+                    "order": 1,
+                    "status": "open",
+                    "unreadMessages": 0,
+                    "lastMessage": "Última mensagem enviada",
+                    "isGroup": false,
+                    "isBot": false,
+                    "channel": "evolution",
+                    "userId": "id-do-usuario",
+                    "contactId": "id-do-contato",
+                    "whatsappId": "id-da-conexao",
+                    "queueId": null,
+                    "companyId": "id-da-empresa",
+                    "chatConversationId": null,
+                    "createdAt": "data-de-criacao",
+                    "updatedAt": "data-da-ultima-atualizacao"
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ticket not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_NO_TICKETS_FOUND"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_NO_TICKETS_FOUND"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteTicket",
+        "summary": "Delete ticket",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ticketId",
+            "description": "ID do ticket a ser excluído.",
+            "schema": {
+              "type": "string",
+              "description": "ID do ticket a ser excluído."
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "Delete Ticket"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "<success message>"
+                    }
+                  },
+                  "example": {
+                    "message": "<success message>"
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ticket not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_NO_TICKETS_FOUND"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_NO_TICKETS_FOUND"
                   }
                 }
               }
@@ -1351,8 +1388,7 @@
                     }
                   },
                   "required": [
-                    "message",
-                    "code"
+                    "error"
                   ],
                   "title": "Error",
                   "description": "The error information",
@@ -1521,8 +1557,7 @@
                     }
                   },
                   "required": [
-                    "message",
-                    "code"
+                    "error"
                   ],
                   "title": "Error",
                   "description": "The error information",
@@ -1647,8 +1682,7 @@
                     }
                   },
                   "required": [
-                    "message",
-                    "code"
+                    "error"
                   ],
                   "title": "Error",
                   "description": "The error information",
@@ -1831,8 +1865,7 @@
                     }
                   },
                   "required": [
-                    "message",
-                    "code"
+                    "error"
                   ],
                   "title": "Error",
                   "description": "The error information",
@@ -1955,8 +1988,7 @@
                     }
                   },
                   "required": [
-                    "message",
-                    "code"
+                    "error"
                   ],
                   "title": "Error",
                   "description": "The error information",
@@ -2306,8 +2338,7 @@
                     }
                   },
                   "required": [
-                    "message",
-                    "code"
+                    "error"
                   ],
                   "title": "Error",
                   "description": "The error information",
@@ -2599,8 +2630,7 @@
                     }
                   },
                   "required": [
-                    "message",
-                    "code"
+                    "error"
                   ],
                   "title": "Error",
                   "description": "The error information",
@@ -2772,7 +2802,306 @@
           }
         }
       }
-    }
+    },
+    "/api/tags": {
+      "get": {
+        "operationId": "getTags",
+        "summary": "Get all tags",
+        "tags": [
+          "Tags"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Tag"
+                      }
+                    },
+                    "count": {
+                      "type": "integer",
+                      "description": "The number of tags returned"
+                    },
+                    "hasMore": {
+                      "type": "boolean",
+                      "description": "Indicates if there are more tags available"
+                    }
+                  },
+                  "required": ["tags", "count", "hasMore"]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTag",
+        "summary": "Create a new tag",
+        "tags": [
+          "Tags"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TagCreation"
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Tag created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tags/{tagId}": {
+      "get": {
+        "operationId": "getTagById",
+        "summary": "Get tag by ID",
+        "tags": [
+          "Tags"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "tagId",
+            "description": "ID of the tag to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tag not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_TAGS_FOUND"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateTag",
+        "summary": "Update a tag by ID",
+        "tags": [
+          "Tags"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "tagId",
+            "description": "ID of the tag to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TagCreation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tag updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tag not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_TAGS_FOUND"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteTag",
+        "summary": "Delete a tag by ID",
+        "tags": [
+          "Tags"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "tagId",
+            "description": "ID of the tag to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tag deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response.SUCCESS"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tag not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_TAGS_FOUND"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          }
+        }
+      }
+    }    
   },
   "components": {
     "securitySchemes": {
@@ -2796,6 +3125,73 @@
         "required": [
           "message"
         ]
+      },
+      "TagCreation": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the tag",
+            "example": "Example"
+          },
+          "color": {
+            "type": "string",
+            "description": "Color code of the tag",
+            "example": "#5300eb"
+          },
+          "kanban": {
+            "type": "number",
+            "description": "Kanban value of the tag",
+            "example": 0
+          },
+          "order": {
+            "type": "number",
+            "description": "Order value of the tag",
+            "example": 0
+          },
+          "companyId": {
+            "type": "string",
+            "description": "ID of the company associated with the tag",
+            "example": "3708fcdf-954b-48f8-91ff-25babaccac67"
+          }
+        },
+        "required": ["name", "color", "kanban", "order", "companyId"]
+      },
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "kanban": {
+            "type": "integer"
+          },
+          "order": {
+            "type": "integer"
+          },
+          "companyId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "contacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Contact"
+            }
+          }
+        },
+        "required": ["id", "name", "color", "order", "companyId", "createdAt", "updatedAt"]
       },
       "Ticket": {
         "type": "object",
@@ -3422,6 +3818,24 @@
           "code": "NOT_FOUND",
           "message": "Not found",
           "issues": []
+        }
+      },
+      "error.ERR_NO_TAGS_FOUND": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "The error message",
+            "example": "ERR_NO_TAGS_FOUND"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "Error",
+        "description": "The error information",
+        "example": {
+          "error": "ERR_NO_TAGS_FOUND"
         }
       },
       "error.ERR_NO_TICKETS_FOUND": {

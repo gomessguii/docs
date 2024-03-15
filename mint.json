@@ -188,6 +188,16 @@
             "api-reference/schedules/update-schedule",
             "api-reference/schedules/delete-schedule"
           ]
+        },
+        {
+          "group": "Tags",
+          "pages": [
+            "api-reference/tags/post-tag",
+            "api-reference/tags/get-tag",
+            "api-reference/tags/list-tags",
+            "api-reference/tags/update-tag",
+            "api-reference/tags/delete-tag"
+          ]
         }
       ]
     }
