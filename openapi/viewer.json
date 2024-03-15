@@ -479,6 +479,16 @@
               }
             }
           },
+          "404": {
+            "description": "Ticket not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_TICKETS_FOUND"
+                }
+              }
+            }
+          },
           "400": {
             "description": "Invalid input data",
             "content": {
@@ -605,6 +615,95 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ticket not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_TICKETS_FOUND"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteTicket",
+        "summary": "Delete ticket",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ticketId",
+            "description": "ID do ticket a ser excluído.",
+            "schema": {
+              "type": "string",
+              "description": "ID do ticket a ser excluído."
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "Delete Ticket"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "SUCCESS"
+                    }
+                  },
+                  "example": {
+                    "message": "SUCCESS"
+                  },
+                  "required": [
+                    "messages"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ticket not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_TICKETS_FOUND"
                 }
               }
             }
@@ -8380,7 +8479,7 @@
         "title": "Error",
         "description": "The error information",
         "example": {
-          "error": "ERR_SENDING_WAPP_MSG"
+          "error": "ERR_NO_TICKETS_FOUND"
         }
       },
       "error.INTERNAL_SERVER_ERROR": {
@@ -8465,6 +8564,24 @@
           "code": "NOT_FOUND",
           "message": "Not found",
           "issues": []
+        }
+      },
+      "error.ERR_NO_TICKETS_FOUND": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "The error message",
+            "example": "ERR_NO_TICKETS_FOUND"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "Error",
+        "description": "The error information",
+        "example": {
+          "error": "ERR_NO_TICKETS_FOUND"
         }
       },
       "error.UNAUTHORIZED": {

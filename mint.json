@@ -2,7 +2,6 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "AtendAI Docs",
   "openapi": [
-    "/openapi/builder.json",
     "/openapi/viewer.json"
   ],
   "feedback": {
@@ -33,6 +32,12 @@
   "primaryTab": {
     "name": "Geral"
   },
+  "tabs": [
+    {
+      "name": "API",
+      "url": "api-reference"
+    }
+  ],
   "navigation": [
     {
       "group": "Iniciar",
@@ -135,6 +140,33 @@
             "definitions/quick-answers",
             "definitions/integrations",
             "definitions/settings"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Início",
+      "pages": ["api-reference/authentication"]
+    },
+    {
+      "group": "Chat",
+      "pages": [
+        {
+          "group": "Messages",
+          "pages": [
+            "api-reference/messages/send-text",
+            "api-reference/messages/send-media",
+            "api-reference/messages/send-media-url",
+            "api-reference/messages/send-location"
+          ]
+        },
+        {
+          "group": "Tickets",
+          "pages": [
+            "api-reference/tickets/get-ticket",
+            "api-reference/tickets/list-tickets",
+            "api-reference/tickets/update-ticket",
+            "api-reference/tickets/delete-ticket"
           ]
         }
       ]
