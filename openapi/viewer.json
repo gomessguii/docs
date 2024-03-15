@@ -912,7 +912,389 @@
           }
         }
       }
-    }
+    },
+    "/api/contacts": {
+      "post": {
+        "operationId": "createContact",
+        "summary": "Create a new contact",
+        "tags": [
+          "Contacts"
+        ],
+        "deprecated": false,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the contact"
+                  },
+                  "number": {
+                    "type": "string",
+                    "description": "Phone number of the contact"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "Email of the contact"
+                  },
+                  "profilePicUrl": {
+                    "type": "string",
+                    "description": "URL of the profile picture"
+                  },
+                  "isGroup": {
+                    "type": "boolean",
+                    "description": "Whether the contact is a group"
+                  },
+                  "isAdmin": {
+                    "type": "boolean",
+                    "description": "Whether the contact is an admin"
+                  },
+                  "isOpen": {
+                    "type": "boolean",
+                    "description": "Whether the contact is open"
+                  },
+                  "isBotEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the bot is enabled for the contact"
+                  },
+                  "utmCampaign": {
+                    "type": "string",
+                    "description": "UTM campaign"
+                  },
+                  "utmContent": {
+                    "type": "string",
+                    "description": "UTM content"
+                  },
+                  "utmMedium": {
+                    "type": "string",
+                    "description": "UTM medium"
+                  },
+                  "utmSource": {
+                    "type": "string",
+                    "description": "UTM source"
+                  },
+                  "utmTerms": {
+                    "type": "string",
+                    "description": "UTM terms"
+                  },
+                  "active": {
+                    "type": "boolean",
+                    "description": "Whether the contact is active"
+                  },
+                  "channel": {
+                    "type": "string",
+                    "description": "Channel"
+                  },
+                  "whatsappId": {
+                    "type": "string",
+                    "description": "WhatsApp ID"
+                  },
+                  "companyId": {
+                    "type": "string",
+                    "description": "ID of the company associated with the contact"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Contact created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the created contact"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Contact created successfully"
+                    }
+                  },
+                  "required": ["id", "message"]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getContacts",
+        "summary": "Get all contacts",
+        "tags": [
+          "Contacts"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "contacts": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Contact"
+                      }
+                    }
+                  },
+                  "required": ["contacts"]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/contacts/{contactId}": {
+      "get": {
+        "operationId": "getContactById",
+        "summary": "Get contact by ID",
+        "tags": [
+          "Contacts"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contactId",
+            "description": "ID of the contact to retrieve",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contact"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Contact not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateContact",
+        "summary": "Update contact",
+        "tags": [
+          "Contacts"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contactId",
+            "description": "ID of the contact to update",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactUpdate"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Contact updated successfully"
+                    }
+                  },
+                  "required": ["message"]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Contact not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteContact",
+        "summary": "Delete contact",
+        "tags": [
+          "Contacts"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contactId",
+            "description": "ID of the contact to delete",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response - No content"
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Contact not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          }
+        }
+      }
+    }    
   },
   "components": {
     "securitySchemes": {

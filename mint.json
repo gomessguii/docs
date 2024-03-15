@@ -168,6 +168,16 @@
             "api-reference/tickets/update-ticket",
             "api-reference/tickets/delete-ticket"
           ]
+        },
+        {
+          "group": "Contacts",
+          "pages": [
+            "api-reference/contacts/post-contact",
+            "api-reference/contacts/get-contact",
+            "api-reference/contacts/list-contacts",
+            "api-reference/contacts/update-contact",
+            "api-reference/contacts/delete-contact"
+          ]
         }
       ]
     }
