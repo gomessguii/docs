@@ -178,6 +178,16 @@
             "api-reference/contacts/update-contact",
             "api-reference/contacts/delete-contact"
           ]
+        },
+        {
+          "group": "Schedules",
+          "pages": [
+            "api-reference/schedules/post-schedule",
+            "api-reference/schedules/get-schedule",
+            "api-reference/schedules/list-schedules",
+            "api-reference/schedules/update-schedule",
+            "api-reference/schedules/delete-schedule"
+          ]
         }
       ]
     }

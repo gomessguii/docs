@@ -33,12 +33,12 @@
                     "description": "O número que receberá a mensagem."
                   },
                   "message": {
-                      "type": "string",
-                      "description": "O conteúdo da mensagem que será enviada. É possível utilizar estilização de texto no padrão do WhatsApp."
+                    "type": "string",
+                    "description": "O conteúdo da mensagem que será enviada. É possível utilizar estilização de texto no padrão do WhatsApp."
                   },
                   "autoClose": {
-                      "type": "boolean",
-                      "description": "Indica se o ticket deve ser fechado automaticamente ou não após essa mensagem."
+                    "type": "boolean",
+                    "description": "Indica se o ticket deve ser fechado automaticamente ou não após essa mensagem."
                   }
                 }
               }
@@ -47,7 +47,7 @@
         },
         "security": [
           {
-             "Authorization": []
+            "Authorization": []
           }
         ],
         "responses": {
@@ -56,17 +56,19 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/response.SUCCESS"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "<success message>"
+                    }
+                  },
+                  "example": {
+                    "message": "<success message>"
+                  },
+                  "required": [
+                    "message"
+                  ]
                 }
               }
             }
@@ -76,7 +78,48 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
                 }
               }
             }
@@ -104,39 +147,39 @@
                     "description": "O número que receberá a mensagem."
                   },
                   "locdata": {
-                      "type": "object",
-                      "description": "O conteúdo da mensagem que será enviada. É possível utilizar estilização de texto no padrão do WhatsApp.",
-                      "properties": {
-                        "latitude": {
-                          "type": "number",
-                          "description": "Latitude da localização",
-                          "example": 25.65239387554923
-                        },
-                        "longitude": {
-                          "type": "number",
-                          "description": "Longitude da localização",
-                          "example": 25.65239387554923
-                        },
-                        "name": {
-                          "type": "string",
-                          "description": "Nome do endereço",
-                          "example": "Al Bayt Stadium"
-                        },
-                        "address": {
-                          "type": "string",
-                          "description": "Endereço",
-                          "example": "2022 World Cup Opening Venue in Qatar"
-                        },
-                        "footerText": {
-                          "type": "string",
-                          "description": "Texto a ser enviado na mensagem",
-                          "example": "Footer Text"
-                        }
+                    "type": "object",
+                    "description": "O conteúdo da mensagem que será enviada. É possível utilizar estilização de texto no padrão do WhatsApp.",
+                    "properties": {
+                      "latitude": {
+                        "type": "number",
+                        "description": "Latitude da localização",
+                        "example": 25.65239387554923
+                      },
+                      "longitude": {
+                        "type": "number",
+                        "description": "Longitude da localização",
+                        "example": 25.65239387554923
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Nome do endereço",
+                        "example": "Al Bayt Stadium"
+                      },
+                      "address": {
+                        "type": "string",
+                        "description": "Endereço",
+                        "example": "2022 World Cup Opening Venue in Qatar"
+                      },
+                      "footerText": {
+                        "type": "string",
+                        "description": "Texto a ser enviado na mensagem",
+                        "example": "Footer Text"
                       }
+                    }
                   },
                   "autoClose": {
-                      "type": "boolean",
-                      "description": "Indica se o ticket deve ser fechado automaticamente ou não após essa mensagem."
+                    "type": "boolean",
+                    "description": "Indica se o ticket deve ser fechado automaticamente ou não após essa mensagem."
                   }
                 }
               }
@@ -145,7 +188,7 @@
         },
         "security": [
           {
-             "Authorization": []
+            "Authorization": []
           }
         ],
         "responses": {
@@ -154,17 +197,19 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/response.SUCCESS"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "<success message>"
+                    }
+                  },
+                  "example": {
+                    "message": "<success message>"
+                  },
+                  "required": [
+                    "message"
+                  ]
                 }
               }
             }
@@ -174,7 +219,48 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
                 }
               }
             }
@@ -202,17 +288,17 @@
                     "description": "O número que receberá a mensagem."
                   },
                   "files": {
-                      "type": "string",
-                      "description": "O conteúdo da mensagem que será enviada. É possível utilizar estilização de texto no padrão do WhatsApp.",
-                      "format": "binary"
+                    "type": "string",
+                    "description": "O conteúdo da mensagem que será enviada. É possível utilizar estilização de texto no padrão do WhatsApp.",
+                    "format": "binary"
                   },
                   "message": {
                     "type": "string",
                     "description": "Mensagem de texto enviada em conjunto com o arquivo."
                   },
                   "autoClose": {
-                      "type": "boolean",
-                      "description": "Indica se o ticket deve ser fechado automaticamente ou não após essa mensagem."
+                    "type": "boolean",
+                    "description": "Indica se o ticket deve ser fechado automaticamente ou não após essa mensagem."
                   }
                 }
               }
@@ -221,7 +307,7 @@
         },
         "security": [
           {
-             "Authorization": []
+            "Authorization": []
           }
         ],
         "responses": {
@@ -230,17 +316,19 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/response.SUCCESS"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "<success message>"
+                    }
+                  },
+                  "example": {
+                    "message": "<success message>"
+                  },
+                  "required": [
+                    "message"
+                  ]
                 }
               }
             }
@@ -250,7 +338,48 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
                 }
               }
             }
@@ -298,8 +427,8 @@
                     "description": "Mensagem de texto enviada em conjunto com o arquivo."
                   },
                   "autoClose": {
-                      "type": "boolean",
-                      "description": "Indica se o ticket deve ser fechado automaticamente ou não após essa mensagem."
+                    "type": "boolean",
+                    "description": "Indica se o ticket deve ser fechado automaticamente ou não após essa mensagem."
                   }
                 }
               }
@@ -308,7 +437,7 @@
         },
         "security": [
           {
-             "Authorization": []
+            "Authorization": []
           }
         ],
         "responses": {
@@ -317,17 +446,19 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/response.SUCCESS"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "<success message>"
+                    }
+                  },
+                  "example": {
+                    "message": "<success message>"
+                  },
+                  "required": [
+                    "message"
+                  ]
                 }
               }
             }
@@ -337,7 +468,48 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
                 }
               }
             }
@@ -370,14 +542,67 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ContactUpdate"
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "number": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "profilePicUrl": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "isAdmin": {
+                    "type": "boolean"
+                  },
+                  "isOpen": {
+                    "type": "boolean"
+                  },
+                  "isBotEnabled": {
+                    "type": "boolean"
+                  },
+                  "utmCampaign": {
+                    "type": "string"
+                  },
+                  "utmContent": {
+                    "type": "string"
+                  },
+                  "utmMedium": {
+                    "type": "string"
+                  },
+                  "utmSource": {
+                    "type": "string"
+                  },
+                  "utmTerms": {
+                    "type": "string"
+                  },
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "channel": {
+                    "type": "string"
+                  },
+                  "whatsappId": {
+                    "type": "string"
+                  },
+                  "companyId": {
+                    "type": "string"
+                  }
+                }
               }
             }
           }
         },
         "security": [
           {
-             "Authorization": []
+            "Authorization": []
           }
         ],
         "responses": {
@@ -386,27 +611,19 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/response.SUCCESS"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Ticket not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.ERR_NO_TICKETS_FOUND"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "<success message>"
+                    }
+                  },
+                  "example": {
+                    "message": "<success message>"
+                  },
+                  "required": [
+                    "message"
+                  ]
                 }
               }
             }
@@ -416,7 +633,73 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ticket not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_NO_TICKETS_FOUND"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_NO_TICKETS_FOUND"
+                  }
                 }
               }
             }
@@ -432,36 +715,100 @@
         "deprecated": false,
         "security": [
           {
-             "Authorization": []
+            "Authorization": []
           }
-        ],  
+        ],
         "responses": {
           "200": {
             "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Ticket"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Ticket not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.ERR_NO_TICKETS_FOUND"
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID do ticket"
+                    },
+                    "order": {
+                      "type": "number",
+                      "description": "Ordem em que ele aparecerá na fila"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Estado entre `open`, `pending` e `closed`"
+                    },
+                    "unreadMessages": {
+                      "type": "number",
+                      "description": "Número de mensagens não lidas"
+                    },
+                    "lastMessage": {
+                      "type": "string",
+                      "description": "Última mensagem enviada"
+                    },
+                    "isGroup": {
+                      "type": "boolean",
+                      "description": "Se é um grupo"
+                    },
+                    "isBot": {
+                      "type": "boolean",
+                      "description": "Se o bot está ativado"
+                    },
+                    "channel": {
+                      "type": "string",
+                      "description": "Nome da instancia"
+                    },
+                    "userId": {
+                      "type": "string",
+                      "description": "ID do usuário"
+                    },
+                    "contactId": {
+                      "type": "string",
+                      "description": "ID do contato"
+                    },
+                    "whatsappId": {
+                      "type": "string",
+                      "description": "Id da conexão do WhatsApp."
+                    },
+                    "queueId": {
+                      "type": "string",
+                      "description": "ID do departamento"
+                    },
+                    "companyId": {
+                      "type": "string",
+                      "description": "ID da empresa"
+                    },
+                    "chatConversationId": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "id": "id-do-ticket",
+                    "order": 1,
+                    "status": "open",
+                    "unreadMessages": 0,
+                    "lastMessage": "Última mensagem enviada",
+                    "isGroup": false,
+                    "isBot": false,
+                    "channel": "evolution",
+                    "userId": "id-do-usuario",
+                    "contactId": "id-do-contato",
+                    "whatsappId": "id-da-conexao",
+                    "queueId": null,
+                    "companyId": "id-da-empresa",
+                    "chatConversationId": null,
+                    "createdAt": "data-de-criacao",
+                    "updatedAt": "data-da-ultima-atualizacao"
+                  },
+                  "required": [
+                    "messages"
+                  ]
                 }
               }
             }
@@ -471,7 +818,73 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ticket not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_NO_TICKETS_FOUND"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_NO_TICKETS_FOUND"
+                  }
                 }
               }
             }
@@ -508,27 +921,19 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/response.SUCCESS"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Ticket not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.ERR_NO_TICKETS_FOUND"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "<success message>"
+                    }
+                  },
+                  "example": {
+                    "message": "<success message>"
+                  },
+                  "required": [
+                    "message"
+                  ]
                 }
               }
             }
@@ -538,7 +943,73 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ticket not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_NO_TICKETS_FOUND"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_NO_TICKETS_FOUND"
+                  }
                 }
               }
             }
@@ -618,7 +1089,7 @@
         "deprecated": false,
         "security": [
           {
-             "Authorization": []
+            "Authorization": []
           }
         ],
         "responses": {
@@ -688,39 +1159,29 @@
                   },
                   "example": {
                     "tickets": [
-                        {
-                            "id": "id-do-ticket",
-                            "order": 1,
-                            "status": "open",
-                            "unreadMessages": 0,
-                            "lastMessage": "Última mensagem enviada",
-                            "isGroup": false,
-                            "isBot": false,
-                            "channel": "evolution",
-                            "userId": "id-do-usuario",
-                            "contactId": "id-do-contato",
-                            "whatsappId": "id-da-conexao",
-                            "queueId": null,
-                            "companyId": "id-da-empresa",
-                            "chatConversationId": null,
-                            "createdAt": "data-de-criacao",
-                            "updatedAt": "data-da-ultima-atualizacao"
-                        }
-                      ]
+                      {
+                        "id": "id-do-ticket",
+                        "order": 1,
+                        "status": "open",
+                        "unreadMessages": 0,
+                        "lastMessage": "Última mensagem enviada",
+                        "isGroup": false,
+                        "isBot": false,
+                        "channel": "evolution",
+                        "userId": "id-do-usuario",
+                        "contactId": "id-do-contato",
+                        "whatsappId": "id-da-conexao",
+                        "queueId": null,
+                        "companyId": "id-da-empresa",
+                        "chatConversationId": null,
+                        "createdAt": "data-de-criacao",
+                        "updatedAt": "data-da-ultima-atualizacao"
+                      }
+                    ]
                   },
                   "required": [
                     "messages"
                   ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
                 }
               }
             }
@@ -730,7 +1191,48 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
                 }
               }
             }
@@ -762,11 +1264,75 @@
                     "contacts": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/Contact"
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "profilePicUrl": {
+                            "type": "string"
+                          },
+                          "isGroup": {
+                            "type": "boolean"
+                          },
+                          "isAdmin": {
+                            "type": "boolean"
+                          },
+                          "isOpen": {
+                            "type": "boolean"
+                          },
+                          "isBotEnabled": {
+                            "type": "boolean"
+                          },
+                          "utmCampaign": {
+                            "type": "string"
+                          },
+                          "utmContent": {
+                            "type": "string"
+                          },
+                          "utmMedium": {
+                            "type": "string"
+                          },
+                          "utmSource": {
+                            "type": "string"
+                          },
+                          "utmTerms": {
+                            "type": "string"
+                          },
+                          "active": {
+                            "type": "boolean"
+                          },
+                          "channel": {
+                            "type": "string"
+                          },
+                          "whatsappId": {
+                            "type": "string"
+                          },
+                          "companyId": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          }
+                        }
                       }
                     }
                   },
-                  "required": ["contacts"]
+                  "required": [
+                    "contacts"
+                  ]
                 }
               }
             }
@@ -776,7 +1342,23 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
                 }
               }
             }
@@ -892,17 +1474,10 @@
                       "example": "Contact created successfully"
                     }
                   },
-                  "required": ["id", "message"]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                  "required": [
+                    "id",
+                    "message"
+                  ]
                 }
               }
             }
@@ -912,7 +1487,48 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
                 }
               }
             }
@@ -950,7 +1566,69 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Contact"
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "number": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "profilePicUrl": {
+                      "type": "string"
+                    },
+                    "isGroup": {
+                      "type": "boolean"
+                    },
+                    "isAdmin": {
+                      "type": "boolean"
+                    },
+                    "isOpen": {
+                      "type": "boolean"
+                    },
+                    "isBotEnabled": {
+                      "type": "boolean"
+                    },
+                    "utmCampaign": {
+                      "type": "string"
+                    },
+                    "utmContent": {
+                      "type": "string"
+                    },
+                    "utmMedium": {
+                      "type": "string"
+                    },
+                    "utmSource": {
+                      "type": "string"
+                    },
+                    "utmTerms": {
+                      "type": "string"
+                    },
+                    "active": {
+                      "type": "boolean"
+                    },
+                    "channel": {
+                      "type": "string"
+                    },
+                    "whatsappId": {
+                      "type": "string"
+                    },
+                    "companyId": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -960,7 +1638,23 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
                 }
               }
             }
@@ -970,7 +1664,22 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.ERR_NO_CONTACTS_FOUND"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_NO_CONTACTS_FOUND"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_NO_CONTACTS_FOUND"
+                  }
                 }
               }
             }
@@ -1000,7 +1709,60 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ContactUpdate"
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "number": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "profilePicUrl": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "isAdmin": {
+                    "type": "boolean"
+                  },
+                  "isOpen": {
+                    "type": "boolean"
+                  },
+                  "isBotEnabled": {
+                    "type": "boolean"
+                  },
+                  "utmCampaign": {
+                    "type": "string"
+                  },
+                  "utmContent": {
+                    "type": "string"
+                  },
+                  "utmMedium": {
+                    "type": "string"
+                  },
+                  "utmSource": {
+                    "type": "string"
+                  },
+                  "utmTerms": {
+                    "type": "string"
+                  },
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "channel": {
+                    "type": "string"
+                  },
+                  "whatsappId": {
+                    "type": "string"
+                  },
+                  "companyId": {
+                    "type": "string"
+                  }
+                }
               }
             }
           }
@@ -1023,27 +1785,9 @@
                       "example": "Contact updated successfully"
                     }
                   },
-                  "required": ["message"]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "UNAUTHORIZED",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Contact not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error.ERR_NO_CONTACTS_FOUND"
+                  "required": [
+                    "message"
+                  ]
                 }
               }
             }
@@ -1053,7 +1797,73 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Contact not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_NO_CONTACTS_FOUND"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_NO_CONTACTS_FOUND"
+                  }
                 }
               }
             }
@@ -1089,6 +1899,785 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "<success message>"
+                    }
+                  },
+                  "example": {
+                    "message": "<success message>"
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Contact not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_NO_CONTACTS_FOUND"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_NO_CONTACTS_FOUND"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/schedules": {
+      "post": {
+        "operationId": "createSchedule",
+        "summary": "Create a new schedule",
+        "tags": [
+          "Schedules"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "contactId": {
+                    "type": "string",
+                    "description": "ID of the associated contact"
+                  },
+                  "sendAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date and time at which the schedule is to be sent"
+                  },
+                  "flow": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "message",
+                            "image",
+                            "video",
+                            "file",
+                            "audio"
+                          ],
+                          "description": "Type of content in the flow"
+                        },
+                        "content": {
+                          "type": "string",
+                          "description": "Content URL"
+                        },
+                        "delay": {
+                          "type": "string",
+                          "description": "Delay in seconds before sending this content"
+                        },
+                        "fileName": {
+                          "type": "string",
+                          "description": "Name of the file (nullable)"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "content",
+                        "delay"
+                      ]
+                    },
+                    "description": "Flow of content to be sent"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "description": "ID of the user who created the schedule"
+                  },
+                  "flowId": {
+                    "type": "string",
+                    "description": "ID of the associated flow (nullable)"
+                  }
+                },
+                "required": [
+                  "contactId",
+                  "sendAt",
+                  "userId"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the schedule"
+                    },
+                    "flow": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "message",
+                              "image",
+                              "video",
+                              "file",
+                              "audio"
+                            ],
+                            "description": "Type of content in the flow"
+                          },
+                          "content": {
+                            "type": "string",
+                            "description": "Content URL"
+                          },
+                          "delay": {
+                            "type": "string",
+                            "description": "Delay in seconds before sending this content"
+                          },
+                          "fileName": {
+                            "type": "string",
+                            "description": "Name of the file (nullable)"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "content",
+                          "delay"
+                        ]
+                      },
+                      "description": "Flow of content to be sent"
+                    },
+                    "sendAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Date and time at which the schedule is to be sent"
+                    },
+                    "sentAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Date and time at which the schedule was sent (nullable)"
+                    },
+                    "contactId": {
+                      "type": "string",
+                      "description": "ID of the associated contact"
+                    },
+                    "ticketId": {
+                      "type": "string",
+                      "description": "ID of the associated ticket (nullable)"
+                    },
+                    "userId": {
+                      "type": "string",
+                      "description": "ID of the user who created the schedule"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Status of the schedule"
+                    },
+                    "companyId": {
+                      "type": "string",
+                      "description": "ID of the company associated with the schedule"
+                    },
+                    "flowId": {
+                      "type": "string",
+                      "description": "ID of the associated flow (nullable)"
+                    },
+                    "sequenceId": {
+                      "type": "string",
+                      "description": "ID of the associated sequence (nullable)"
+                    },
+                    "sequenceStageId": {
+                      "type": "string",
+                      "description": "ID of the associated sequence stage (nullable)"
+                    },
+                    "whatsappId": {
+                      "type": "string",
+                      "description": "ID of the associated WhatsApp connection"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Date and time at which the schedule was created"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Date and time at which the schedule was last updated"
+                    },
+                    "contact": {
+                      "description": "Information about the associated contact",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "number": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "profilePicUrl": {
+                          "type": "string"
+                        },
+                        "isGroup": {
+                          "type": "boolean"
+                        },
+                        "isAdmin": {
+                          "type": "boolean"
+                        },
+                        "isOpen": {
+                          "type": "boolean"
+                        },
+                        "isBotEnabled": {
+                          "type": "boolean"
+                        },
+                        "utmCampaign": {
+                          "type": "string"
+                        },
+                        "utmContent": {
+                          "type": "string"
+                        },
+                        "utmMedium": {
+                          "type": "string"
+                        },
+                        "utmSource": {
+                          "type": "string"
+                        },
+                        "utmTerms": {
+                          "type": "string"
+                        },
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "channel": {
+                          "type": "string"
+                        },
+                        "whatsappId": {
+                          "type": "string"
+                        },
+                        "companyId": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "user": {
+                      "description": "Information about the user who created the schedule",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "ID of the user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the user"
+                        }
+                      }
+                    },
+                    "typebotFlow": {
+                      "type": "string",
+                      "description": "Typebot flow associated with the schedule (nullable)"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_SENDING_WAPP_MSG"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "<validation error message>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getSchedules",
+        "summary": "Get all schedules",
+        "tags": [
+          "Schedules"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schedules": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Schedule"
+                      }
+                    }
+                  },
+                  "required": ["schedules"]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/schedules/{scheduleId}": {
+      "get": {
+        "operationId": "getScheduleById",
+        "summary": "Get schedule by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "scheduleId",
+            "description": "ID of the schedule to retrieve",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "ID of the schedule to retrieve"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "Schedules"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the schedule"
+                    },
+                    "flow": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "message",
+                              "image",
+                              "video",
+                              "file",
+                              "audio"
+                            ],
+                            "description": "Type of content in the flow"
+                          },
+                          "content": {
+                            "type": "string",
+                            "description": "Content URL"
+                          },
+                          "delay": {
+                            "type": "string",
+                            "description": "Delay in seconds before sending this content"
+                          },
+                          "fileName": {
+                            "type": "string",
+                            "description": "Name of the file (nullable)"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "content",
+                          "delay"
+                        ]
+                      },
+                      "description": "Flow of content to be sent"
+                    },
+                    "sendAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Date and time at which the schedule is to be sent"
+                    },
+                    "sentAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Date and time at which the schedule was sent (nullable)"
+                    },
+                    "contactId": {
+                      "type": "string",
+                      "description": "ID of the associated contact"
+                    },
+                    "ticketId": {
+                      "type": "string",
+                      "description": "ID of the associated ticket (nullable)"
+                    },
+                    "userId": {
+                      "type": "string",
+                      "description": "ID of the user who created the schedule"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Status of the schedule"
+                    },
+                    "companyId": {
+                      "type": "string",
+                      "description": "ID of the company associated with the schedule"
+                    },
+                    "flowId": {
+                      "type": "string",
+                      "description": "ID of the associated flow (nullable)"
+                    },
+                    "sequenceId": {
+                      "type": "string",
+                      "description": "ID of the associated sequence (nullable)"
+                    },
+                    "sequenceStageId": {
+                      "type": "string",
+                      "description": "ID of the associated sequence stage (nullable)"
+                    },
+                    "whatsappId": {
+                      "type": "string",
+                      "description": "ID of the associated WhatsApp connection"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Date and time at which the schedule was created"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Date and time at which the schedule was last updated"
+                    },
+                    "contact": {
+                      "description": "Information about the associated contact",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "number": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "profilePicUrl": {
+                          "type": "string"
+                        },
+                        "isGroup": {
+                          "type": "boolean"
+                        },
+                        "isAdmin": {
+                          "type": "boolean"
+                        },
+                        "isOpen": {
+                          "type": "boolean"
+                        },
+                        "isBotEnabled": {
+                          "type": "boolean"
+                        },
+                        "utmCampaign": {
+                          "type": "string"
+                        },
+                        "utmContent": {
+                          "type": "string"
+                        },
+                        "utmMedium": {
+                          "type": "string"
+                        },
+                        "utmSource": {
+                          "type": "string"
+                        },
+                        "utmTerms": {
+                          "type": "string"
+                        },
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "channel": {
+                          "type": "string"
+                        },
+                        "whatsappId": {
+                          "type": "string"
+                        },
+                        "companyId": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "user": {
+                      "description": "Information about the user who created the schedule",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "ID of the user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the user"
+                        }
+                      }
+                    },
+                    "typebotFlow": {
+                      "type": "string",
+                      "description": "Typebot flow associated with the schedule (nullable)"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Mensagem de erro",
+                      "example": "ERR_SESSION_EXPIRED"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "code"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_SESSION_EXPIRED"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Schedule not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "The error message",
+                      "example": "ERR_NO_SCHEDULE_FOUND"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "Error",
+                  "description": "The error information",
+                  "example": {
+                    "error": "ERR_NO_SCHEDULE_FOUND"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateSchedule",
+        "summary": "Update a schedule",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "scheduleId",
+            "description": "The ID of the schedule to update",
+            "schema": {
+              "type": "string",
+              "description": "The ID of the schedule to update"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "Schedules"
+        ],
+        "deprecated": false,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScheduleCreation"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
                   "$ref": "#/components/schemas/response.SUCCESS"
                 }
               }
@@ -1105,11 +2694,11 @@
             }
           },
           "404": {
-            "description": "Contact not found",
+            "description": "Schedule not found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error.ERR_NO_CONTACTS_FOUND"
+                  "$ref": "#/components/schemas/error.ERR_NO_SCHEDULE_FOUND"
                 }
               }
             }
@@ -1125,8 +2714,65 @@
             }
           }
         }
+      },
+      "delete": {
+        "operationId": "deleteSchedule",
+        "summary": "Delete a schedule",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "scheduleId",
+            "description": "The ID of the schedule to delete",
+            "schema": {
+              "type": "string",
+              "description": "The ID of the schedule to delete"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "Schedules"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response.SUCCESS"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Schedule not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_SCHEDULE_FOUND"
+                }
+              }
+            }
+          }
+        }
       }
-    }    
+    }
   },
   "components": {
     "securitySchemes": {
@@ -1259,6 +2905,289 @@
           }
         }
       },
+      "ScheduleCreation": {
+        "type": "object",
+        "properties": {
+          "contactId": {
+            "type": "string",
+            "description": "ID of the associated contact"
+          },
+          "sendAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date and time at which the schedule is to be sent"
+          },
+          "flow": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "message",
+                    "image",
+                    "video",
+                    "file",
+                    "audio"
+                  ],
+                  "description": "Type of content in the flow"
+                },
+                "content": {
+                  "type": "string",
+                  "description": "Content URL"
+                },
+                "delay": {
+                  "type": "string",
+                  "description": "Delay in seconds before sending this content"
+                },
+                "fileName": {
+                  "type": "string",
+                  "description": "Name of the file (nullable)"
+                }
+              },
+              "required": [
+                "type",
+                "content",
+                "delay"
+              ]
+            },
+            "description": "Flow of content to be sent"
+          },
+          "userId": {
+            "type": "string",
+            "description": "ID of the user who created the schedule"
+          },
+          "flowId": {
+            "type": "string",
+            "description": "ID of the associated flow (nullable)"
+          }
+        },
+        "required": [
+          "contactId",
+          "sendAt",
+          "userId"
+        ]
+      },
+      "Schedule": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the schedule"
+          },
+          "flow": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "message",
+                    "image",
+                    "video",
+                    "file",
+                    "audio"
+                  ],
+                  "description": "Type of content in the flow"
+                },
+                "content": {
+                  "type": "string",
+                  "description": "Content URL"
+                },
+                "delay": {
+                  "type": "string",
+                  "description": "Delay in seconds before sending this content"
+                },
+                "fileName": {
+                  "type": "string",
+                  "description": "Name of the file (nullable)"
+                }
+              },
+              "required": [
+                "type",
+                "content",
+                "delay"
+              ]
+            },
+            "description": "Flow of content to be sent"
+          },
+          "sendAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date and time at which the schedule is to be sent"
+          },
+          "sentAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date and time at which the schedule was sent (nullable)"
+          },
+          "contactId": {
+            "type": "string",
+            "description": "ID of the associated contact"
+          },
+          "ticketId": {
+            "type": "string",
+            "description": "ID of the associated ticket (nullable)"
+          },
+          "userId": {
+            "type": "string",
+            "description": "ID of the user who created the schedule"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the schedule"
+          },
+          "companyId": {
+            "type": "string",
+            "description": "ID of the company associated with the schedule"
+          },
+          "flowId": {
+            "type": "string",
+            "description": "ID of the associated flow (nullable)"
+          },
+          "sequenceId": {
+            "type": "string",
+            "description": "ID of the associated sequence (nullable)"
+          },
+          "sequenceStageId": {
+            "type": "string",
+            "description": "ID of the associated sequence stage (nullable)"
+          },
+          "whatsappId": {
+            "type": "string",
+            "description": "ID of the associated WhatsApp connection"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date and time at which the schedule was created"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date and time at which the schedule was last updated"
+          },
+          "contact": {
+            "description": "Information about the associated contact",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "number": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "profilePicUrl": {
+                "type": "string"
+              },
+              "isGroup": {
+                "type": "boolean"
+              },
+              "isAdmin": {
+                "type": "boolean"
+              },
+              "isOpen": {
+                "type": "boolean"
+              },
+              "isBotEnabled": {
+                "type": "boolean"
+              },
+              "utmCampaign": {
+                "type": "string"
+              },
+              "utmContent": {
+                "type": "string"
+              },
+              "utmMedium": {
+                "type": "string"
+              },
+              "utmSource": {
+                "type": "string"
+              },
+              "utmTerms": {
+                "type": "string"
+              },
+              "active": {
+                "type": "boolean"
+              },
+              "channel": {
+                "type": "string"
+              },
+              "whatsappId": {
+                "type": "string"
+              },
+              "companyId": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string"
+              },
+              "updatedAt": {
+                "type": "string"
+              }
+            }
+          },
+          "user": {
+            "description": "Information about the user who created the schedule",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "ID of the user"
+              },
+              "name": {
+                "type": "string",
+                "description": "Name of the user"
+              }
+            }
+          },
+          "typebotFlow": {
+            "type": "string",
+            "description": "Typebot flow associated with the schedule (nullable)"
+          }
+        }
+      },
+      "ScheduleContent": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "message",
+              "image",
+              "video",
+              "file",
+              "audio"
+            ],
+            "description": "Type of content in the flow"
+          },
+          "content": {
+            "type": "string",
+            "description": "Content URL"
+          },
+          "delay": {
+            "type": "string",
+            "description": "Delay in seconds before sending this content"
+          },
+          "fileName": {
+            "type": "string",
+            "description": "Name of the file (nullable)"
+          }
+        },
+        "required": [
+          "type",
+          "content",
+          "delay"
+        ]
+      },
       "Contact": {
         "type": "object",
         "properties": {
@@ -1380,6 +3309,19 @@
           }
         }
       },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the user"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the user"
+          }
+        }
+      },
       "error.BAD_REQUEST": {
         "type": "object",
         "properties": {
@@ -1390,8 +3332,7 @@
           }
         },
         "required": [
-          "message",
-          "code"
+          "error"
         ],
         "title": "Error",
         "description": "The error information",
@@ -1517,6 +3458,24 @@
         "description": "The error information",
         "example": {
           "error": "ERR_NO_CONTACTS_FOUND"
+        }
+      },
+      "error.ERR_NO_SCHEDULE_FOUND": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "The error message",
+            "example": "ERR_NO_SCHEDULE_FOUND"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "Error",
+        "description": "The error information",
+        "example": {
+          "error": "ERR_NO_SCHEDULE_FOUND"
         }
       },
       "error.UNAUTHORIZED": {
