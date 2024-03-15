@@ -198,6 +198,16 @@
             "api-reference/tags/update-tag",
             "api-reference/tags/delete-tag"
           ]
+        },
+        {
+          "group": "Deparments",
+          "pages": [
+            "api-reference/departments/post-department",
+            "api-reference/departments/get-department",
+            "api-reference/departments/list-departments",
+            "api-reference/departments/update-department",
+            "api-reference/departments/delete-department"
+          ]
         }
       ]
     }

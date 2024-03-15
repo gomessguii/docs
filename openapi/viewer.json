@@ -3101,7 +3101,295 @@
           }
         }
       }
-    }    
+    },
+    "/api/departments": {
+      "get": {
+        "operationId": "getDepartments",
+        "summary": "Get all departments",
+        "tags": [
+          "Departments"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Department"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createDepartment",
+        "summary": "Create a new department",
+        "tags": [
+          "Departments"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "departmentId",
+            "required": true,
+            "description": "The ID of the department",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepartmentCreation"
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response.SUCCESS"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/departments/{departmentId}": {
+      "get": {
+        "operationId": "getDepartmentById",
+        "summary": "Get department by ID",
+        "tags": [
+          "Departments"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "departmentId",
+            "required": true,
+            "description": "The ID of the department to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Department"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Department not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_DEPARTMENTS_FOUND"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateDepartment",
+        "summary": "Update a department",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "departmentId",
+            "description": "The ID of the department to update",
+            "schema": {
+              "type": "string",
+              "description": "The ID of the department to update"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "Departments"
+        ],
+        "deprecated": false,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepartmentCreation"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response.SUCCESS"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Department not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_DEPARTMENTS_FOUND"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteDepartment",
+        "summary": "Delete a department",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "departmentId",
+            "description": "The ID of the department to delete",
+            "schema": {
+              "type": "string",
+              "description": "The ID of the department to delete"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "Departments"
+        ],
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response.SUCCESS"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Department not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error.ERR_NO_DEPARTMENTS_FOUND"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   "components": {
     "securitySchemes": {
@@ -3125,6 +3413,53 @@
         "required": [
           "message"
         ]
+      },
+      "DepartmentCreation": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the department"
+          },
+          "color": {
+            "type": "string",
+            "description": "The color code of the department"
+          }
+        },
+        "required": ["name", "color"]
+      },
+      "Department": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the department"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the department"
+          },
+          "color": {
+            "type": "string",
+            "description": "The color associated with the department"
+          },
+          "greetingMessage": {
+            "type": "string",
+            "description": "The greeting message for the department"
+          },
+          "companyId": {
+            "type": "string",
+            "description": "The ID of the company to which the department belongs"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "The date and time when the department was created"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "The date and time when the department was last updated"
+          }
+        }
       },
       "TagCreation": {
         "type": "object",
@@ -3890,6 +4225,24 @@
         "description": "The error information",
         "example": {
           "error": "ERR_NO_SCHEDULE_FOUND"
+        }
+      },
+      "error.ERR_NO_DEPARTMENTS_FOUND": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "The error message",
+            "example": "ERR_NO_DEPARTMENTS_FOUND"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "Error",
+        "description": "The error information",
+        "example": {
+          "error": "ERR_NO_DEPARTMENTS_FOUND"
         }
       },
       "error.UNAUTHORIZED": {
