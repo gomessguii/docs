@@ -30,7 +30,7 @@
                 "properties": {
                   "number": {
                     "type": "string",
-                    "description": "O número que receberá a mensagem."
+                    "description": "O número que receberá a mensagem com DDI (exemplo: 553175038350)."
                   },
                   "message": {
                     "type": "string",
@@ -147,7 +147,7 @@
                   },
                   "locdata": {
                     "type": "object",
-                    "description": "O conteúdo da mensagem que será enviada. É possível utilizar estilização de texto no padrão do WhatsApp.",
+                    "description": "Os dados de localização em um objeto JSON. Veja o modelo.",
                     "properties": {
                       "latitude": {
                         "type": "number",
@@ -287,7 +287,7 @@
                   },
                   "files": {
                     "type": "string",
-                    "description": "O conteúdo da mensagem que será enviada. É possível utilizar estilização de texto no padrão do WhatsApp.",
+                    "description": "O arquivo a ser enviado em bytes",
                     "format": "binary"
                   },
                   "message": {
