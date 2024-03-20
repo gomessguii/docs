@@ -1,5 +1,5 @@
 ---
-title: Conexões
+title: Conexão
 icon: qrcode
 ---
 
@@ -7,37 +7,31 @@ icon: qrcode
 
 ## Início Rápido
 
-1. Clique em **Nova Conexão** e selecione WhatsApp.
-1. Dê um nome a sua conexão
-1. Clique em **Adicionar** e aguarde. Um QR code será exibido.
+1. Clique em **Novo QR Code** e aguarde. Um QR code será exibido.
 1. Abra o **WhatsApp** em seu celular.
 1. Toque em mais opções ou configurações e selecione **Aparelhos Conectados**.
 1. Aponte a **câmera** do seu celular para o código na tela.
 
 Pronto, o AtendAI já está configurado e pronto para impulsionar suas vendas.
 
-### Configurações Opcionais
+### Configurações Adicionais
+
+Ao clicar no botão de configurações no canto superior direito do card da conexão, você encontrará algumas configurações opcionais.
 
 - Você pode definir as **mensagens de atendimento**, como a mensagem enviada quando o atendente aceita o ticket ou quando o atendimento é transferido. Deixe-as em branco para não enviar nada quando uma dessas coisas acontece.
 - Você pode definir um **horário de expediente** para enviar uma mensagem de indisponibilidade quando algum contato enviar mensagem fora desse horário. É possível definir horários diferentes entre dias úteis e finais de semana.
 - Você pode vincular a conexão a uma automação. A automação deve ser cadastrada antes. Veja [como criar uma automação](/admin/bot/overview). A automação será iniciada no momento que o contato enviar uma mensagem.
 
-<Note>
-    A quantidade máxima de conexões é delimitada pelo seu plano.
-</Note>
+## Resolvendo Problemas
 
-## Listagem
+### Fluxo não inicia
 
-Na listagem de conexões, você encontrará informações úteis como:
-- **Nome**;
-- **Número**;
-- **Status da conexão** (passe o mouse sobre o status para ver mais detalhes);
-- botões para **Conectar** ou **Desconectar**;
-- **Última atualização** (data da última alteração feita no registro);
-- indicação de qual conexão é a padrão; e
-- **Ações** (veja abaixo)
+Seus leads estão mandando mensagem e seu fluxo não inicia?
 
-## Ações
-Para cada conexão, além de conectar e desconectá-las, existem duas ações que podem ser feitas:
-- **Editar** - abre uma caixa de diálogo de edição com um formulário com os dados da conexão; e
-- **Excluir** - abre uma caixa de diálogo de confirmação.
+Isso pode ocorrer por alguns motivos comuns:
+
+- **Sua conexão não está vinculada a nenhum fluxo** - abra a tela de Conexão, clique no botão de configurações e em Automação selecione o fluxo desejado.
+- **Seu fluxo está inativo** - abra a tela de Fluxos em Automações e verifique se ao lado do fluxo está escrito ativo. Se não estiver, clique no botão de ações e selecione Editar e depois Ativar.
+- **Seu fluxo é inválido** - abra a tela de Fluxos em Automações, clique no menu de ações e depois em abrir. Com o fluxo aberto, verifique se há blocos de envio e se todas as setas estão conectadas aos grupos.
+
+Caso seu problema não esteja listado acima, veja nossa [Solução de Problemas](/faq) ou entre em contato com o suporte.

@@ -43,7 +43,7 @@ Ao aceitar o ticket, será enviada a mensagem de aceitação (se configurada em 
     />
 </Frame>
 
-<Note>Na tela de chat, após aceitar um atendimento, é sempre possível voltá-lo para a aba **Aguardando** pelo botão `Retornar para aguardando` no menu de opções</Note>
+<Note>Na tela de chat, após aceitar um atendimento, é sempre possível voltá-lo para a aba **Aguardando** pelo botão `Retornar para aguardando` no menu de opções.</Note>
 
 ## Tela de Chat
 
@@ -83,7 +83,7 @@ Na barra de envio é por onde você interage com o chat de várias maneiras. Com
 
 Aqui também é onde fica a configuração da assinatura de mensagem caso o usuário tenha acesso. Ela, quando ativada, envia o nome do usuário juntamente com a mensagem enviada. Por exemplo:
 <Frame>
-    <b>Guilherme:</b><br/>
+    <b>Davidson:</b><br/>
     Olá, como posso ajudar?
 </Frame>
 
@@ -110,31 +110,17 @@ Você pode transferir um atendimento para outro usuário diretamente ou para out
 
 2. Preencha o usuário ou departamento e clique em transferir.
 
-Caso esteja configurada, será enviada uma mensagem de transferência (veja mensagens da conexão [aqui](/definitions/connections#configuracoes-opcionais)).
-
-## Criar um Novo Ticket
-
-Para criar um novo Ticket, clique no botão de WhatsApp no canto inferior esquerdo da tela de Chat ao Vivo.
-
-<Frame>
-    <img
-        src="/images/customer-service/new-ticket.png"
-        alt="Novo ticket"
-        className="rounded-lg"
-    />
-</Frame>
-
-Preencha o contato e, opcionalmente, a fila e a conexão (a conexão padrão é definida automaticamente se nenhuma for informada).
-
-<Note>Também é possível abrir um ticket ao clicar na opção chat na listagem de contatos e enviar uma mensagem.</Note>
+<Note>Caso esteja configurada, será enviada uma mensagem de transferência (veja [mensagens da conexão](/definitions/connections#configuracoes-opcionais)).</Note>
 
 ## Enviar um Fluxo de Automação
 
 É possível enviar um fluxo de automação diretamente no chat. Para isso é preciso ter um fluxo criado e ativo (veja [Fluxos](/automation/introduction)).
 
+<Note>Só é possível enviar um fluxo manualmente para um ticket pendente.</Note>
+
 Para enviar um fluxo:
 
-1. Na tela de chat, clique no menu de opções no canto superior direito
+1. Num ticket pendente, clique no menu de opções no canto superior direito
 1. Selecione a opção `Enviar Fluxo Manualmente`.
 1. No menu de envio de fluxo, selecione o fluxo desejado e clique em Enviar.
 
@@ -143,12 +129,15 @@ Para enviar um fluxo:
         src="/images/customer-service/chat-send-flow.png"
         alt="Enviar fluxo"
         className="rounded-lg"
+        width="400"
     />
 </Frame>
 
 ## Adicionar à uma Sequência
 
-É possível adicionar um contato a sua sequência, desde que haja alguma criada (veja [Sequências](/automation/sequences)). Útil para adicionar contatos à sequências de remarketing em atendimentos manuais ou semi-automáticos, por exemplo.
+É possível adicionar um contato a uma sequência, desde que já exista alguma criada (veja [Sequências](/automation/sequences)).
+
+Útil para adicionar contatos à sequências de remarketing durante atendimentos manuais ou semi-automáticos.
 
 Para isso:
 
@@ -161,5 +150,6 @@ Para isso:
         src="/images/customer-service/add-to-sequence.png"
         alt="Adicionar à sequência"
         className="rounded-lg"
+        width={450}
     />
 </Frame>

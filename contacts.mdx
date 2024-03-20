@@ -5,38 +5,59 @@ icon: address-card
 
 A página de contatos permite a criação de novos contatos, os lista e permite executar algumas ações com cada um.
 
-## Adicionar Contato
-
-1. Clique em Adicionar Contato, um formulário será apresentado.
-1. Preencha as informações do seu contato. Somente **Nome** e **Número** são obrigatórios.
-1. Opcionalmente, você pode utilizar Tags para categorizar os clientes. Veja [Tags](/tags).
-1. Escolha se quer ou não bots ativados para esse contato. Útil para desativar bots em seus números de teste.
-1. Opcionalmente, você pode utilizar os campos de **Informações Adicionais** para salvar informações importantes usadas no seus fluxos, para integrações com ferramentas externas, por exemplo. Esse tipo de informação é salvo com pares chave-valor.
+## Listagem
 
 <Frame>
   <img
-    src="/images/contact-key-value.png"
+    src="/images/contacts/contacts.png"
     alt="Informações adicionais do contato"
     className="rounded-lg"
   />
 </Frame>
 
-## Listagem
+Na listagem, ao clicar no botão ações em um contato, você pode:
+- Abrir chat
+- Editar o contato
+- Bloquear ou desbloqueá-lo
+- Excluí-lo
+- Copiar seu ID
 
-Ao abrir a página, você encontrará uma tabela de contatos com as seguintes informações:
-- **Id** com um botão para copiar o Id do contato para a área de transferência.
-- **Foto de perfil** ou uma foto padrão caso o contato não tenha.
-- **Nome do contato** ou o número caso ele não tenha um nome salvo.
-- **Número de WhatsApp**.
-- **Email** caso haja algum cadastrado.
-- **Tag** caso haja alguma cadastrada.
-- **Última mensagem** com a data de envio da última mensagem.
-- **Status**
+## Adicionar Contato
 
-## Ações
+Para adicionar contatos você tem 3 opções. Clique no botão `Adicionar` para visualizá-las.
 
-Na listagem também há algumas ações que podem ser executadas para cada contato. São elas:
-- **WhatsApp** - leva ao chat daquele contato na página de Atendimento.
-- **Editar Contato** - abre uma caixa de diálogo com um formulário de edição para os dados do contato.
-- **Bloquear Contato** - abre uma caixa de diálogo de confirmação para bloquear o contato no WhatsApp.
-- **Deletar Contato** - abre uma caixa de diálogo de confirmação para deletar o contato do sistema.
+<Frame>
+  <img
+    src="/images/contacts/add-contact.png"
+    alt="Informações adicionais do contato"
+    className="rounded-lg"
+    width={300}
+  />
+</Frame>
+
+<Tabs>
+  <Tab title="Adicionar Novo">
+    Cria um novo contato a partir de informações inseridas manualmente.
+    Para criar dessa forma, apenas selecione a opção e preencha os campos necessários.
+  </Tab>
+  <Tab title="Importar do WhatsApp">
+    Importa os contatos já criados no WhatsApp
+  </Tab>
+  <Tab title="Importar do Excel">
+    Importa os contatos a partir de uma planilha Excel criada a partir do modelo disponibilizado.
+    Baixe o modelo [aqui](https://app.atendai.com/modelo.xlsx) ou diretamente na página de importação.
+  </Tab>
+</Tabs>
+
+Você pode utilizar Tags para categorizar os clientes. Veja [Tags](/tags).
+
+Você pode utilizar os campos de **Informações Adicionais** para salvar informações importantes usadas no seus fluxos, para integrações com ferramentas externas, por exemplo. Esse tipo de informação é salvo com pares chave-valor.
+
+<Note>Para configurar informações como Tags, Informações Adicionais ou UTMs em contatos importados, é necessário editá-los após a importação.</Note>
+
+## Exportar Contatos
+
+É possível exportar seus contatos para uma planilha do Excel. Para isso, clique no botão `Adicionar`e selecione a opção `Exportar para Excel`.
+
+Os contatos serão exportados no mesmo modelo da planilha de importação.
+

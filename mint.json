@@ -93,7 +93,6 @@
                       "pages": [
                         "automation/editor/blocks/logic/set-variable",
                         "automation/editor/blocks/logic/condition",
-                        "automation/editor/blocks/logic/script",
                         "automation/editor/blocks/logic/flow-link",
                         "automation/editor/blocks/logic/add-tag",
                         "automation/editor/blocks/logic/remove-tag",
@@ -123,15 +122,7 @@
                 "automation/editor/variables",
                 "automation/editor/context-menu",
                 "automation/editor/export-import",
-                "automation/settings",
-                {
-                  "group": "Resultados",
-                  "pages": [
-                    "automation/results/overview",
-                    "automation/results/analytics"
-                  ]
-                },
-                "automation/faq"
+                "automation/settings"
               ]
             },
             "automation/sequences"

@@ -3,37 +3,35 @@ title: Agendamentos
 icon: calendar-days
 ---
 
-Um agendamento é um tipo de automação que envia uma mensagem ou aciona um fluxo numa data específica para um contato.
+Um agendamento é um tipo de automação que envia uma mensagem para um contato ou aciona um fluxo numa data específica.
 
-## Criar novo agendamento
+Um agendamento pode ser criado tanto pela listagem de agendamentos pelo botão `Adicionar` quanto pelo botão `Criar Agendamento` no menu de opções do chat de um contato.
 
-Para criar um novo agendamento:
-1. Clique em **Novo Agendamento**
-1. Selecione o contato alvo
-1. Selecione o tipo de mensagem. É possível enviar um fluxo ou uma mensagem composta. Ao selecionar fluxo, as demais opções ficarão indisponíveis
+Para criá-lo, simplesmente preencha o contato alvo e o tipo de mensagem que deseja enviar ou o fluxo que deseja acionar.
 
 <Tabs>
   <Tab title="Fluxo">
-    <span>4. Clique no primeiro ícone e selecione o fluxo que deseja acionar</span>
+    <span>Clique no primeiro ícone e selecione o Fluxo que deseja acionar.</span>
     <img
-        src="/images/schedule/schedule-automation.png"
+        src="/images/schedule/schedule-flow.png"
         alt="Formulário de agendamento"
         className="rounded-lg"
+        width={450}
     />
   </Tab>
   <Tab title="Mensagem">
-    <span>4. Selecione um ou mais tipos de mensagem entre texto, imagem, vídeo, arquivo e áudio.</span>
+    <span>Selecione um ou mais tipos de mensagem entre texto, imagem, vídeo, arquivo e áudio.</span>
     <img
-        src="/images/schedule/schedule-message.png"
+        src="/images/schedule/schedule-text.png"
         alt="Formulário de agendamento"
         className="rounded-lg"
+        width={450}
     />
   </Tab>
 </Tabs>
 
-5. Selecione quando você quer que o agendamento ocorra.
-6. Clique em **Adicionar**
+Após montar a mensagem de agendamento, selecione quando deseja que a mensagem seja enviada, e clique em `Adicionar`
 
-O agendamento ocorrerá no momento em que foi agendado. Se mais de um tipo de mensagem foi selecionado, eles serão enviados como mensagens separadas.
+O agendamento ocorrerá no momento em que foi agendado. Se mais de um tipo de mensagem foi selecionado, eles serão enviados como mensagens separadas na sequência em que aparecem no agendamento.
 
-Os agendamentos criados aparecerão na listagem com o Status "Pendente" até que sejam concluídos e seu status mude para "Concluído"
+Os agendamentos criados aparecerão na listagem com o Status "Pendente" até que sejam concluídos e seu status mude para "Concluído", e poderão ser deletados ou editados a qualquer momento.
