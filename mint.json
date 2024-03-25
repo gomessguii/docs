@@ -122,7 +122,8 @@
                 "automation/editor/variables",
                 "automation/editor/context-menu",
                 "automation/editor/export-import",
-                "automation/settings"
+                "automation/settings",
+                "automation/webhooks"
               ]
             },
             "automation/sequences"

@@ -1,0 +1,43 @@
+---
+title: 'Webhooks'
+icon: circle-nodes
+---
+
+## Personalizado
+
+Um fluxo de automação pode ser acionado através de um Webhook, ou uma requisição POST num endpoint específico.
+
+Para isso você deverá ter um fluxo criado e ativo.
+
+1. Na listagem de fluxo, selecione ações do fluxo que deseja acionar por Webhook, e depois `Editar`.
+1. Em Webhook, selecione Default e depois copie a URL de acionamento no campo `Link de Webhook`
+1. Configure sua requisição POST para a URL copiada, com o payload a seguir:
+
+```json
+{ 
+    "number": "5511912345678",
+    "variables": { 
+        // variáveis que serão utilizadas no fluxo
+        "name": "NOME",
+        "utm_campaign": "utm_campaign",
+        "utm_id": "utm_id",
+        "utm_medium": "utm_medium",
+        "utm_source": "utm_source",
+        "utm_term": "utm_term",
+    }
+}
+```
+- O campo `number` é o único campo obrigatório e deve ser preenchido com o número de telefone do contato que receberá o fluxo (atente-se ao formato do número no exemplo).
+- Em `variables` informe as variáveis que serão utilizadas no fluxo. Elas deverão ser criadas no fluxo, da mesma forma que é feita na validação de tags.
+
+## Integrações Nativas
+
+O AtendAI fornece integração nativa com diversas plataformas de venda. São elas:
+- Kiwify
+- Hotmart
+- Braip
+- Ticto
+- Kirvano
+- PerfectPay
+
+Basta selecioná-las no campo `Webhook`, copiar o link de webhook e colar na plataforma.
