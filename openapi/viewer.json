@@ -1290,6 +1290,58 @@
             "Authorization": []
           }
         ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "searchParam",
+            "description": "Parâmetro de busca.",
+            "schema": {
+              "type": "string",
+              "description": "Parâmetro de busca."
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "pageNumber",
+            "description": "Número da página.",
+            "schema": {
+              "type": "number",
+              "description": "Número da página."
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "date",
+            "description": "Data de criação.",
+            "schema": {
+              "type": "string",
+              "description": "Data de criação."
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "dateStart",
+            "description": "Data de início.",
+            "schema": {
+              "type": "string",
+              "description": "Data de início."
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "dateEnd",
+            "description": "Data final.",
+            "schema": {
+              "type": "string",
+              "description": "Data final."
+            },
+            "required": false
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -2361,6 +2413,48 @@
         "security": [
           {
             "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "contactId",
+            "description": "ID do contato.",
+            "schema": {
+              "type": "string",
+              "description": "ID do contato."
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "userId",
+            "description": "ID do usuário.",
+            "schema": {
+              "type": "string",
+              "description": "ID do usuário."
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "searchParam",
+            "description": "Parâmetro de busca.",
+            "schema": {
+              "type": "string",
+              "description": "Parâmetro de busca."
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "pageNumber",
+            "description": "Número da página.",
+            "schema": {
+              "type": "number",
+              "description": "Número da página."
+            },
+            "required": false
           }
         ],
         "responses": {
