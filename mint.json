@@ -54,6 +54,7 @@
           ]
         },
         "contacts",
+        "campaigns",
         "scheduled-actions",
         {
           "group": "Automações",
@@ -147,6 +148,12 @@
       "group": "Início",
       "pages": [
         "api-reference/authentication"
+      ]
+    },
+    {
+      "group": "Solução de Problemas",
+      "pages": [
+        "troubleshooting/faq"
       ]
     },
     {

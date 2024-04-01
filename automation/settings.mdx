@@ -12,10 +12,9 @@ As configurações gerais representam os comportamentos gerais da sua automaçã
     src="/images/automation/settings/general.png"
     alt="Configurações da automação"
     className="rounded-lg"
+    width={400}
   />
 </Frame>
 
-- **Tempo de Validade da Sessão**: .
-- **Delay de Mensagem**: .
-- **Palavra-chave para encerrar a Sessão**: .
-- **Tempo de espera da mensagem**: .
+- **Delay de Mensagem**: Define o tempo que a conversa ficará com o status `Digitando...`, antes de enviar cada mensagem, por padrão. Caso seja configurado um delay manualmente, este não será utilizado.
+- **Tempo de espera de mensagem**: Define quanto tempo, por padrão, o bot deve aguardar pela resposta do contato. Caso seja definido um tempo de espera manualmente, este será utilizado. Caso queira que o bot aguarde indefinidamente, basta definir como 0.

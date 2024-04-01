@@ -20,7 +20,8 @@ Ao clicar no botão de configurações no canto superior direito do card da cone
 
 - Você pode definir as **mensagens de atendimento**, como a mensagem enviada quando o atendente aceita o ticket ou quando o atendimento é transferido. Deixe-as em branco para não enviar nada quando uma dessas coisas acontece.
 - Você pode definir um **horário de expediente** para enviar uma mensagem de indisponibilidade quando algum contato enviar mensagem fora desse horário. É possível definir horários diferentes entre dias úteis e finais de semana.
-- Você pode vincular a conexão a uma automação. A automação deve ser cadastrada antes. Veja [como criar uma automação](/admin/bot/overview). A automação será iniciada no momento que o contato enviar uma mensagem.
+<Note>Caso haja um fluxo atrelado à conexão e o horário de expediente definido, ao receber uma mensagem fora do horário de expediente, será criado um agendamento automaticamente para o primeiro horário disponível com o fluxo configurado para aquele contato.</Note>
+- Você pode vincular a conexão a uma automação. A automação deve ser cadastrada antes. Veja [como criar uma automação](/automation/introduction). A automação será iniciada no momento que o contato enviar uma mensagem.
 
 ## Resolvendo Problemas
 
@@ -34,4 +35,4 @@ Isso pode ocorrer por alguns motivos comuns:
 - **Seu fluxo está inativo** - abra a tela de Fluxos em Automações e verifique se ao lado do fluxo está escrito ativo. Se não estiver, clique no botão de ações e selecione Editar e depois Ativar.
 - **Seu fluxo é inválido** - abra a tela de Fluxos em Automações, clique no menu de ações e depois em abrir. Com o fluxo aberto, verifique se há blocos de envio e se todas as setas estão conectadas aos grupos.
 
-Caso seu problema não esteja listado acima, veja nossa [Solução de Problemas](/faq) ou entre em contato com o suporte.
+Caso seu problema não esteja listado acima, veja nossa [Solução de Problemas](/troubleshooting/faq) ou entre em contato com o suporte.
